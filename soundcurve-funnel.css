@@ -49,6 +49,10 @@
   --sc-ink:#222222;   --sc-soft:#6f7a80;
   --sc-edge:#b0cde0;  --sc-line:#e6ecf0;
   --sc-pale:#f7fafb;  --sc-disc:#f1f1f1;  --sc-grey:#f1f1f1;
+  /* Sampled from the encoded poster, not chosen. The brand blue is #1e5d86;
+     after H.264 and JPEG it renders as #226085. The player chrome has to match
+     the frame it touches, so it uses this rather than the brand token. */
+  --sc-player:#226085;
   --sc-good-bg:#e6f4ea; --sc-good-ink:#1e6b38;
 
   /* ---- shape ---------------------------------------------------------- */
@@ -153,15 +157,15 @@ mark{
 /* Container background matches the caption, so the clipped corner never shows
    a dark fringe behind the light strip. The player carries its own colour. */
 .sc-media{ border-radius:var(--sc-r-card); overflow:hidden;
-           background:var(--sc-deep); position:relative }
+           background:var(--sc-player); position:relative }
 /* Declared square, so the box is reserved before metadata loads and the poster,
    the video and the end card occupy identical pixels at any width. */
 .sc-media video,.sc-media img{ display:block; width:100%; aspect-ratio:1/1;
                                object-fit:cover; border-radius:0;
-                               border:0; background:var(--sc-deep) }
+                               border:0; background:var(--sc-player) }
 /* Caption sits in the player's own blue so the block reads as one object,
    rather than a grey tray under a blue video. */
-.sc-media__cap{ background:var(--sc-deep); padding:var(--sc-3) var(--sc-4);
+.sc-media__cap{ background:var(--sc-player); padding:var(--sc-3) var(--sc-4);
                 margin:0; text-align:center;
                 font-size:var(--sc-size-small); color:rgba(255,255,255,.82) }
 .sc-media__cap a{ font-weight:var(--sc-weight-bold); color:var(--sc-lime);
@@ -180,7 +184,7 @@ mark{
                   box-shadow:0 6px 22px rgba(0,0,0,.28); transition:transform .15s }
 .sc-media__hit:hover i{ transform:scale(1.06) }
 .sc-media__hit i::after{ content:""; margin-left:6px;
-                         border-left:23px solid var(--sc-deep);
+                         border-left:23px solid var(--sc-player);
                          border-top:15px solid transparent;
                          border-bottom:15px solid transparent }
 .sc-media.is-playing .sc-media__hit i{ opacity:0 }

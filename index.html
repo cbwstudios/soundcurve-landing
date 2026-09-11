@@ -46,13 +46,12 @@ label:first-of-type{margin-top:0}
 input[type=text],input[type=tel],input[type=email],textarea{width:100%;padding:13px;border:1px solid #cfd8de;border-radius:8px;font-family:inherit;font-size:16px;background:#fff;color:var(--ink)}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .two label{margin-top:15px}
-.known{background:var(--pale);border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:15px;margin:0 0 4px}
-.known b{display:block;font-size:13px;font-weight:700;color:var(--soft);letter-spacing:.04em;margin-bottom:3px}
-.known a{font-size:13px}
-.consent{display:flex;gap:10px;align-items:flex-start;margin:20px 0 16px;font-size:13.5px;color:var(--soft);line-height:1.45}
-.consent input{margin-top:3px;flex-shrink:0;width:17px;height:17px}
+.prefilled{font-size:13.5px;color:var(--mid);margin:0 0 14px}
+.consent{display:flex;gap:10px;align-items:flex-start;margin:20px 0 18px;font-weight:400}
+.consent input{margin:2px 0 0;flex:0 0 17px;width:17px;height:17px}
+.consent span{flex:1 1 auto;font-size:13.5px;color:var(--soft);line-height:1.5}
+.consent a{white-space:nowrap}
 .fine{font-size:13.5px;color:var(--soft)}
-.req{font-size:12.5px;color:var(--soft);margin-top:14px}
 
 /* CARD GRIDS */
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
@@ -71,10 +70,12 @@ input[type=text],input[type=tel],input[type=email],textarea{width:100%;padding:1
 .rec{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center}
 .rec h2{text-align:left}
 .reclist{margin:0;padding:0;list-style:none}
-.reclist li{padding:15px 0;border-bottom:1px solid var(--line)}
+.reclist li{display:flex;gap:18px;align-items:flex-start;padding:20px 0;border-bottom:1px solid var(--line)}
 .reclist li:last-child{border-bottom:0}
-.reclist b{display:block;font-size:18px}
-.reclist span{font-size:16px;color:var(--soft)}
+.ric{flex:0 0 52px;width:52px;height:52px;border-radius:50%;background:var(--disc);display:flex;align-items:center;justify-content:center}
+.ric svg{width:25px;height:25px;stroke:var(--deep);stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.reclist b{display:block;font-size:19px;margin-bottom:3px}
+.reclist div>span{font-size:16px;color:var(--soft);display:block}
 .mock{background:#fff;border:1px solid var(--edge);border-radius:20px;overflow:hidden}
 .mock .mb{background:var(--pale);border-bottom:1px solid var(--line);padding:13px 20px;font-size:14px;color:var(--soft);display:flex;justify-content:space-between}
 .mock .mb b{color:var(--ink)}
@@ -148,21 +149,23 @@ input[type=text],input[type=tel],input[type=email],textarea{width:100%;padding:1
 <li><b>Nothing goes live</b> until you approve it</li>
 </ul>
 
-<div class="known"><b>YOUR ACCOUNT</b>Acme Plumbing &middot; jane@acmeplumbing.com <a href="#">Not you?</a></div>
-
-<label>Best number to reach you</label>
-<input type="tel" value="(555) 012-4478">
+<p class="prefilled">Prefilled from your account. Change anything that is out of date.</p>
+<div class="two">
+<div><label>First name *</label><input type="text" value="Jane"></div>
+<div><label>Last name</label><input type="text" value="Tester"></div>
+</div>
+<label>Email *</label><input type="email" value="jane@acmeplumbing.com">
+<label>Best number to reach you *</label><input type="tel" value="(555) 012-4478">
 
 <label>Anything you want us to cover on the call?</label>
 <textarea rows="3" placeholder="Optional. For example: after-hours only, never quote prices."></textarea>
 
 <label class="consent"><input type="checkbox" required>
-I agree that SoundCurve may contact me at the phone number and email address above about the AI Receptionist and other SoundCurve products and services. Calls may be placed using automated technology or an artificial or prerecorded voice. Consent is not a condition of any purchase. You can opt out at any time. See our <a href="https://soundcurve.com/privacy-policy/">Privacy Policy</a> and <a href="https://soundcurve.com/terms-of-service/">Terms of Service</a>.
+<span>SoundCurve may text and call me about the AI Receptionist. Automated technology may be used. Not a condition of purchase, and you can opt out any time. <a href="https://soundcurve.com/privacy-policy/">Privacy</a> &middot; <a href="https://soundcurve.com/terms-of-service/">Terms</a></span>
 </label>
 
 <a class="btn primary full" href="#">Start my free month</a>
-<p class="fine" style="margin:12px 0 0">We call you to set it up, free. Your free month starts the day it goes live.</p>
-<p class="req">* Required</p>
+<p class="fine" style="margin:12px 0 0">We text you to confirm, then call to set it up. Your free month starts the day it goes live.</p>
 </div>
 </div></div></section>
 
@@ -187,13 +190,19 @@ I agree that SoundCurve may contact me at the phone number and email address abo
 <section><div class="wrap">
 <h2>What changes on <mark>your current setup</mark></h2>
 <p class="sub">Nothing about your existing phone system changes. This sits in front of it and answers what your team does not.</p>
-<div class="qa">
-<div class="row"><div class="q">Do I keep my number?</div><div class="a">Yes. Same numbers, same phones, same desks. Nothing to unplug and nothing to install.</div></div>
-<div class="row"><div class="q">What happens to my auto attendant and ring groups?</div><div class="a">They stay. The receptionist uses them. It routes into the groups you already have rather than replacing them.</div></div>
-<div class="row"><div class="q">Does my team have to learn anything?</div><div class="a">No. Calls arrive the same way they do now, with a summary attached.</div></div>
-<div class="row"><div class="q">How many phones does it cover?</div><div class="a">Your whole system, whether that is four phones or forty.</div></div>
-<div class="row"><div class="q">How long does setup take?</div><div class="a">We call you, build it around how your calls actually work, then you listen to it and approve it before it answers a single live call.</div></div>
-<div class="row"><div class="q">How do I turn it off?</div><div class="a">Tell us and we switch it off. Your phone system carries on exactly as it does today.</div></div>
+<div class="grid3">
+<div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11 11 0 0 0 3.5.56 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11 11 0 0 0 .56 3.5 1 1 0 0 1-.25 1Z"/></svg></div>
+<h3>Your numbers stay</h3><p>Same numbers, same phones, same desks. Nothing to unplug, nothing to install.</p></div>
+<div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3v7M12 10 7 15M12 10l5 5"/><circle cx="12" cy="3" r="1.6"/><circle cx="7" cy="17" r="2.4"/><circle cx="17" cy="17" r="2.4"/></svg></div>
+<h3>Your routing stays</h3><p>It uses the auto attendant and ring groups you already have rather than replacing them.</p></div>
+<div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3a4 4 0 0 1 4 4v1a4 4 0 0 1-8 0V7a4 4 0 0 1 4-4Z"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg></div>
+<h3>Your team learns nothing</h3><p>Calls arrive the way they do now. The only difference is a summary attached to them.</p></div>
+<div class="card"><div class="ic"><svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="3"/><path d="M9 6h6M9 10h6M9 14h4"/></svg></div>
+<h3>One agent, every phone</h3><p>It covers the whole system, whether that is four phones or forty.</p></div>
+<div class="card"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></div>
+<h3>You approve before it answers</h3><p>We build it around how your calls actually work, then you listen to it and sign it off.</p></div>
+<div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M18.4 5.6a9 9 0 1 1-12.8 0"/><path d="M12 2v9"/></svg></div>
+<h3>Off is one message away</h3><p>Tell us and we switch it off. Your phone system carries on exactly as it does today.</p></div>
 </div>
 </div></section>
 
@@ -208,10 +217,14 @@ I agree that SoundCurve may contact me at the phone number and email address abo
 <div>
 <h2>After every call: <mark>a record you can search</mark></h2>
 <ul class="reclist">
-<li><b>Transcripts</b><span>Every call and voicemail becomes searchable text. Find the conversation instead of remembering it.</span></li>
-<li><b>Summaries</b><span>Key points, action items and decisions pulled out automatically. Review a call in thirty seconds.</span></li>
-<li><b>Sentiment</b><span>Each conversation scored from strongly positive to strongly negative, so you spot the unhappy customer before the bad review.</span></li>
-<li><b>Synced</b><span>All of it lands on the caller's record in your CRM. The history is there the next time they call.</span></li>
+<li><span class="ric"><svg viewBox="0 0 24 24"><path d="M6 2h9l5 5v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1Z"/><path d="M14 2v6h6M9 13h7M9 17h5"/></svg></span>
+<div><b>Transcripts</b><span>Every call and voicemail becomes searchable text. Find the conversation instead of remembering it.</span></div></li>
+<li><span class="ric"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 11h16M4 16h9"/><circle cx="18.5" cy="17" r="3.2"/><path d="M17.2 17l1 1 1.8-2"/></svg></span>
+<div><b>Summaries</b><span>Key points, action items and decisions pulled out automatically. Review a call in thirty seconds.</span></div></li>
+<li><span class="ric"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8.5 14.5a5 5 0 0 0 7 0M9 9.5h.01M15 9.5h.01"/></svg></span>
+<div><b>Sentiment</b><span>Each conversation scored from strongly positive to strongly negative, so you spot the unhappy customer before the bad review.</span></div></li>
+<li><span class="ric"><svg viewBox="0 0 24 24"><path d="M4 8a8 4 0 1 0 16 0 8 4 0 1 0-16 0"/><path d="M4 8v8c0 2.2 3.6 4 8 4s8-1.8 8-4V8"/><path d="M4 12c0 2.2 3.6 4 8 4s8-1.8 8-4"/></svg></span>
+<div><b>Synced</b><span>All of it lands on the caller's record in your CRM. The history is there the next time they call.</span></div></li>
 </ul>
 </div>
 <div class="mock"><div class="mb"><span><b>Call summary</b></span><span>sent 11:23 AM</span></div>
@@ -249,14 +262,19 @@ I agree that SoundCurve may contact me at the phone number and email address abo
 
 <!-- INTEGRATIONS -->
 <section><div class="wrap">
-<h2>Works with <mark>your calendar and CRM</mark></h2>
-<p class="sub">Callers, outcomes and bookings sync in real time, and trigger the workflows you have already built.</p>
+<h2>Plug it into <mark>the accounts you already pay for</mark></h2>
+<p class="sub">Callers, outcomes and bookings sync in real time into your CRM and calendar. And where you already hold your own AI accounts, it can run on those rather than ours: your enterprise ChatGPT, your ElevenLabs voices, your own models.</p>
 <div class="logos">
 <div><img src="https://soundcurve.com/wp-content/uploads/2025/08/salesforce-logo.svg" alt="Salesforce"></div>
 <div><img src="https://soundcurve.com/wp-content/uploads/2025/08/hubspot-logo.svg" alt="HubSpot"></div>
 <div><img src="https://soundcurve.com/wp-content/uploads/2025/08/google-calendar-logo.svg" alt="Google Calendar"></div>
 <div><img src="https://soundcurve.com/wp-content/uploads/2025/08/zendesk-logo.svg" alt="Zendesk"></div>
 <div><img src="https://soundcurve.com/wp-content/uploads/2025/08/zapier-logo.svg" alt="Zapier"></div>
+<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/openai-logo.svg" alt="OpenAI"></div>
+<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/anthropic-logo.svg" alt="Anthropic"></div>
+<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/eleven-labs-logo.svg" alt="ElevenLabs"></div>
+<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/google-sheets-logo.svg" alt="Google Sheets"></div>
+<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/five9-logo.svg" alt="Five9"></div>
 </div>
 </div></section>
 

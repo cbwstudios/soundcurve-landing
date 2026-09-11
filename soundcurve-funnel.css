@@ -132,9 +132,12 @@ mark{
                padding:var(--sc-4) var(--sc-5) }
 
 /* ---- media block: player and its caption read as one object ----------- */
+/* Container background matches the caption, so the clipped corner never shows
+   a dark fringe behind the light strip. The player carries its own colour. */
 .sc-media{ border-radius:var(--sc-r-card); overflow:hidden;
-           background:var(--sc-deep); position:relative }
-.sc-media video,.sc-media img{ display:block; width:100%; border-radius:0; border:0 }
+           background:var(--sc-grey); position:relative }
+.sc-media video,.sc-media img{ display:block; width:100%; border-radius:0;
+                               border:0; background:var(--sc-deep) }
 .sc-media__cap{ background:var(--sc-grey); padding:var(--sc-3) var(--sc-4);
                 margin:0; text-align:center;
                 font-size:var(--sc-size-small); color:var(--sc-soft) }

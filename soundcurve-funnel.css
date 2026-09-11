@@ -52,7 +52,16 @@
   --sc-good-bg:#e6f4ea; --sc-good-ink:#1e6b38;
 
   /* ---- shape ---------------------------------------------------------- */
-  --sc-r-card: 20px;   --sc-r-ctl: 8px;   --sc-r-pill: 60px;
+  --sc-r-card: 20px;   --sc-r-ctl: 10px;  --sc-r-pill: 60px;
+
+  /* Button depth. An overlay, not a two-colour gradient, so one rule works on
+     any fill. Shadow is tinted with the brand hue; black reads muddy on colour.
+     Set --sc-btn-sheen:none and --sc-btn-lift:none to go flat like the website. */
+  --sc-btn-sheen: linear-gradient(180deg, rgba(255,255,255,.10) 0%,
+                                          rgba(255,255,255,0) 45%,
+                                          rgba(0,0,0,.10) 100%);
+  --sc-btn-lift: 0 1px 2px rgba(30,93,134,.16), 0 3px 8px rgba(30,93,134,.20);
+  --sc-btn-lift-hover: 0 2px 4px rgba(30,93,134,.18), 0 6px 16px rgba(30,93,134,.26);
   --sc-r-disc: 50%;
   --sc-border: 1px solid var(--sc-edge);
   --sc-rule: 1px solid var(--sc-line);
@@ -124,10 +133,19 @@ mark{
   border-radius:var(--sc-r-ctl); border:2px solid transparent;
   font-size:18px; font-weight:var(--sc-weight-bold); line-height:1.2;
   text-decoration:none; text-align:center; cursor:pointer;
+  background-image:var(--sc-btn-sheen); box-shadow:var(--sc-btn-lift);
+  transition:box-shadow .15s ease, transform .15s ease;
 }
-.sc-btn--primary{ background:var(--sc-deep); border-color:var(--sc-deep); color:#fff }
-.sc-btn--lime{ background:var(--sc-lime); border-color:var(--sc-lime); color:var(--sc-lime-ink) }
-.sc-btn--ghost{ background:#fff; border-color:var(--sc-edge); color:var(--sc-ink) }
+.sc-btn:hover{ box-shadow:var(--sc-btn-lift-hover); transform:translateY(-1px) }
+.sc-btn:active{ box-shadow:var(--sc-btn-lift); transform:translateY(0) }
+.sc-btn:focus-visible{ outline:3px solid var(--sc-mid); outline-offset:2px }
+.sc-btn--primary{ background-color:var(--sc-deep); border-color:var(--sc-deep); color:#fff }
+.sc-btn--lime{ background-color:var(--sc-lime); border-color:var(--sc-lime); color:var(--sc-lime-ink) }
+.sc-btn--ghost{ background-color:#fff; border-color:var(--sc-edge); color:var(--sc-ink);
+                --sc-btn-sheen:none; --sc-btn-lift:none; --sc-btn-lift-hover:none }
+.sc-btn--flat{ --sc-btn-sheen:none; --sc-btn-lift:none; --sc-btn-lift-hover:none }
+@media (prefers-reduced-motion:reduce){ .sc-btn{ transition:none }
+                                        .sc-btn:hover{ transform:none } }
 .sc-btn--full{ display:block; width:100%; font-size:var(--sc-size-lead);
                padding:var(--sc-4) var(--sc-5) }
 

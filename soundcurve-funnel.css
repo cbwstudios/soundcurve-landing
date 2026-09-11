@@ -153,17 +153,20 @@ mark{
 /* Container background matches the caption, so the clipped corner never shows
    a dark fringe behind the light strip. The player carries its own colour. */
 .sc-media{ border-radius:var(--sc-r-card); overflow:hidden;
-           background:var(--sc-grey); position:relative }
+           background:var(--sc-deep); position:relative }
 /* Declared square, so the box is reserved before metadata loads and the poster,
    the video and the end card occupy identical pixels at any width. */
 .sc-media video,.sc-media img{ display:block; width:100%; aspect-ratio:1/1;
                                object-fit:cover; border-radius:0;
                                border:0; background:var(--sc-deep) }
-.sc-media__cap{ background:var(--sc-grey); padding:var(--sc-3) var(--sc-4);
+/* Caption sits in the player's own blue so the block reads as one object,
+   rather than a grey tray under a blue video. */
+.sc-media__cap{ background:var(--sc-deep); padding:var(--sc-3) var(--sc-4);
                 margin:0; text-align:center;
-                font-size:var(--sc-size-small); color:var(--sc-soft) }
-.sc-media__cap a{ font-weight:var(--sc-weight-bold); color:var(--sc-ink);
+                font-size:var(--sc-size-small); color:rgba(255,255,255,.82) }
+.sc-media__cap a{ font-weight:var(--sc-weight-bold); color:var(--sc-lime);
                   text-decoration:none }
+.sc-media__cap a:hover{ text-decoration:underline }
 /* single play affordance, no native chrome */
 .sc-media__play{ position:absolute; inset:0 0 auto; height:0; padding-bottom:0;
                  border:0; background:transparent; cursor:pointer; z-index:2 }

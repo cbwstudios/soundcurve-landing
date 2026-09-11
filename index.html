@@ -1,273 +1,165 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>AI Receptionist</title>
 <link rel="stylesheet" href="https://use.typekit.net/sao6jba.css">
+<link rel="stylesheet" href="soundcurve-funnel.css">
 <style>
-:root{
- --deep:#1e5d86;--mid:#2778ae;--lime:#d6df23;--mark:#eaef91;
- --ink:#222222;--soft:#6f7a80;--edge:#b0cde0;--line:#e6ecf0;--pale:#f7fafb;--disc:#f1f1f1;
- --font:"calibri",Carlito,Candara,"Segoe UI",Arial,sans-serif;
- --content:1120px;--gutter:26px}
-*{box-sizing:border-box}
-body{margin:0;background:#fff;color:var(--ink);font-family:var(--font);font-size:17.69px;line-height:1.5;-webkit-font-smoothing:antialiased}
-/* One container. Content is always exactly --content wide; the gutter sits
-   OUTSIDE it, so max-width means the real content width, not content+padding. */
-.wrap{max-width:calc(var(--content) + (var(--gutter) * 2));margin:0 auto;padding:0 var(--gutter)}
-section{padding:72px 0}
-h1,h2,h3{margin:0;color:var(--ink);line-height:1.04}
-h1{font-size:62px;font-weight:300}
-h2{font-size:50px;font-weight:300;text-align:center;margin-bottom:14px}
-h3{font-size:20px;font-weight:700;line-height:1.25;margin:0 0 8px}
-p{margin:0 0 16px}
-mark{background-image:linear-gradient(120deg,var(--mark) 0%,var(--mark) 100%);background-size:100% 22%;background-position:0 90%;background-repeat:no-repeat;background-color:transparent;color:inherit;padding:0}
-a{color:var(--mid)}
-.sub{font-size:17.69px;max-width:72ch;margin:0 auto 44px;text-align:center;color:var(--soft)}
-
-.bar{background:var(--deep);padding:14px 0}
-.bar .wrap{display:flex;justify-content:space-between;align-items:center}
-.bar img{height:34px;display:block}
-.bar .ph{font-size:15px;color:rgba(255,255,255,.94)}
-
-.btn{display:inline-block;padding:17px 34px;border-radius:8px;text-decoration:none;font-size:18px;font-weight:700;border:2px solid transparent;line-height:1.2;cursor:pointer;text-align:center}
-.btn.primary{background:var(--lime);border-color:var(--lime);color:#243b0c}
-.btn.full{display:block;width:100%;font-size:20px;padding:19px 24px}
-.btn.ghost{background:#fff;border-color:var(--edge);color:var(--ink)}
-
-/* HERO */
-.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:start}
-.hero h1{margin-bottom:20px}
-.hero .lede{font-size:20px;margin-bottom:26px}
-video{width:100%;display:block;border-radius:20px;border:1px solid var(--edge);background:var(--deep)}
-.hearline{font-size:16px;color:var(--soft);margin:14px 0 0;text-align:center}
-.hearline a{font-weight:700;color:var(--ink);text-decoration:none}
-
-.fcard{background:#fff;border:1px solid var(--edge);border-radius:20px;padding:30px}
-.offer{list-style:none;margin:0 0 22px;padding:0 0 20px;border-bottom:1px solid var(--line)}
-.offer li{padding:7px 0 7px 27px;position:relative;font-size:16.5px}
-.offer li:before{content:"";position:absolute;left:2px;top:14px;width:12px;height:6px;border-left:2.5px solid var(--lime);border-bottom:2.5px solid var(--lime);transform:rotate(-45deg)}
-.offer b{font-weight:700}
-label{display:block;font-size:14px;font-weight:700;margin:15px 0 5px}
-label:first-of-type{margin-top:0}
-input[type=text],input[type=tel],input[type=email],textarea{width:100%;padding:13px;border:1px solid #cfd8de;border-radius:8px;font-family:inherit;font-size:16px;background:#fff;color:var(--ink)}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.two label{margin-top:15px}
-.prefilled{font-size:13.5px;color:var(--mid);margin:0 0 14px}
-.consent{display:flex;gap:10px;align-items:flex-start;margin:20px 0 18px;font-weight:400}
-.consent input{margin:2px 0 0;flex:0 0 17px;width:17px;height:17px}
-.consent span{flex:1 1 auto;font-size:13.5px;color:var(--soft);line-height:1.5}
-.consent a{white-space:nowrap}
-.fine{font-size:13.5px;color:var(--soft)}
-
-/* CARD GRIDS */
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.card{background:#fff;border:1px solid var(--edge);border-radius:20px;padding:30px}
-.card p{font-size:16px;color:var(--soft);margin:0}
-.ic{width:65px;height:65px;border-radius:50%;background:var(--disc);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
-.ic svg{width:30px;height:30px;stroke:var(--deep);stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round}
-
-/* OUTCOMES */
-.out{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-.out .card{text-align:center;padding:28px 22px}
-.out .ic{margin:0 auto 16px}
-.never{text-align:center;font-size:22px;margin:34px 0 0}
-
-/* RECORD */
-.rec{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center}
-.rec h2{text-align:left}
-.reclist{margin:0;padding:0;list-style:none}
-.reclist li{display:flex;gap:18px;align-items:flex-start;padding:20px 0;border-bottom:1px solid var(--line)}
-.reclist li:last-child{border-bottom:0}
-.ric{flex:0 0 52px;width:52px;height:52px;border-radius:50%;background:var(--disc);display:flex;align-items:center;justify-content:center}
-.ric svg{width:25px;height:25px;stroke:var(--deep);stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round}
-.reclist b{display:block;font-size:19px;margin-bottom:3px}
-.reclist div>span{font-size:16px;color:var(--soft);display:block}
-.mock{background:#fff;border:1px solid var(--edge);border-radius:20px;overflow:hidden}
-.mock .mb{background:var(--pale);border-bottom:1px solid var(--line);padding:13px 20px;font-size:14px;color:var(--soft);display:flex;justify-content:space-between}
-.mock .mb b{color:var(--ink)}
-.mock .in{padding:16px 20px}
-.rl{display:flex;gap:12px;font-size:16px;padding:9px 0;line-height:1.45;border-bottom:1px solid #f1f5f8}
-.rl:last-child{border-bottom:0}
-.rl .k{color:var(--soft);min-width:78px;flex-shrink:0}
-.tag{display:inline-block;padding:2px 11px;border-radius:20px;font-size:14px;font-weight:700;background:#e6f4ea;color:#1e6b38}
-.note{max-width:860px;margin:40px auto 0;border:1px solid var(--line);border-radius:14px;padding:22px 26px;background:var(--pale);font-size:16px;color:var(--soft)}
-.note b{color:var(--ink)}
-
-/* SETUP QA */
-.qa{max-width:900px;margin:0 auto}
-.qa .row{display:grid;grid-template-columns:.9fr 1.1fr;gap:26px;padding:18px 0;border-bottom:1px solid var(--line)}
-.qa .row:last-child{border-bottom:0}
-.qa .q{font-weight:700}
-.qa .a{color:var(--soft)}
-
-/* LOGOS */
-.logos{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;max-width:880px;margin:0 auto}
-.logos div{border:1px solid var(--edge);border-radius:16px;height:92px;display:flex;align-items:center;justify-content:center;padding:20px;background:#fff}
-.logos img{max-width:100%;max-height:38px;width:auto}
-
-/* PRICING */
-.price{max-width:620px;margin:0 auto;border:1px solid var(--edge);border-radius:20px;overflow:hidden}
-.price .top{padding:34px 34px 28px;text-align:center;border-bottom:1px solid var(--line)}
-.price .free{display:inline-block;background:var(--lime);color:#243b0c;font-weight:700;font-size:14px;letter-spacing:.05em;padding:7px 18px;border-radius:30px;margin-bottom:18px}
-.price .amt{font-size:62px;font-weight:300;line-height:1}
-.price .amt span{font-size:21px;color:var(--soft)}
-.price .after{font-size:16px;color:var(--soft);margin-top:10px}
-.price ul{list-style:none;margin:0;padding:24px 34px 10px}
-.price li{padding:11px 0 11px 28px;position:relative;font-size:16.5px;border-bottom:1px solid #f5f8fa}
-.price li:last-child{border-bottom:0}
-.price li:before{content:"";position:absolute;left:2px;top:19px;width:12px;height:6px;border-left:2.5px solid var(--lime);border-bottom:2.5px solid var(--lime);transform:rotate(-45deg)}
-.price .cta{padding:18px 34px 30px}
-
-.foot{border-top:1px solid var(--line);padding:30px 0;font-size:14.5px;color:var(--soft);text-align:center}
-.foot a{color:var(--mid);margin:0 9px}
-.foot .addr{margin-top:12px;font-size:13.5px}
-
-@media(max-width:900px){
- .hero,.rec,.qa .row{grid-template-columns:1fr;gap:30px}
- .grid3,.out,.two{grid-template-columns:1fr}
- .logos{grid-template-columns:repeat(2,1fr)}
- h1{font-size:36px}h2{font-size:30px}
- section{padding:48px 0}
- .rec h2{text-align:center}
- .qa .row{gap:6px;padding:14px 0}
-}
+/* Page-specific only. Everything else comes from soundcurve-funnel.css.
+   Target: keep this block under 20 rules. If something here is reusable,
+   it belongs in the system file instead. */
+.hd{ background:var(--sc-deep); padding:var(--sc-3) 0 }
+.hd .sc-wrap{ display:flex; justify-content:space-between; align-items:center }
+.hd img{ height:34px; display:block }
+.hd span{ font-size:15px; color:rgba(255,255,255,.94) }
+.hero{ --cols:2; --gap:52px; grid-template-columns:1.05fr .95fr }
+video{ width:100%; display:block; border-radius:var(--sc-r-card);
+       border:var(--sc-border); background:var(--sc-deep) }
+.offer{ margin:0 0 var(--sc-4); padding-bottom:var(--sc-4); border-bottom:var(--sc-rule) }
+.never{ text-align:center; font-size:22px; margin:var(--sc-6) 0 0 }
+.note{ max-width:860px; margin:var(--sc-7) auto 0; border:var(--sc-rule);
+       border-radius:14px; padding:var(--sc-5); background:var(--sc-pale);
+       font-size:var(--sc-size-meta); color:var(--sc-soft) }
+.note b{ color:var(--sc-ink) }
+.ft{ border-top:var(--sc-rule); padding-block:var(--sc-5); text-align:center }
+.ft a{ margin-inline:9px }
 </style></head><body>
 
-<div class="bar"><div class="wrap">
+<header class="hd"><div class="sc-wrap">
 <img src="https://soundcurve.com/wp-content/uploads/2024/04/Soundcurve.svg" alt="SoundCurve">
-<div class="ph">Talk to us: 888-408-7102</div>
-</div></div>
+<span>Talk to us: 888-408-7102</span>
+</div></header>
 
 <!-- HERO -->
-<section style="padding-bottom:56px"><div class="wrap"><div class="hero">
+<section class="sc-section"><div class="sc-wrap"><div class="sc-row hero">
 <div>
 <h1>Your phone system can now <mark>answer the calls you miss</mark></h1>
-<p class="lede">Add an AI receptionist to the SoundCurve system you already run. It answers when your team cannot, sends callers to the right person, and writes up what happened.</p>
+<p class="sc-lead" style="margin:var(--sc-4) 0 var(--sc-5)">Add an AI receptionist to the SoundCurve system you already run. It answers when your team cannot, sends callers to the right person, and writes up what happened.</p>
 <video controls playsinline preload="metadata" src="AIReceptionist_web.mp4" poster="AIReceptionist_poster.jpg"></video>
-<p class="hearline">Want to hear it first? Talk to the AI at <a href="tel:4242919568">(424) 291-9568</a></p>
+<p class="sc-small sc-center" style="margin-top:var(--sc-3)">Want to hear it first? Talk to the AI at <a href="tel:4242919568">(424) 291-9568</a></p>
 </div>
 
-<div class="fcard">
-<ul class="offer">
+<div class="sc-card">
+<ul class="sc-checks offer">
 <li><b>First month free</b>, then $99.99 a month</li>
 <li><b>250 minutes</b> included every month</li>
 <li><b>We set it up</b>, at no charge</li>
 <li><b>Nothing goes live</b> until you approve it</li>
 </ul>
 
-<p class="prefilled">Prefilled from your account. Change anything that is out of date.</p>
-<div class="two">
-<div><label>First name *</label><input type="text" value="Jane"></div>
-<div><label>Last name</label><input type="text" value="Tester"></div>
+<p class="sc-small" style="margin-bottom:var(--sc-3);color:var(--sc-mid)">Prefilled from your account. Change anything that is out of date.</p>
+<div class="sc-row" style="--cols:2;--gap:12px">
+<div><label class="sc-field">First name *</label><input type="text" value="Jane"></div>
+<div><label class="sc-field">Last name</label><input type="text" value="Tester"></div>
 </div>
-<label>Email *</label><input type="email" value="jane@acmeplumbing.com">
-<label>Best number to reach you *</label><input type="tel" value="(555) 012-4478">
-
-<label>Anything you want us to cover on the call?</label>
+<label class="sc-field">Email *</label><input type="email" value="jane@acmeplumbing.com">
+<label class="sc-field">Best number to reach you *</label><input type="tel" value="(555) 012-4478">
+<label class="sc-field">Anything you want us to cover on the call?</label>
 <textarea rows="3" placeholder="Optional. For example: after-hours only, never quote prices."></textarea>
 
-<label class="consent"><input type="checkbox" required>
+<label class="sc-consent"><input type="checkbox" required>
 <span>SoundCurve may text and call me about the AI Receptionist. Automated technology may be used. Not a condition of purchase, and you can opt out any time. <a href="https://soundcurve.com/privacy-policy/">Privacy</a> &middot; <a href="https://soundcurve.com/terms-of-service/">Terms</a></span>
 </label>
 
-<a class="btn primary full" href="#">Start my free month</a>
-<p class="fine" style="margin:12px 0 0">We text you to confirm, then call to set it up. Your free month starts the day it goes live.</p>
+<a class="sc-btn sc-btn--primary sc-btn--full" href="#">Start my free month</a>
+<p class="sc-small" style="margin:var(--sc-3) 0 0">We text you to confirm, then call to set it up. Your free month starts the day it goes live.</p>
 </div>
 </div></div></section>
 
 <!-- OUTCOMES -->
-<section style="background:var(--pale)"><div class="wrap">
-<h2>Every call ends <mark>one of four ways</mark></h2>
-<p class="sub">You decide which, during setup. None of them is voicemail.</p>
-<div class="out">
-<div class="card"><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="3"/><path d="M8 2v4M16 2v4M3 10h18M9 15l2 2 4-4"/></svg></div>
-<h3>Booked</h3><p>It checks your calendar's real availability and puts the appointment in it.</p></div>
-<div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3a4 4 0 0 1 4 4v1a4 4 0 0 1-8 0V7a4 4 0 0 1 4-4Z"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg></div>
-<h3>Handed off</h3><p>Your screening questions get asked, then a live transfer with the conversation attached.</p></div>
-<div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M21 15a3 3 0 0 1-3 3H8l-5 4V6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3Z"/><path d="M9 9h8M9 13h5"/></svg></div>
-<h3>Answered</h3><p>Hours, services, status, and the pricing rules you set. In their language.</p></div>
-<div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M6 2h9l5 5v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1Z"/><path d="M14 2v6h6M9 13h7M9 17h5"/></svg></div>
-<h3>Written down</h3><p>Transcript, summary and sentiment, on the caller's record in your CRM.</p></div>
+<section class="sc-section sc-tint"><div class="sc-wrap">
+<h2 class="sc-center">Every call ends <mark>one of four ways</mark></h2>
+<p class="sc-sub" style="margin-bottom:var(--sc-7)">You decide which, during setup. None of them is voicemail.</p>
+<div class="sc-row" style="--cols:4;--gap:var(--sc-4)">
+<div class="sc-card sc-center"><div class="sc-ic" style="margin-inline:auto"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="3"/><path d="M8 2v4M16 2v4M3 10h18M9 15l2 2 4-4"/></svg></div>
+<h3>Booked</h3><p class="sc-small">It checks your calendar's real availability and puts the appointment in it.</p></div>
+<div class="sc-card sc-center"><div class="sc-ic" style="margin-inline:auto"><svg viewBox="0 0 24 24"><path d="M12 3a4 4 0 0 1 4 4v1a4 4 0 0 1-8 0V7a4 4 0 0 1 4-4Z"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg></div>
+<h3>Handed off</h3><p class="sc-small">Your screening questions get asked, then a live transfer with the conversation attached.</p></div>
+<div class="sc-card sc-center"><div class="sc-ic" style="margin-inline:auto"><svg viewBox="0 0 24 24"><path d="M21 15a3 3 0 0 1-3 3H8l-5 4V6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3Z"/><path d="M9 9h8M9 13h5"/></svg></div>
+<h3>Answered</h3><p class="sc-small">Hours, services, status, and the pricing rules you set. In their language.</p></div>
+<div class="sc-card sc-center"><div class="sc-ic" style="margin-inline:auto"><svg viewBox="0 0 24 24"><path d="M6 2h9l5 5v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1Z"/><path d="M14 2v6h6M9 13h7M9 17h5"/></svg></div>
+<h3>Written down</h3><p class="sc-small">Transcript, summary and sentiment, on the caller's record in your CRM.</p></div>
 </div>
 <p class="never">What never happens: <mark>voicemail</mark>.</p>
 </div></section>
 
 <!-- WHAT CHANGES -->
-<section><div class="wrap">
-<h2>What changes on <mark>your current setup</mark></h2>
-<p class="sub">Nothing about your existing phone system changes. This sits in front of it and answers what your team does not.</p>
-<div class="grid3">
-<div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11 11 0 0 0 3.5.56 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11 11 0 0 0 .56 3.5 1 1 0 0 1-.25 1Z"/></svg></div>
-<h3>Your numbers stay</h3><p>Same numbers, same phones, same desks. Nothing to unplug, nothing to install.</p></div>
-<div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3v7M12 10 7 15M12 10l5 5"/><circle cx="12" cy="3" r="1.6"/><circle cx="7" cy="17" r="2.4"/><circle cx="17" cy="17" r="2.4"/></svg></div>
-<h3>Your routing stays</h3><p>It uses the auto attendant and ring groups you already have rather than replacing them.</p></div>
-<div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3a4 4 0 0 1 4 4v1a4 4 0 0 1-8 0V7a4 4 0 0 1 4-4Z"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg></div>
-<h3>Your team learns nothing</h3><p>Calls arrive the way they do now. The only difference is a summary attached to them.</p></div>
-<div class="card"><div class="ic"><svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="3"/><path d="M9 6h6M9 10h6M9 14h4"/></svg></div>
-<h3>One agent, every phone</h3><p>It covers the whole system, whether that is four phones or forty.</p></div>
-<div class="card"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></div>
-<h3>You approve before it answers</h3><p>We build it around how your calls actually work, then you listen to it and sign it off.</p></div>
-<div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M18.4 5.6a9 9 0 1 1-12.8 0"/><path d="M12 2v9"/></svg></div>
-<h3>Off is one message away</h3><p>Tell us and we switch it off. Your phone system carries on exactly as it does today.</p></div>
+<section class="sc-section"><div class="sc-wrap">
+<h2 class="sc-center">What changes on <mark>your current setup</mark></h2>
+<p class="sc-sub" style="margin-bottom:var(--sc-7)">Nothing about your existing phone system changes. This sits in front of it and answers what your team does not.</p>
+<div class="sc-row" style="--cols:3;--gap:var(--sc-5)">
+<div class="sc-card"><div class="sc-ic"><svg viewBox="0 0 24 24"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11 11 0 0 0 3.5.56 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11 11 0 0 0 .56 3.5 1 1 0 0 1-.25 1Z"/></svg></div>
+<h3>Your numbers stay</h3><p class="sc-small">Same numbers, same phones, same desks. Nothing to unplug, nothing to install.</p></div>
+<div class="sc-card"><div class="sc-ic"><svg viewBox="0 0 24 24"><path d="M12 3v7M12 10 7 15M12 10l5 5"/><circle cx="12" cy="3" r="1.6"/><circle cx="7" cy="17" r="2.4"/><circle cx="17" cy="17" r="2.4"/></svg></div>
+<h3>Your routing stays</h3><p class="sc-small">It uses the auto attendant and ring groups you already have rather than replacing them.</p></div>
+<div class="sc-card"><div class="sc-ic"><svg viewBox="0 0 24 24"><path d="M12 3a4 4 0 0 1 4 4v1a4 4 0 0 1-8 0V7a4 4 0 0 1 4-4Z"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg></div>
+<h3>Your team learns nothing</h3><p class="sc-small">Calls arrive the way they do now. The only difference is a summary attached to them.</p></div>
+<div class="sc-card"><div class="sc-ic"><svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="3"/><path d="M9 6h6M9 10h6M9 14h4"/></svg></div>
+<h3>One agent, every phone</h3><p class="sc-small">It covers the whole system, whether that is four phones or forty.</p></div>
+<div class="sc-card"><div class="sc-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></div>
+<h3>You approve before it answers</h3><p class="sc-small">We build it around how your calls actually work, then you listen to it and sign it off.</p></div>
+<div class="sc-card"><div class="sc-ic"><svg viewBox="0 0 24 24"><path d="M18.4 5.6a9 9 0 1 1-12.8 0"/><path d="M12 2v9"/></svg></div>
+<h3>Off is one message away</h3><p class="sc-small">Tell us and we switch it off. Your phone system carries on exactly as it does today.</p></div>
 </div>
 </div></section>
 
-<!-- WHEN IT DOESN'T KNOW -->
-<section style="background:var(--pale)"><div class="wrap">
-<h2>When it does not know, <mark>it does not guess</mark></h2>
-<p class="sub">Anything outside what you have given it goes to a person, or becomes a message with the full transcript attached. You write the never-say rules during setup, and you approve everything before it goes live.</p>
+<!-- DOESN'T GUESS -->
+<section class="sc-section sc-tint"><div class="sc-wrap">
+<h2 class="sc-center">When it does not know, <mark>it does not guess</mark></h2>
+<p class="sc-sub">Anything outside what you have given it goes to a person, or becomes a message with the full transcript attached. You write the never-say rules during setup, and you approve everything before it goes live.</p>
 </div></section>
 
 <!-- RECORD -->
-<section><div class="wrap"><div class="rec">
+<section class="sc-section"><div class="sc-wrap">
+<div class="sc-row sc-row--split" style="--align:center">
 <div>
 <h2>After every call: <mark>a record you can search</mark></h2>
-<ul class="reclist">
-<li><span class="ric"><svg viewBox="0 0 24 24"><path d="M6 2h9l5 5v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1Z"/><path d="M14 2v6h6M9 13h7M9 17h5"/></svg></span>
-<div><b>Transcripts</b><span>Every call and voicemail becomes searchable text. Find the conversation instead of remembering it.</span></div></li>
-<li><span class="ric"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 11h16M4 16h9"/><circle cx="18.5" cy="17" r="3.2"/><path d="M17.2 17l1 1 1.8-2"/></svg></span>
-<div><b>Summaries</b><span>Key points, action items and decisions pulled out automatically. Review a call in thirty seconds.</span></div></li>
-<li><span class="ric"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8.5 14.5a5 5 0 0 0 7 0M9 9.5h.01M15 9.5h.01"/></svg></span>
-<div><b>Sentiment</b><span>Each conversation scored from strongly positive to strongly negative, so you spot the unhappy customer before the bad review.</span></div></li>
-<li><span class="ric"><svg viewBox="0 0 24 24"><path d="M4 8a8 4 0 1 0 16 0 8 4 0 1 0-16 0"/><path d="M4 8v8c0 2.2 3.6 4 8 4s8-1.8 8-4V8"/><path d="M4 12c0 2.2 3.6 4 8 4s8-1.8 8-4"/></svg></span>
-<div><b>Synced</b><span>All of it lands on the caller's record in your CRM. The history is there the next time they call.</span></div></li>
+<ul class="sc-medialist" style="margin-top:var(--sc-4)">
+<li><span class="sc-ic sc-ic--sm"><svg viewBox="0 0 24 24"><path d="M6 2h9l5 5v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1Z"/><path d="M14 2v6h6M9 13h7M9 17h5"/></svg></span>
+<div><b>Transcripts</b><p>Every call and voicemail becomes searchable text. Find the conversation instead of remembering it.</p></div></li>
+<li><span class="sc-ic sc-ic--sm"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 11h16M4 16h9"/><circle cx="18.5" cy="17" r="3.2"/><path d="M17.2 17l1 1 1.8-2"/></svg></span>
+<div><b>Summaries</b><p>Key points, action items and decisions pulled out automatically. Review a call in thirty seconds.</p></div></li>
+<li><span class="sc-ic sc-ic--sm"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8.5 14.5a5 5 0 0 0 7 0M9 9.5h.01M15 9.5h.01"/></svg></span>
+<div><b>Sentiment</b><p>Each conversation scored from strongly positive to strongly negative, so you spot the unhappy customer before the bad review.</p></div></li>
+<li><span class="sc-ic sc-ic--sm"><svg viewBox="0 0 24 24"><path d="M4 8a8 4 0 1 0 16 0 8 4 0 1 0-16 0"/><path d="M4 8v8c0 2.2 3.6 4 8 4s8-1.8 8-4V8"/><path d="M4 12c0 2.2 3.6 4 8 4s8-1.8 8-4"/></svg></span>
+<div><b>Synced</b><p>All of it lands on the caller's record in your CRM. The history is there the next time they call.</p></div></li>
 </ul>
 </div>
-<div class="mock"><div class="mb"><span><b>Call summary</b></span><span>sent 11:23 AM</span></div>
-<div class="in">
-<div class="rl"><span class="k">Call</span><span>Answered Tuesday 11:20 AM, 2 min 40 sec</span></div>
-<div class="rl"><span class="k">Caller</span><span>New caller, left a name and number</span></div>
-<div class="rl"><span class="k">Wanted</span><span>A quote, asked twice about turnaround</span></div>
-<div class="rl"><span class="k">Outcome</span><span>Put through to a person, someone was free</span></div>
-<div class="rl"><span class="k">Tone</span><span><span class="tag">Positive, ready to move</span></span></div>
+<div class="sc-mock"><div class="sc-mock__bar"><span><b>Call summary</b></span><span>sent 11:23 AM</span></div>
+<div class="sc-mock__body">
+<div class="sc-mock__row"><span>Call</span><span>Answered Tuesday 11:20 AM, 2 min 40 sec</span></div>
+<div class="sc-mock__row"><span>Caller</span><span>New caller, left a name and number</span></div>
+<div class="sc-mock__row"><span>Wanted</span><span>A quote, asked twice about turnaround</span></div>
+<div class="sc-mock__row"><span>Outcome</span><span>Put through to a person, someone was free</span></div>
+<div class="sc-mock__row"><span>Tone</span><span><span class="sc-tag">Positive, ready to move</span></span></div>
 </div></div>
 </div>
 <div class="note"><b>About recording and transcription.</b> Recording laws vary by state, and some require every party on a call to be notified before it is recorded. Your AI Receptionist can announce recording at the start of every conversation, and we configure that with you during setup. You control what is recorded and how long transcripts are kept.</div>
 </div></section>
 
 <!-- INDUSTRY -->
-<section style="background:var(--pale)"><div class="wrap">
-<h2>Built for <mark>your industry</mark></h2>
-<p class="sub">It is configured around how your calls actually work, not a template.</p>
-<div class="grid3">
-<div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3 3 8l9 5 9-5-9-5Z"/><path d="M3 8v6c0 3 4 5 9 5s9-2 9-5V8"/></svg></div>
-<h3>Law firms</h3><p>Answers after-hours intake, screens potential clients with your questions, schedules consultations, and texts you the summary before morning.</p></div>
-<div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/><rect x="3" y="3" width="18" height="18" rx="4"/></svg></div>
-<h3>Medical and dental</h3><p>Takes appointment requests at 7pm, sends forms, and routes urgent calls wherever your protocol says.</p></div>
-<div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V9l7-5 7 5v12"/><path d="M10 21v-6h4v6"/></svg></div>
-<h3>Construction and trades</h3><p>Books estimates while your crew pours concrete, gives callers quote information, and texts the details to your crew lead.</p></div>
-<div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 10.5 12 4l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Z"/><path d="M9 21v-7h6v7"/></svg></div>
-<h3>Real estate and property</h3><p>Qualifies buyer and tenant leads, schedules showings, shares property details, and coordinates inspections.</p></div>
-<div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 8h16l-1.5 12a1 1 0 0 1-1 1H6.5a1 1 0 0 1-1-1Z"/><path d="M8 8V6a4 4 0 0 1 8 0v2"/></svg></div>
-<h3>Restaurants and food service</h3><p>Takes reservations and large-party requests during the rush, answers hours and menu questions, and routes catering to the right person.</p></div>
-<div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 13l2-6a2 2 0 0 1 2-1.4h10A2 2 0 0 1 19 7l2 6v6h-3v-2H6v2H3Z"/><path d="M6.5 16h1M16.5 16h1"/></svg></div>
-<h3>Automotive and service shops</h3><p>Books service appointments, answers status questions on work in progress, and takes details when every bay is full.</p></div>
+<section class="sc-section sc-tint"><div class="sc-wrap">
+<h2 class="sc-center">Built for <mark>your industry</mark></h2>
+<p class="sc-sub" style="margin-bottom:var(--sc-7)">It is configured around how your calls actually work, not a template.</p>
+<div class="sc-row" style="--cols:3;--gap:var(--sc-5)">
+<div class="sc-card"><div class="sc-ic"><svg viewBox="0 0 24 24"><path d="M12 3 3 8l9 5 9-5-9-5Z"/><path d="M3 8v6c0 3 4 5 9 5s9-2 9-5V8"/></svg></div>
+<h3>Law firms</h3><p class="sc-small">Answers after-hours intake, screens potential clients with your questions, schedules consultations, and texts you the summary before morning.</p></div>
+<div class="sc-card"><div class="sc-ic"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M12 8v8M8 12h8"/></svg></div>
+<h3>Medical and dental</h3><p class="sc-small">Takes appointment requests at 7pm, sends forms, and routes urgent calls wherever your protocol says.</p></div>
+<div class="sc-card"><div class="sc-ic"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V9l7-5 7 5v12"/><path d="M10 21v-6h4v6"/></svg></div>
+<h3>Construction and trades</h3><p class="sc-small">Books estimates while your crew pours concrete, gives callers quote information, and texts the details to your crew lead.</p></div>
+<div class="sc-card"><div class="sc-ic"><svg viewBox="0 0 24 24"><path d="M3 10.5 12 4l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Z"/><path d="M9 21v-7h6v7"/></svg></div>
+<h3>Real estate and property</h3><p class="sc-small">Qualifies buyer and tenant leads, schedules showings, shares property details, and coordinates inspections.</p></div>
+<div class="sc-card"><div class="sc-ic"><svg viewBox="0 0 24 24"><path d="M4 8h16l-1.5 12a1 1 0 0 1-1 1H6.5a1 1 0 0 1-1-1Z"/><path d="M8 8V6a4 4 0 0 1 8 0v2"/></svg></div>
+<h3>Restaurants and food service</h3><p class="sc-small">Takes reservations and large-party requests during the rush, answers hours and menu questions, and routes catering to the right person.</p></div>
+<div class="sc-card"><div class="sc-ic"><svg viewBox="0 0 24 24"><path d="M3 13l2-6a2 2 0 0 1 2-1.4h10A2 2 0 0 1 19 7l2 6v6h-3v-2H6v2H3Z"/><path d="M6.5 16h1M16.5 16h1"/></svg></div>
+<h3>Automotive and service shops</h3><p class="sc-small">Books service appointments, answers status questions on work in progress, and takes details when every bay is full.</p></div>
 </div>
-<p class="sub" style="margin:34px auto 0">Something else? It learns any business that answers a phone. Tell us how your calls work and we configure it around your day.</p>
+<p class="sc-sub" style="margin-top:var(--sc-6)">Something else? It learns any business that answers a phone. Tell us how your calls work and we configure it around your day.</p>
 </div></section>
 
 <!-- INTEGRATIONS -->
-<section><div class="wrap">
-<h2>Plug it into <mark>the accounts you already pay for</mark></h2>
-<p class="sub">Callers, outcomes and bookings sync in real time into your CRM and calendar. And where you already hold your own AI accounts, it can run on those rather than ours: your enterprise ChatGPT, your ElevenLabs voices, your own models.</p>
-<div class="logos">
+<section class="sc-section"><div class="sc-wrap">
+<h2 class="sc-center">Plug it into <mark>the accounts you already pay for</mark></h2>
+<p class="sc-sub" style="margin-bottom:var(--sc-7)">Callers, outcomes and bookings sync in real time into your CRM and calendar. And where you already hold your own AI accounts, it can run on those rather than ours: your enterprise ChatGPT, your ElevenLabs voices, your own models.</p>
+<div class="sc-logos">
 <div><img src="https://soundcurve.com/wp-content/uploads/2025/08/salesforce-logo.svg" alt="Salesforce"></div>
 <div><img src="https://soundcurve.com/wp-content/uploads/2025/08/hubspot-logo.svg" alt="HubSpot"></div>
 <div><img src="https://soundcurve.com/wp-content/uploads/2025/08/google-calendar-logo.svg" alt="Google Calendar"></div>
@@ -282,32 +174,32 @@ input[type=text],input[type=tel],input[type=email],textarea{width:100%;padding:1
 </div></section>
 
 <!-- PRICING -->
-<section style="background:var(--pale)"><div class="wrap">
-<h2>One price. <mark>No per-call math.</mark></h2>
-<p class="sub">An add-on to the SoundCurve plan you already have. Your plan does not change.</p>
-<div class="price">
-<div class="top">
-<div class="free">FIRST MONTH FREE</div>
-<div class="amt">$99.99 <span>/month</span></div>
-<div class="after">after your first month, added to your existing SoundCurve bill</div>
+<section class="sc-section sc-tint"><div class="sc-wrap">
+<h2 class="sc-center">One price. <mark>No per-call math.</mark></h2>
+<p class="sc-sub" style="margin-bottom:var(--sc-7)">An add-on to the SoundCurve plan you already have. Your plan does not change.</p>
+<div class="sc-price">
+<div class="sc-price__top">
+<span class="sc-pill">FIRST MONTH FREE</span>
+<div class="sc-price__amt">$99.99 <span>/month</span></div>
+<p class="sc-small" style="margin:var(--sc-2) 0 0">after your first month, added to your existing SoundCurve bill</p>
 </div>
-<ul>
+<div class="sc-price__body"><ul class="sc-checks">
 <li>250 minutes included every month</li>
 <li>$0.50 per additional minute, so your calls keep getting answered past the cap</li>
 <li>Works with every plan tier, however many phones you have</li>
 <li>Setup done by us, at no charge</li>
 <li>Month to month</li>
-</ul>
-<div class="cta"><a class="btn primary full" href="#">Start my free month</a>
-<p class="fine" style="margin:14px 0 0;text-align:center">Healthcare, legal or finance? Talk to us about your compliance requirements before you enable call recording.</p></div>
+</ul></div>
+<div class="sc-price__cta"><a class="sc-btn sc-btn--primary sc-btn--full" href="#">Start my free month</a>
+<p class="sc-small sc-center" style="margin:var(--sc-3) 0 0">Healthcare, legal or finance? Talk to us about your compliance requirements before you enable call recording.</p></div>
 </div>
 </div></section>
 
-<div class="foot"><div class="wrap">
+<footer class="ft"><div class="sc-wrap sc-small">
 <a href="https://soundcurve.com/privacy-policy/">Privacy Policy</a> &middot;
 <a href="https://soundcurve.com/terms-of-service/">Terms of Service</a> &middot;
 <a href="tel:8884087102">888-408-7102</a>
-<div class="addr">SoundCurve &middot; [postal address required for CAN-SPAM] &middot; &copy; 2026</div>
-</div></div>
+<p style="margin:var(--sc-3) 0 0">SoundCurve &middot; [postal address required for CAN-SPAM] &middot; &copy; 2026</p>
+</div></footer>
 
 </body></html>

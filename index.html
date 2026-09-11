@@ -3,183 +3,212 @@
 <style>
 :root{
  --deep:#1e5d86;--mid:#2778ae;--lime:#d6df23;--mark:#eaef91;
- --ink:#222222;--soft:#6f7a80;--line:#e6ecf0;--pale:#f7fafb;
- --font:"calibri",Carlito,Candara,"Segoe UI",Arial,sans-serif;
- --wrap:1120px}
+ --ink:#222222;--soft:#6f7a80;--edge:#b0cde0;--line:#e6ecf0;--pale:#f7fafb;--disc:#f1f1f1;
+ --font:"calibri",Carlito,Candara,"Segoe UI",Arial,sans-serif}
 *{box-sizing:border-box}
 body{margin:0;background:#fff;color:var(--ink);font-family:var(--font);font-size:17.69px;line-height:1.5;-webkit-font-smoothing:antialiased}
-.wrap{max-width:var(--wrap);margin:0 auto;padding:0 26px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 26px}
 section{padding:72px 0}
-h1,h2,h3{margin:0;color:var(--ink);line-height:1}
-h1{font-size:68px;font-weight:300;text-align:center}
-h2{font-size:52px;font-weight:300;text-align:center;margin-bottom:16px}
-h3{font-size:19px;font-weight:700;line-height:1.25;margin-bottom:6px}
+h1,h2,h3{margin:0;color:var(--ink);line-height:1.04}
+h1{font-size:62px;font-weight:300}
+h2{font-size:50px;font-weight:300;text-align:center;margin-bottom:14px}
+h3{font-size:20px;font-weight:700;line-height:1.25;margin:0 0 8px}
 p{margin:0 0 16px}
 mark{background-image:linear-gradient(120deg,var(--mark) 0%,var(--mark) 100%);background-size:100% 22%;background-position:0 90%;background-repeat:no-repeat;background-color:transparent;color:inherit;padding:0}
 a{color:var(--mid)}
-.lede{font-size:20px;max-width:76ch;margin:24px auto 26px;text-align:center}
-.sub{font-size:17.69px;max-width:70ch;margin:0 auto 40px;text-align:center;color:var(--soft)}
+.sub{font-size:17.69px;max-width:72ch;margin:0 auto 44px;text-align:center;color:var(--soft)}
 
-/* header */
 .bar{background:var(--deep);padding:14px 0}
 .bar .wrap{display:flex;justify-content:space-between;align-items:center;max-width:1180px}
 .bar img{height:34px;display:block}
 .bar .ph{font-size:15px;color:rgba(255,255,255,.94)}
 
-/* buttons */
-.btn{display:inline-block;padding:16px 34px;border-radius:6px;text-decoration:none;font-size:17.69px;font-weight:700;border:2px solid transparent;line-height:1.2;cursor:pointer}
+.btn{display:inline-block;padding:17px 34px;border-radius:8px;text-decoration:none;font-size:18px;font-weight:700;border:2px solid transparent;line-height:1.2;cursor:pointer;text-align:center}
 .btn.primary{background:var(--lime);border-color:var(--lime);color:#243b0c}
-.btn.ghost{background:#fff;border-color:#cfd8de;color:var(--ink)}
-.btn.big{font-size:21px;padding:19px 44px}
+.btn.full{display:block;width:100%;font-size:20px;padding:19px 24px}
+.btn.ghost{background:#fff;border-color:var(--edge);color:var(--ink)}
 
-/* hero bullets */
-.pts{display:flex;flex-wrap:wrap;gap:12px 40px;justify-content:center;margin:0 0 30px;padding:0;list-style:none}
-.pts li{font-size:19px}
-.pts li:before{content:"";display:inline-block;width:9px;height:9px;background:var(--lime);border-radius:50%;margin-right:10px;vertical-align:middle}
+/* HERO */
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:start}
+.hero h1{margin-bottom:20px}
+.hero .lede{font-size:20px;margin-bottom:26px}
+video{width:100%;display:block;border-radius:20px;border:1px solid var(--edge);background:var(--deep)}
+.hearline{font-size:16px;color:var(--soft);margin:14px 0 0;text-align:center}
+.hearline a{font-weight:700;color:var(--ink);text-decoration:none}
 
-/* fact bar */
-.facts{background:#f4f7f9;border-radius:60px;display:flex;flex-wrap:wrap;justify-content:center;gap:10px 46px;padding:18px 36px;margin:0 auto 44px;max-width:1000px;font-size:15px;color:var(--soft)}
-.facts b{color:var(--ink);font-weight:700}
-
-/* hero row */
-.hero{display:grid;grid-template-columns:1fr 1fr;gap:46px;align-items:start}
-video{width:100%;display:block;border-radius:14px;box-shadow:0 18px 44px rgba(16,52,74,.2);background:var(--deep)}
-
-/* form */
-.fcard{background:#fff;border:1px solid var(--line);border-radius:12px;padding:30px;box-shadow:0 14px 34px rgba(16,52,74,.1)}
-label{display:block;font-size:14px;font-weight:700;margin:16px 0 5px}
+.fcard{background:#fff;border:1px solid var(--edge);border-radius:20px;padding:30px}
+.offer{list-style:none;margin:0 0 22px;padding:0 0 20px;border-bottom:1px solid var(--line)}
+.offer li{padding:7px 0 7px 27px;position:relative;font-size:16.5px}
+.offer li:before{content:"";position:absolute;left:2px;top:14px;width:12px;height:6px;border-left:2.5px solid var(--lime);border-bottom:2.5px solid var(--lime);transform:rotate(-45deg)}
+.offer b{font-weight:700}
+label{display:block;font-size:14px;font-weight:700;margin:15px 0 5px}
 label:first-of-type{margin-top:0}
-input,select,textarea{width:100%;padding:13px;border:1px solid #cfd8de;border-radius:6px;font-family:inherit;font-size:16px;background:#fff;color:var(--ink)}
-.prefill{font-size:13px;color:var(--mid);margin:6px 0 0}
-.fine{font-size:14px;color:var(--soft)}
+input[type=text],input[type=tel],input[type=email],textarea{width:100%;padding:13px;border:1px solid #cfd8de;border-radius:8px;font-family:inherit;font-size:16px;background:#fff;color:var(--ink)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.two label{margin-top:15px}
+.known{background:var(--pale);border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:15px;margin:0 0 4px}
+.known b{display:block;font-size:13px;font-weight:700;color:var(--soft);letter-spacing:.04em;margin-bottom:3px}
+.known a{font-size:13px}
+.consent{display:flex;gap:10px;align-items:flex-start;margin:20px 0 16px;font-size:13.5px;color:var(--soft);line-height:1.45}
+.consent input{margin-top:3px;flex-shrink:0;width:17px;height:17px}
+.fine{font-size:13.5px;color:var(--soft)}
+.req{font-size:12.5px;color:var(--soft);margin-top:14px}
 
-/* demo band */
-.demo{background:var(--pale);text-align:center;padding:54px 0}
-.demo .num{display:block;margin-top:14px;font-size:17.69px;color:var(--soft)}
-.demo .num a{color:var(--ink);font-weight:700;text-decoration:none}
+/* CARD GRIDS */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.card{background:#fff;border:1px solid var(--edge);border-radius:20px;padding:30px}
+.card p{font-size:16px;color:var(--soft);margin:0}
+.ic{width:65px;height:65px;border-radius:50%;background:var(--disc);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.ic svg{width:30px;height:30px;stroke:var(--deep);stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round}
 
-/* capability grid */
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px 30px}
-.cap h3{color:var(--ink)}
-.cap p{font-size:16px;color:var(--soft);margin:0}
+/* OUTCOMES */
+.out{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.out .card{text-align:center;padding:28px 22px}
+.out .ic{margin:0 auto 16px}
+.never{text-align:center;font-size:22px;margin:34px 0 0}
 
-/* record row */
-.rec{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+/* RECORD */
+.rec{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center}
 .rec h2{text-align:left}
 .reclist{margin:0;padding:0;list-style:none}
-.reclist li{padding:14px 0;border-bottom:1px solid var(--line)}
+.reclist li{padding:15px 0;border-bottom:1px solid var(--line)}
 .reclist li:last-child{border-bottom:0}
 .reclist b{display:block;font-size:18px}
 .reclist span{font-size:16px;color:var(--soft)}
-.mock{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 12px 30px rgba(30,93,134,.11)}
-.mock .mb{background:#f4f7f9;border-bottom:1px solid var(--line);padding:12px 18px;font-size:14px;color:var(--soft);display:flex;justify-content:space-between}
+.mock{background:#fff;border:1px solid var(--edge);border-radius:20px;overflow:hidden}
+.mock .mb{background:var(--pale);border-bottom:1px solid var(--line);padding:13px 20px;font-size:14px;color:var(--soft);display:flex;justify-content:space-between}
 .mock .mb b{color:var(--ink)}
-.mock .in{padding:16px 18px}
+.mock .in{padding:16px 20px}
 .rl{display:flex;gap:12px;font-size:16px;padding:9px 0;line-height:1.45;border-bottom:1px solid #f1f5f8}
 .rl:last-child{border-bottom:0}
 .rl .k{color:var(--soft);min-width:78px;flex-shrink:0}
 .tag{display:inline-block;padding:2px 11px;border-radius:20px;font-size:14px;font-weight:700;background:#e6f4ea;color:#1e6b38}
+.note{max-width:860px;margin:40px auto 0;border:1px solid var(--line);border-radius:14px;padding:22px 26px;background:var(--pale);font-size:16px;color:var(--soft)}
+.note b{color:var(--ink)}
 
-/* industries */
-.inds{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.ind{border:1px solid var(--line);border-radius:10px;padding:24px}
-.ind p{font-size:16px;color:var(--soft);margin:0}
+/* SETUP QA */
+.qa{max-width:900px;margin:0 auto}
+.qa .row{display:grid;grid-template-columns:.9fr 1.1fr;gap:26px;padding:18px 0;border-bottom:1px solid var(--line)}
+.qa .row:last-child{border-bottom:0}
+.qa .q{font-weight:700}
+.qa .a{color:var(--soft)}
 
-/* logos */
-.logos{display:grid;grid-template-columns:repeat(8,1fr);gap:14px;max-width:1000px;margin:0 auto}
-.logos div{border:1px solid var(--line);border-radius:10px;height:76px;display:flex;align-items:center;justify-content:center;padding:14px;background:#fff}
-.logos img{max-width:100%;max-height:34px;width:auto;filter:grayscale(1);opacity:.72}
+/* LOGOS */
+.logos{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;max-width:880px;margin:0 auto}
+.logos div{border:1px solid var(--edge);border-radius:16px;height:92px;display:flex;align-items:center;justify-content:center;padding:20px;background:#fff}
+.logos img{max-width:100%;max-height:38px;width:auto}
 
-/* pricing */
-.price{max-width:560px;margin:0 auto;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 14px 34px rgba(30,93,134,.12)}
-.price .top{background:#fbfcf2;border-bottom:1px solid var(--line);border-left:5px solid var(--lime);padding:26px 30px;text-align:center}
-.price .amt{font-size:56px;font-weight:300;line-height:1}
-.price .amt span{font-size:20px;color:var(--soft)}
-.price .kicker{font-size:13px;font-weight:700;letter-spacing:.08em;color:var(--soft);margin-top:10px}
-.price ul{list-style:none;margin:0;padding:20px 30px 24px}
-.price li{padding:10px 0 10px 26px;position:relative;font-size:16px;border-bottom:1px solid #f1f5f8}
+/* PRICING */
+.price{max-width:620px;margin:0 auto;border:1px solid var(--edge);border-radius:20px;overflow:hidden}
+.price .top{padding:34px 34px 28px;text-align:center;border-bottom:1px solid var(--line)}
+.price .free{display:inline-block;background:var(--lime);color:#243b0c;font-weight:700;font-size:14px;letter-spacing:.05em;padding:7px 18px;border-radius:30px;margin-bottom:18px}
+.price .amt{font-size:62px;font-weight:300;line-height:1}
+.price .amt span{font-size:21px;color:var(--soft)}
+.price .after{font-size:16px;color:var(--soft);margin-top:10px}
+.price ul{list-style:none;margin:0;padding:24px 34px 10px}
+.price li{padding:11px 0 11px 28px;position:relative;font-size:16.5px;border-bottom:1px solid #f5f8fa}
 .price li:last-child{border-bottom:0}
-.price li:before{content:"";position:absolute;left:0;top:17px;width:12px;height:6px;border-left:2.5px solid var(--lime);border-bottom:2.5px solid var(--lime);transform:rotate(-45deg)}
-.price .cta{padding:0 30px 28px;text-align:center}
+.price li:before{content:"";position:absolute;left:2px;top:19px;width:12px;height:6px;border-left:2.5px solid var(--lime);border-bottom:2.5px solid var(--lime);transform:rotate(-45deg)}
+.price .cta{padding:18px 34px 30px}
 
-.foot{border-top:1px solid var(--line);text-align:center;padding:28px 0;font-size:15px;color:var(--soft)}
+.foot{border-top:1px solid var(--line);padding:30px 0;font-size:14.5px;color:var(--soft);text-align:center}
+.foot a{color:var(--mid);margin:0 9px}
+.foot .addr{margin-top:12px;font-size:13.5px}
 
 @media(max-width:900px){
- .hero,.rec{grid-template-columns:1fr;gap:30px}
- .grid,.inds{grid-template-columns:1fr}
- .logos{grid-template-columns:repeat(4,1fr)}
- h1{font-size:38px}h2{font-size:30px}
- .lede{font-size:18px}
+ .hero,.rec,.qa .row{grid-template-columns:1fr;gap:30px}
+ .grid3,.out,.two{grid-template-columns:1fr}
+ .logos{grid-template-columns:repeat(2,1fr)}
+ h1{font-size:36px}h2{font-size:30px}
  section{padding:48px 0}
  .rec h2{text-align:center}
+ .qa .row{gap:6px;padding:14px 0}
 }
 </style></head><body>
 
 <div class="bar"><div class="wrap">
 <img src="https://soundcurve.com/wp-content/uploads/2024/04/Soundcurve.svg" alt="SoundCurve">
-<div class="ph">Questions? 888-408-7102</div>
+<div class="ph">Talk to us: 888-408-7102</div>
 </div></div>
 
 <!-- HERO -->
-<section style="padding-bottom:40px"><div class="wrap">
-<h1>Meet your 24/7 <mark>AI Receptionist</mark></h1>
-<p class="lede">It answers when your team cannot, sends callers to the right person, and writes up what happened. It runs on the SoundCurve phone system you already have.</p>
-<ul class="pts"><li>Answers calls</li><li>Answers questions</li><li>Books appointments</li></ul>
-<div class="facts">
-<span><b>24/7</b> nights, weekends, lunch rushes</span>
-<span><b>250 minutes</b> included every month</span>
-<span><b>First month on us</b>, then $99.99 a month</span>
-<span><b>No long-term contracts</b></span>
+<section style="padding-bottom:56px"><div class="wrap"><div class="hero">
+<div>
+<h1>Your phone system can now <mark>answer the calls you miss</mark></h1>
+<p class="lede">Add an AI receptionist to the SoundCurve system you already run. It answers when your team cannot, sends callers to the right person, and writes up what happened.</p>
+<video controls playsinline preload="metadata" src="AIReceptionist_web.mp4" poster="AIReceptionist_poster.jpg"></video>
+<p class="hearline">Want to hear it first? Talk to the AI at <a href="tel:4242919568">(424) 291-9568</a></p>
 </div>
 
-<div class="hero">
-<div>
-<video controls playsinline preload="metadata" src="AIReceptionist_web.mp4" poster="AIReceptionist_poster.jpg"></video>
-</div>
 <div class="fcard">
-<label>Which lines should it answer?</label>
-<select><option>All incoming calls</option><option>After hours only</option><option>Overflow when we are busy</option><option>Not sure yet, let us talk</option></select>
-<label>Anything it should always do, or never do?</label>
-<textarea rows="3" placeholder="Optional. For example: always offer a callback, never quote prices."></textarea>
-<label>Best number to reach you</label><input type="tel" value="(555) 012-4478">
-<p class="prefill">Prefilled from your account. Change it if you would rather we used another.</p>
-<p style="margin:24px 0 10px"><a class="btn primary" href="#">Get started</a></p>
-<p class="fine" style="margin:0">We will call you to get started with custom setup, and nothing goes live until you approve it.</p>
+<ul class="offer">
+<li><b>First month free</b>, then $99.99 a month</li>
+<li><b>250 minutes</b> included every month</li>
+<li><b>We set it up</b>, at no charge</li>
+<li><b>Nothing goes live</b> until you approve it</li>
+</ul>
+
+<div class="known"><b>YOUR ACCOUNT</b>Acme Plumbing &middot; jane@acmeplumbing.com <a href="#">Not you?</a></div>
+
+<label>Best number to reach you</label>
+<input type="tel" value="(555) 012-4478">
+
+<label>Anything you want us to cover on the call?</label>
+<textarea rows="3" placeholder="Optional. For example: after-hours only, never quote prices."></textarea>
+
+<label class="consent"><input type="checkbox" required>
+I agree that SoundCurve may contact me at the phone number and email address above about the AI Receptionist and other SoundCurve products and services. Calls may be placed using automated technology or an artificial or prerecorded voice. Consent is not a condition of any purchase. You can opt out at any time. See our <a href="https://soundcurve.com/privacy-policy/">Privacy Policy</a> and <a href="https://soundcurve.com/terms-of-service/">Terms of Service</a>.
+</label>
+
+<a class="btn primary full" href="#">Start my free month</a>
+<p class="fine" style="margin:12px 0 0">We call you to set it up, free. Your free month starts the day it goes live.</p>
+<p class="req">* Required</p>
 </div>
+</div></div></section>
+
+<!-- OUTCOMES -->
+<section style="background:var(--pale)"><div class="wrap">
+<h2>Every call ends <mark>one of four ways</mark></h2>
+<p class="sub">You decide which, during setup. None of them is voicemail.</p>
+<div class="out">
+<div class="card"><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="3"/><path d="M8 2v4M16 2v4M3 10h18M9 15l2 2 4-4"/></svg></div>
+<h3>Booked</h3><p>It checks your calendar's real availability and puts the appointment in it.</p></div>
+<div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3a4 4 0 0 1 4 4v1a4 4 0 0 1-8 0V7a4 4 0 0 1 4-4Z"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg></div>
+<h3>Handed off</h3><p>Your screening questions get asked, then a live transfer with the conversation attached.</p></div>
+<div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M21 15a3 3 0 0 1-3 3H8l-5 4V6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3Z"/><path d="M9 9h8M9 13h5"/></svg></div>
+<h3>Answered</h3><p>Hours, services, status, and the pricing rules you set. In their language.</p></div>
+<div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M6 2h9l5 5v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1Z"/><path d="M14 2v6h6M9 13h7M9 17h5"/></svg></div>
+<h3>Written down</h3><p>Transcript, summary and sentiment, on the caller's record in your CRM.</p></div>
+</div>
+<p class="never">What never happens: <mark>voicemail</mark>.</p>
+</div></section>
+
+<!-- WHAT CHANGES -->
+<section><div class="wrap">
+<h2>What changes on <mark>your current setup</mark></h2>
+<p class="sub">Nothing about your existing phone system changes. This sits in front of it and answers what your team does not.</p>
+<div class="qa">
+<div class="row"><div class="q">Do I keep my number?</div><div class="a">Yes. Same numbers, same phones, same desks. Nothing to unplug and nothing to install.</div></div>
+<div class="row"><div class="q">What happens to my auto attendant and ring groups?</div><div class="a">They stay. The receptionist uses them. It routes into the groups you already have rather than replacing them.</div></div>
+<div class="row"><div class="q">Does my team have to learn anything?</div><div class="a">No. Calls arrive the same way they do now, with a summary attached.</div></div>
+<div class="row"><div class="q">How many phones does it cover?</div><div class="a">Your whole system, whether that is four phones or forty.</div></div>
+<div class="row"><div class="q">How long does setup take?</div><div class="a">We call you, build it around how your calls actually work, then you listen to it and approve it before it answers a single live call.</div></div>
+<div class="row"><div class="q">How do I turn it off?</div><div class="a">Tell us and we switch it off. Your phone system carries on exactly as it does today.</div></div>
 </div>
 </div></section>
 
-<!-- DEMO -->
-<div class="demo"><div class="wrap">
-<h2 style="font-size:40px">Hear it <mark>answer for yourself</mark></h2>
-<p class="sub" style="margin-bottom:26px">Ask it the kinds of things your customers ask you. It runs on a sample business rather than yours, so listen to how it handles the conversation.</p>
-<a class="btn primary big" href="tel:4242919568">Call the AI demo line</a>
-<span class="num">Or dial <a href="tel:4242919568">(424) 291-9568</a>. Call or text, no scheduling, no salesperson.</span>
-</div></div>
-
-<!-- CAPABILITIES -->
-<section><div class="wrap">
-<h2>What it does <mark>on every call</mark></h2>
-<p class="sub">Nine capabilities, all included. A receptionist that never puts anyone on hold.</p>
-<div class="grid">
-<div class="cap"><h3>Answers 24/7</h3><p>Nights, weekends, lunch rushes. Every call gets a real conversation instead of voicemail.</p></div>
-<div class="cap"><h3>Routes intelligently</h3><p>Sends callers to the right person or department based on what they ask for.</p></div>
-<div class="cap"><h3>Books appointments</h3><p>Checks your calendar's real availability and books directly into it.</p></div>
-<div class="cap"><h3>Qualifies leads</h3><p>Asks the screening questions you define and scores callers before your team ever picks up.</p></div>
-<div class="cap"><h3>Enters the data</h3><p>Caller details, outcomes and bookings sync to your CRM and calendar. No retyping.</p></div>
-<div class="cap"><h3>Hands off with context</h3><p>Transfers qualified callers to a live person with the full conversation attached.</p></div>
-<div class="cap"><h3>Speaks their language</h3><p>Detects the caller's language and holds the conversation in it.</p></div>
-<div class="cap"><h3>Blocks the junk</h3><p>Screens spam calls out and prioritizes the ones that matter.</p></div>
-<div class="cap"><h3>Sounds like your business</h3><p>Learns your greetings, your services and your rules. Callers hear your brand, in a natural voice.</p></div>
-</div>
+<!-- WHEN IT DOESN'T KNOW -->
+<section style="background:var(--pale)"><div class="wrap">
+<h2>When it does not know, <mark>it does not guess</mark></h2>
+<p class="sub">Anything outside what you have given it goes to a person, or becomes a message with the full transcript attached. You write the never-say rules during setup, and you approve everything before it goes live.</p>
 </div></section>
 
 <!-- RECORD -->
-<section style="background:var(--pale)"><div class="wrap"><div class="rec">
+<section><div class="wrap"><div class="rec">
 <div>
 <h2>After every call: <mark>a record you can search</mark></h2>
 <ul class="reclist">
-<li><b>Transcripts</b><span>Every call and voicemail becomes accurate, searchable text. Find the conversation instead of remembering it.</span></li>
+<li><b>Transcripts</b><span>Every call and voicemail becomes searchable text. Find the conversation instead of remembering it.</span></li>
 <li><b>Summaries</b><span>Key points, action items and decisions pulled out automatically. Review a call in thirty seconds.</span></li>
 <li><b>Sentiment</b><span>Each conversation scored from strongly positive to strongly negative, so you spot the unhappy customer before the bad review.</span></li>
 <li><b>Synced</b><span>All of it lands on the caller's record in your CRM. The history is there the next time they call.</span></li>
@@ -193,71 +222,71 @@ input,select,textarea{width:100%;padding:13px;border:1px solid #cfd8de;border-ra
 <div class="rl"><span class="k">Outcome</span><span>Put through to a person, someone was free</span></div>
 <div class="rl"><span class="k">Tone</span><span><span class="tag">Positive, ready to move</span></span></div>
 </div></div>
-</div></div></section>
+</div>
+<div class="note"><b>About recording and transcription.</b> Recording laws vary by state, and some require every party on a call to be notified before it is recorded. Your AI Receptionist can announce recording at the start of every conversation, and we configure that with you during setup. You control what is recorded and how long transcripts are kept.</div>
+</div></section>
 
-<!-- INDUSTRIES -->
-<section><div class="wrap">
+<!-- INDUSTRY -->
+<section style="background:var(--pale)"><div class="wrap">
 <h2>Built for <mark>your industry</mark></h2>
 <p class="sub">It is configured around how your calls actually work, not a template.</p>
-<div class="inds">
-<div class="ind"><h3>Law firms</h3><p>Answers after-hours intake calls, screens potential clients with your questions, schedules consultations, and texts you the summary before morning.</p></div>
-<div class="ind"><h3>Medical and dental</h3><p>Takes appointment requests at 7pm, sends forms, verifies insurance details, and routes urgent calls wherever your protocol says.</p></div>
-<div class="ind"><h3>Construction and trades</h3><p>Books estimates while your crew pours concrete, gives callers quote information, and texts the details to your crew lead.</p></div>
-<div class="ind"><h3>Real estate and property management</h3><p>Qualifies buyer and tenant leads, schedules showings, shares property details, and coordinates inspections without an agent touching the phone.</p></div>
-<div class="ind"><h3>Restaurants and food service</h3><p>Takes reservations and large-party requests during the rush, answers hours and menu questions, and routes catering enquiries to the right person.</p></div>
-<div class="ind"><h3>Retail</h3><p>Checks inventory questions, handles return requests, and schedules deliveries while your floor staff stays with the customers in the store.</p></div>
-<div class="ind"><h3>Automotive and service shops</h3><p>Books service appointments, answers status questions on work in progress, and takes the details when every bay is full.</p></div>
-<div class="ind"><h3>Logistics and delivery</h3><p>Handles pickup and delivery scheduling, answers tracking questions, and passes exceptions to dispatch with the full conversation attached.</p></div>
-<div class="ind"><h3>Something else?</h3><p>It learns any business that answers a phone. Tell us how your calls work and we configure it around your day. Call 888-408-7102.</p></div>
+<div class="grid3">
+<div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3 3 8l9 5 9-5-9-5Z"/><path d="M3 8v6c0 3 4 5 9 5s9-2 9-5V8"/></svg></div>
+<h3>Law firms</h3><p>Answers after-hours intake, screens potential clients with your questions, schedules consultations, and texts you the summary before morning.</p></div>
+<div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/><rect x="3" y="3" width="18" height="18" rx="4"/></svg></div>
+<h3>Medical and dental</h3><p>Takes appointment requests at 7pm, sends forms, and routes urgent calls wherever your protocol says.</p></div>
+<div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V9l7-5 7 5v12"/><path d="M10 21v-6h4v6"/></svg></div>
+<h3>Construction and trades</h3><p>Books estimates while your crew pours concrete, gives callers quote information, and texts the details to your crew lead.</p></div>
+<div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 10.5 12 4l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Z"/><path d="M9 21v-7h6v7"/></svg></div>
+<h3>Real estate and property</h3><p>Qualifies buyer and tenant leads, schedules showings, shares property details, and coordinates inspections.</p></div>
+<div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 8h16l-1.5 12a1 1 0 0 1-1 1H6.5a1 1 0 0 1-1-1Z"/><path d="M8 8V6a4 4 0 0 1 8 0v2"/></svg></div>
+<h3>Restaurants and food service</h3><p>Takes reservations and large-party requests during the rush, answers hours and menu questions, and routes catering to the right person.</p></div>
+<div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 13l2-6a2 2 0 0 1 2-1.4h10A2 2 0 0 1 19 7l2 6v6h-3v-2H6v2H3Z"/><path d="M6.5 16h1M16.5 16h1"/></svg></div>
+<h3>Automotive and service shops</h3><p>Books service appointments, answers status questions on work in progress, and takes details when every bay is full.</p></div>
 </div>
+<p class="sub" style="margin:34px auto 0">Something else? It learns any business that answers a phone. Tell us how your calls work and we configure it around your day.</p>
 </div></section>
 
 <!-- INTEGRATIONS -->
-<section style="background:var(--pale)"><div class="wrap">
-<h2>Pipe new calls into <mark>the tools you already use</mark></h2>
-<p class="sub">Qualified callers sync in real time, and trigger the outcomes you have already built.</p>
+<section><div class="wrap">
+<h2>Works with <mark>your calendar and CRM</mark></h2>
+<p class="sub">Callers, outcomes and bookings sync in real time, and trigger the workflows you have already built.</p>
 <div class="logos">
 <div><img src="https://soundcurve.com/wp-content/uploads/2025/08/salesforce-logo.svg" alt="Salesforce"></div>
 <div><img src="https://soundcurve.com/wp-content/uploads/2025/08/hubspot-logo.svg" alt="HubSpot"></div>
-<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/zendesk-logo.svg" alt="Zendesk"></div>
 <div><img src="https://soundcurve.com/wp-content/uploads/2025/08/google-calendar-logo.svg" alt="Google Calendar"></div>
-<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/google-sheets-logo.svg" alt="Google Sheets"></div>
+<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/zendesk-logo.svg" alt="Zendesk"></div>
 <div><img src="https://soundcurve.com/wp-content/uploads/2025/08/zapier-logo.svg" alt="Zapier"></div>
-<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/notion-logo.svg" alt="Notion"></div>
-<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/five9-logo.svg" alt="Five9"></div>
-<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/apollo-io-logo.svg" alt="Apollo.io"></div>
-<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/twilio-logo.svg" alt="Twilio"></div>
-<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/google-cloud-logo.svg" alt="Google Cloud"></div>
-<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/aws-s3-logo.svg" alt="AWS S3"></div>
-<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/azure-logo.svg" alt="Azure"></div>
-<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/openai-logo.svg" alt="OpenAI"></div>
-<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/anthropic-logo.svg" alt="Anthropic"></div>
-<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/eleven-labs-logo.svg" alt="ElevenLabs"></div>
 </div>
 </div></section>
 
 <!-- PRICING -->
-<section><div class="wrap">
+<section style="background:var(--pale)"><div class="wrap">
 <h2>One price. <mark>No per-call math.</mark></h2>
-<p class="sub">It is an add-on to the SoundCurve plan you already have. Your plan does not change.</p>
+<p class="sub">An add-on to the SoundCurve plan you already have. Your plan does not change.</p>
 <div class="price">
 <div class="top">
+<div class="free">FIRST MONTH FREE</div>
 <div class="amt">$99.99 <span>/month</span></div>
-<div class="kicker">ADD-ON TO YOUR EXISTING SOUNDCURVE PLAN</div>
+<div class="after">after your first month, added to your existing SoundCurve bill</div>
 </div>
 <ul>
-<li><b>First month on us</b>, then $99.99 a month</li>
 <li>250 minutes included every month</li>
-<li>$0.50 per additional minute, billed as used, never cut off</li>
-<li>Unlimited AI agents, works with every plan tier</li>
+<li>$0.50 per additional minute, so your calls keep getting answered past the cap</li>
+<li>Works with every plan tier, however many phones you have</li>
 <li>Setup done by us, at no charge</li>
-<li>No long-term contracts</li>
+<li>Month to month</li>
 </ul>
-<div class="cta"><a class="btn primary" href="#">Get started</a>
-<p class="fine" style="margin:12px 0 0">Healthcare, legal or finance? Ask us about compliance documentation for your practice before you sign.</p></div>
+<div class="cta"><a class="btn primary full" href="#">Start my free month</a>
+<p class="fine" style="margin:14px 0 0;text-align:center">Healthcare, legal or finance? Talk to us about your compliance requirements before you enable call recording.</p></div>
 </div>
 </div></section>
 
-<div class="foot"><div class="wrap">Want the full detail on features, security and integrations? <a href="https://soundcurve.com/ai-receptionist/">See the AI receptionist page</a></div></div>
+<div class="foot"><div class="wrap">
+<a href="https://soundcurve.com/privacy-policy/">Privacy Policy</a> &middot;
+<a href="https://soundcurve.com/terms-of-service/">Terms of Service</a> &middot;
+<a href="tel:8884087102">888-408-7102</a>
+<div class="addr">SoundCurve &middot; [postal address required for CAN-SPAM] &middot; &copy; 2026</div>
+</div></div>
 
 </body></html>

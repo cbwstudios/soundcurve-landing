@@ -103,6 +103,7 @@ mark{
   background-image:linear-gradient(120deg, var(--sc-mark) 0%, var(--sc-mark) 100%);
   background-size:100% 22%; background-position:0 90%; background-repeat:no-repeat;
   background-color:transparent; color:inherit; padding:0;
+  -webkit-box-decoration-break:clone; box-decoration-break:clone;
 }
 
 /* ---- text roles ------------------------------------------------------- */

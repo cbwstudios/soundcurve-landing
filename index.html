@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>AI Receptionist</title>
 <link rel="stylesheet" href="https://use.typekit.net/sao6jba.css">
-<link rel="stylesheet" href="soundcurve-funnel.css?v=15">
+<link rel="stylesheet" href="soundcurve-funnel.css?v=16">
 <style>
 /* Page-specific only. Everything else comes from soundcurve-funnel.css.
    Target: keep this block under 20 rules. If something here is reusable,
@@ -12,7 +12,11 @@
 /* Column ratio only above the breakpoint, or it beats the system's collapse
    to one column (same specificity, but page CSS loads after the system file). */
 @media (min-width:901px){
-  .hero{ --cols:2; --gap:52px; --align:stretch; grid-template-columns:1.05fr .95fr }
+  .hero{ --cols:2; --gap:48px; --align:stretch; grid-template-columns:1.15fr .85fr }
+  /* the h1 lives in a column, not the full page width, so it is sized for that
+     column: two lines, with the marked phrase whole on the second. */
+  .hero h1{ font-size:50px }
+  .hero h1 mark{ white-space:nowrap }
   .hero>div:first-child{ display:flex; flex-direction:column }
   .hero .sc-card{ display:flex; flex-direction:column }
   .hero textarea{ flex:1 1 auto; min-height:78px }
@@ -177,19 +181,37 @@
 
 <!-- INTEGRATIONS -->
 <section class="sc-section"><div class="sc-wrap">
-<h2 class="sc-center">Plug It Into <mark>the Accounts You Already Pay For</mark></h2>
-<p class="sc-sub">Callers, outcomes and bookings sync in real time into your CRM and calendar. And where you already hold your own AI accounts, it can run on those rather than ours: your enterprise ChatGPT, your ElevenLabs voices, your own models.</p>
-<div class="sc-logos">
-<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/salesforce-logo.svg" alt="Salesforce"></div>
-<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/hubspot-logo.svg" alt="HubSpot"></div>
+<h2 class="sc-center">Pipe New Calls Directly Into <mark>Your Existing Business Tools</mark></h2>
+<p class="sc-sub">Pipe new calls directly into your existing workflow with real-time syncing across all your favorite business tools. Qualified callers automatically trigger custom outcomes that immediately impact your business operations and drive results.</p>
+<div class="sc-logos" style="--cols:7">
+<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/openai-logo.svg" alt="Openai"></div>
+<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/anthropic-logo.svg" alt="Anthropic"></div>
+<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/eleven-labs-logo.svg" alt="Elevenlabs"></div>
+<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/cartesia-logo.svg" alt="Cartesia"></div>
+<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/assembly-ai-logo.svg" alt="Assemblyai"></div>
+<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/playht-logo.svg" alt="Playht"></div>
+<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/azure-logo.svg" alt="Azure"></div>
+<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/google-gemini-logo.svg" alt="Google Gemini"></div>
+<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/groq-logo.svg" alt="Groq"></div>
+<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/perplexity-ai-logo.svg" alt="Perplexity"></div>
+<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/gladia-logo.svg" alt="Gladia"></div>
+<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/langfuse-logo.svg" alt="Langfuse"></div>
+<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/twilio-logo.svg" alt="Twilio"></div>
+<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/aws-s3-logo.svg" alt="Aws S3"></div>
+<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/google-cloud-logo.svg" alt="Google Cloud"></div>
 <div><img src="https://soundcurve.com/wp-content/uploads/2025/08/google-calendar-logo.svg" alt="Google Calendar"></div>
 <div><img src="https://soundcurve.com/wp-content/uploads/2025/08/zendesk-logo.svg" alt="Zendesk"></div>
+<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/notion-logo.svg" alt="Notion"></div>
 <div><img src="https://soundcurve.com/wp-content/uploads/2025/08/zapier-logo.svg" alt="Zapier"></div>
-<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/openai-logo.svg" alt="OpenAI"></div>
-<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/anthropic-logo.svg" alt="Anthropic"></div>
-<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/eleven-labs-logo.svg" alt="ElevenLabs"></div>
+<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/apollo-io-logo.svg" alt="Apollo.Io"></div>
 <div><img src="https://soundcurve.com/wp-content/uploads/2025/08/google-sheets-logo.svg" alt="Google Sheets"></div>
+<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/salesforce-logo.svg" alt="Salesforce"></div>
+<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/hubspot-logo.svg" alt="Hubspot"></div>
 <div><img src="https://soundcurve.com/wp-content/uploads/2025/08/five9-logo.svg" alt="Five9"></div>
+<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/genesys-logo.svg" alt="Genesys"></div>
+<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/avaya-logo.svg" alt="Avaya"></div>
+<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/make-logo.svg" alt="Make"></div>
+<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/slack-logo.svg" alt="Slack"></div>
 </div>
 </div></section>
 

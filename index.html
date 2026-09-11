@@ -212,8 +212,14 @@
   var box=document.getElementById('player'); if(!box) return;
   var v=box.querySelector('video'), hit=box.querySelector('.sc-media__hit'),
       cap=box.querySelector('.sc-media__cap');
+  var userStarted=false;
   function fitHit(){ box.style.setProperty('--cap-h', cap.offsetHeight+'px'); }
-  function toggle(){ v.paused ? v.play() : v.pause(); }
+  /* The video must never start on its own. If anything plays it before the
+     viewer asks, stop it and go back to the poster. */
+  v.addEventListener('playing', function(){
+    if(!userStarted){ v.pause(); v.currentTime=0; box.classList.remove('is-playing'); }
+  });
+  function toggle(){ userStarted=true; v.paused ? v.play() : v.pause(); }
   hit.addEventListener('click', toggle);
   v.addEventListener('play', function(){ box.classList.add('is-playing') });
   v.addEventListener('pause', function(){ box.classList.remove('is-playing') });

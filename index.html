@@ -4,10 +4,13 @@
 :root{
  --deep:#1e5d86;--mid:#2778ae;--lime:#d6df23;--mark:#eaef91;
  --ink:#222222;--soft:#6f7a80;--edge:#b0cde0;--line:#e6ecf0;--pale:#f7fafb;--disc:#f1f1f1;
- --font:"calibri",Carlito,Candara,"Segoe UI",Arial,sans-serif}
+ --font:"calibri",Carlito,Candara,"Segoe UI",Arial,sans-serif;
+ --content:1120px;--gutter:26px}
 *{box-sizing:border-box}
 body{margin:0;background:#fff;color:var(--ink);font-family:var(--font);font-size:17.69px;line-height:1.5;-webkit-font-smoothing:antialiased}
-.wrap{max-width:1120px;margin:0 auto;padding:0 26px}
+/* One container. Content is always exactly --content wide; the gutter sits
+   OUTSIDE it, so max-width means the real content width, not content+padding. */
+.wrap{max-width:calc(var(--content) + (var(--gutter) * 2));margin:0 auto;padding:0 var(--gutter)}
 section{padding:72px 0}
 h1,h2,h3{margin:0;color:var(--ink);line-height:1.04}
 h1{font-size:62px;font-weight:300}
@@ -19,7 +22,7 @@ a{color:var(--mid)}
 .sub{font-size:17.69px;max-width:72ch;margin:0 auto 44px;text-align:center;color:var(--soft)}
 
 .bar{background:var(--deep);padding:14px 0}
-.bar .wrap{display:flex;justify-content:space-between;align-items:center;max-width:1180px}
+.bar .wrap{display:flex;justify-content:space-between;align-items:center}
 .bar img{height:34px;display:block}
 .bar .ph{font-size:15px;color:rgba(255,255,255,.94)}
 

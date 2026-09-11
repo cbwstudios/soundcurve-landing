@@ -210,41 +210,52 @@ input[type=text],input[type=tel],input[type=email],textarea,select{
 .sc-feats{ display:grid; grid-template-columns:repeat(var(--cols,4),1fr);
            gap:var(--sc-3) }
 .sc-feat{ position:relative; background:#fff; border:var(--sc-border);
-          border-radius:var(--sc-r-card); padding:var(--sc-5) var(--sc-4);
-          text-align:center; overflow:hidden; min-height:186px;
+          border-radius:var(--sc-r-card); padding:var(--sc-5) var(--sc-4) var(--sc-6);
+          text-align:center; overflow:hidden; min-height:250px;
           display:flex; flex-direction:column; align-items:center;
-          justify-content:center; gap:var(--sc-2) }
-.sc-feat img{ width:76px; height:76px; display:block;
+          justify-content:center; gap:var(--sc-3) }
+.sc-feat img{ width:122px; height:122px; display:block;
               transition:transform .22s ease }
-.sc-feat h3{ font-size:16px; margin:0; line-height:1.3 }
+.sc-feat h3{ font-size:17px; margin:0; line-height:1.3 }
+/* chevron hints that there is more underneath */
+.sc-feat::after{ content:""; position:absolute; left:50%; bottom:14px;
+                 width:11px; height:11px; margin-left:-6px;
+                 border-left:2px solid var(--sc-edge);
+                 border-top:2px solid var(--sc-edge);
+                 transform:rotate(45deg); transition:opacity .18s ease }
+/* description slides up from the bottom edge */
 .sc-feat p{ position:absolute; inset:0; margin:0; display:flex;
             align-items:center; justify-content:center;
-            padding:var(--sc-4); background:var(--sc-deep); color:#fff;
-            font-size:15px; line-height:1.45;
-            opacity:0; transform:translateY(8px);
-            transition:opacity .22s ease, transform .22s ease }
+            padding:var(--sc-5) var(--sc-4); background:#fff; color:var(--sc-ink);
+            font-size:15.5px; line-height:1.5;
+            transform:translateY(100%); transition:transform .28s ease }
 @media (hover:hover){
-  .sc-feat:hover img{ transform:scale(1.06) }
-  .sc-feat:hover p,.sc-feat:focus-within p{ opacity:1; transform:none }
+  .sc-feat:hover img{ transform:scale(1.04) }
+  .sc-feat:hover p{ transform:translateY(0) }
+  .sc-feat:hover::after{ opacity:0 }
 }
-.sc-feat:focus-within p{ opacity:1; transform:none }
-@media (prefers-reduced-motion:reduce){
-  .sc-feat img,.sc-feat p{ transition:none }
-}
+.sc-feat:focus-within p{ transform:translateY(0) }
+.sc-feat:focus-within::after{ opacity:0 }
+/* no hover on touch: the chevron would promise something that never arrives */
+@media (hover:none){ .sc-feat::after{ display:none } .sc-feat p{ display:none } }
+@media (prefers-reduced-motion:reduce){ .sc-feat img,.sc-feat p{ transition:none } }
 
-/* ---- stacked rows: icon left, heading and copy beside it -------------- */
+/* ---- stacked rows: full-height colour cap on the left ----------------- */
 .sc-stack{ display:grid; gap:var(--sc-3) }
-.sc-stack__row{ display:flex; gap:var(--sc-5); align-items:center;
+.sc-stack__row{ display:flex; align-items:stretch; padding:0; overflow:hidden;
                 background:var(--sc-deep); color:#fff;
-                border-radius:var(--sc-r-card); padding:var(--sc-4) var(--sc-5) }
+                border-radius:var(--sc-r-card) }
+.sc-stack__row>div{ padding:var(--sc-4) var(--sc-5); align-self:center }
 .sc-stack__row h3{ color:#fff; margin-bottom:var(--sc-1) }
-.sc-stack__row p{ margin:0; color:rgba(255,255,255,.78);
-                  font-size:var(--sc-size-meta) }
-.sc-stack__ic{ flex:0 0 52px; width:52px; height:52px; border-radius:var(--sc-r-disc);
-               background:rgba(255,255,255,.12); display:flex;
-               align-items:center; justify-content:center }
-.sc-stack__ic svg{ width:26px; height:26px; stroke:#fff; stroke-width:1.8;
+.sc-stack__row p{ margin:0; color:#fff; font-size:var(--sc-size-meta) }
+.sc-stack__ic{ flex:0 0 96px; width:96px; border-radius:0;
+               background:rgba(255,255,255,.09);
+               display:flex; align-items:center; justify-content:center }
+.sc-stack__ic svg{ width:34px; height:34px; stroke:#fff; stroke-width:1.7;
                    fill:none; stroke-linecap:round; stroke-linejoin:round }
+
+/* a section heading with no intro line still owns the block below it */
+.sc-h2--alone{ margin-bottom:var(--sc-gap-block) }
 
 /* ---- lists ------------------------------------------------------------ */
 .sc-checks{ list-style:none; margin:0; padding:0 }

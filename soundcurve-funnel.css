@@ -35,6 +35,14 @@
   --sc-1: 4px;  --sc-2: 8px;  --sc-3: 14px; --sc-4: 20px;
   --sc-5: 26px; --sc-6: 34px; --sc-7: 46px; --sc-8: 72px;
 
+  /* vertical rhythm. A heading owns the space beneath it, so no element
+     ever needs a hand-written margin. Larger heading, larger gap. */
+  --sc-gap-h1: var(--sc-5);   /* 26px under an h1  */
+  --sc-gap-h2: var(--sc-4);   /* 20px under an h2  */
+  --sc-gap-h3: var(--sc-2);   /* 8px  under an h3  */
+  --sc-gap-para: var(--sc-3); /* 14px between paragraphs */
+  --sc-gap-block: var(--sc-7);/* 46px before the next block after intro copy */
+
   /* ---- colour --------------------------------------------------------- */
   --sc-deep:#1e5d86;  --sc-mid:#2778ae;
   --sc-lime:#d6df23;  --sc-lime-ink:#243b0c;  --sc-mark:#eaef91;
@@ -59,13 +67,20 @@ body{
   font:var(--sc-weight-body) var(--sc-size-body)/var(--sc-lh-body) var(--sc-font);
   -webkit-font-smoothing:antialiased;
 }
-h1,h2,h3{ margin:0; color:var(--sc-ink); line-height:var(--sc-lh-tight);
-          font-weight:var(--sc-weight-light) }
-h1{ font-size:var(--sc-size-h1) }
-h2{ font-size:var(--sc-size-h2) }
+h1,h2,h3{ margin:0 0 var(--sc-gap-h2); color:var(--sc-ink);
+          line-height:var(--sc-lh-tight); font-weight:var(--sc-weight-light) }
+h1{ font-size:var(--sc-size-h1); margin-bottom:var(--sc-gap-h1) }
+h2{ font-size:var(--sc-size-h2); margin-bottom:var(--sc-gap-h2) }
 h3{ font-size:var(--sc-size-h3); font-weight:var(--sc-weight-bold);
-    line-height:var(--sc-lh-head) }
-p{ margin:0 0 var(--sc-3) }
+    line-height:var(--sc-lh-head); margin-bottom:var(--sc-gap-h3) }
+p{ margin:0 0 var(--sc-gap-para) }
+
+/* Last child never pushes space against its container's padding. */
+h1:last-child,h2:last-child,h3:last-child,p:last-child,ul:last-child{ margin-bottom:0 }
+
+/* Intro copy that sits under a section heading opens the block that follows. */
+.sc-sub{ margin-bottom:var(--sc-gap-block) }
+.sc-sub:last-child{ margin-bottom:0 }
 a{ color:var(--sc-mid) }
 
 /* The marker highlight. A stroke across the bottom of the line, not a block. */
@@ -76,11 +91,15 @@ mark{
 }
 
 /* ---- text roles ------------------------------------------------------- */
-.sc-lead{ font-size:var(--sc-size-lead) }
+.sc-lead{ font-size:var(--sc-size-lead); margin-bottom:var(--sc-5) }
 .sc-sub{ font-size:var(--sc-size-body); color:var(--sc-soft);
          max-width:72ch; margin-inline:auto; text-align:center }
 .sc-small{ font-size:var(--sc-size-small); color:var(--sc-soft) }
 .sc-center{ text-align:center }
+.sc-after{ margin-top:var(--sc-3) }          /* fine print following a control */
+.sc-note{ font-size:var(--sc-size-small); color:var(--sc-mid);
+          margin-bottom:var(--sc-3) }
+.sc-sub--after{ margin-top:var(--sc-6); margin-bottom:0 }
 
 /* ---- surfaces --------------------------------------------------------- */
 .sc-card{ background:#fff; border:var(--sc-border);
@@ -95,6 +114,7 @@ mark{
   margin-bottom:var(--sc-4); flex:0 0 var(--sc-disc-size);
 }
 .sc-ic--sm{ --sc-disc-size:var(--sc-disc-size-sm); margin-bottom:0 }
+.sc-ic--center{ margin-inline:auto }
 .sc-ic svg{ width:46%; height:46%; stroke:var(--sc-deep); stroke-width:1.8;
             fill:none; stroke-linecap:round; stroke-linejoin:round }
 

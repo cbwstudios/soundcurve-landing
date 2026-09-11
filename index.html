@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>AI Receptionist</title>
 <link rel="stylesheet" href="https://use.typekit.net/sao6jba.css">
-<link rel="stylesheet" href="soundcurve-funnel.css?v=11">
+<link rel="stylesheet" href="soundcurve-funnel.css?v=12">
 <style>
 /* Page-specific only. Everything else comes from soundcurve-funnel.css.
    Target: keep this block under 20 rules. If something here is reusable,
@@ -20,7 +20,7 @@
 /* check list rule sits the same distance below the last item as between items */
 .offer{ margin:0 0 var(--sc-3); padding-bottom:0; border-bottom:var(--sc-rule) }
 .never{ text-align:center; font-size:22px; margin:var(--sc-6) 0 0 }
-.note{ max-width:860px; margin:var(--sc-7) auto 0; border:var(--sc-rule);
+.note{ margin:var(--sc-3) 0 0; border:var(--sc-rule);
        border-radius:14px; padding:var(--sc-5); background:var(--sc-pale);
        font-size:var(--sc-size-meta); color:var(--sc-soft) }
 .note b{ color:var(--sc-ink) }
@@ -93,33 +93,23 @@
 <section class="sc-section"><div class="sc-wrap">
 <h2 class="sc-center">What Changes on <mark>Your Current Setup</mark></h2>
 <p class="sc-sub">Nothing about your existing phone system changes. This sits in front of it and answers what your team does not.</p>
-<div class="sc-row" style="--cols:3;--gap:var(--sc-5)">
-<div class="sc-card"><div class="sc-ic"><svg viewBox="0 0 24 24"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11 11 0 0 0 3.5.56 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11 11 0 0 0 .56 3.5 1 1 0 0 1-.25 1Z"/></svg></div>
-<h3>Your numbers stay</h3><p class="sc-small">Same numbers, same phones, same desks. Nothing to unplug, nothing to install.</p></div>
-<div class="sc-card"><div class="sc-ic"><svg viewBox="0 0 24 24"><path d="M12 3v7M12 10 7 15M12 10l5 5"/><circle cx="12" cy="3" r="1.6"/><circle cx="7" cy="17" r="2.4"/><circle cx="17" cy="17" r="2.4"/></svg></div>
-<h3>Your routing stays</h3><p class="sc-small">It uses the auto attendant and ring groups you already have rather than replacing them.</p></div>
-<div class="sc-card"><div class="sc-ic"><svg viewBox="0 0 24 24"><path d="M12 3a4 4 0 0 1 4 4v1a4 4 0 0 1-8 0V7a4 4 0 0 1 4-4Z"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg></div>
-<h3>Your team learns nothing</h3><p class="sc-small">Calls arrive the way they do now. The only difference is a summary attached to them.</p></div>
-<div class="sc-card"><div class="sc-ic"><svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="3"/><path d="M9 6h6M9 10h6M9 14h4"/></svg></div>
-<h3>One agent, every phone</h3><p class="sc-small">It covers the whole system, whether that is four phones or forty.</p></div>
-<div class="sc-card"><div class="sc-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></div>
-<h3>You approve before it answers</h3><p class="sc-small">We build it around how your calls actually work, then you listen to it and sign it off.</p></div>
-<div class="sc-card"><div class="sc-ic"><svg viewBox="0 0 24 24"><path d="M18.4 5.6a9 9 0 1 1-12.8 0"/><path d="M12 2v9"/></svg></div>
-<h3>Off is one message away</h3><p class="sc-small">Tell us and we switch it off. Your phone system carries on exactly as it does today.</p></div>
+<div class="sc-stack">
+<div class="sc-stack__row"><span class="sc-stack__ic"><svg viewBox="0 0 24 24"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11 11 0 0 0 3.5.56 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11 11 0 0 0 .56 3.5 1 1 0 0 1-.25 1Z"/></svg></span><div><h3>Your numbers stay</h3><p>Same numbers, same phones, same desks. Nothing to unplug and nothing to install.</p></div></div>
+<div class="sc-stack__row"><span class="sc-stack__ic"><svg viewBox="0 0 24 24"><path d="M12 3v7M12 10 7 15M12 10l5 5"/><circle cx="12" cy="3" r="1.6"/><circle cx="7" cy="17" r="2.4"/><circle cx="17" cy="17" r="2.4"/></svg></span><div><h3>Your routing stays</h3><p>It uses the auto attendant and ring groups you already have rather than replacing them.</p></div></div>
+<div class="sc-stack__row"><span class="sc-stack__ic"><svg viewBox="0 0 24 24"><path d="M12 3a4 4 0 0 1 4 4v1a4 4 0 0 1-8 0V7a4 4 0 0 1 4-4Z"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg></span><div><h3>Your team learns nothing</h3><p>Calls arrive the way they do now. The only difference is a summary attached to them.</p></div></div>
+<div class="sc-stack__row"><span class="sc-stack__ic"><svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="3"/><path d="M9 6h6M9 10h6M9 14h4"/></svg></span><div><h3>One agent, every phone</h3><p>It covers the whole system, whether that is four phones or forty.</p></div></div>
+<div class="sc-stack__row"><span class="sc-stack__ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg></span><div><h3>You approve before it answers</h3><p>We build it around how your calls actually work, then you listen to it and sign it off.</p></div></div>
+<div class="sc-stack__row"><span class="sc-stack__ic"><svg viewBox="0 0 24 24"><path d="M18.4 5.6a9 9 0 1 1-12.8 0"/><path d="M12 2v9"/></svg></span><div><h3>Off is one message away</h3><p>Tell us and we switch it off. Your phone system carries on exactly as it does today.</p></div></div>
 </div>
 </div></section>
 
-<!-- DOESN'T GUESS -->
-<section class="sc-section sc-tint"><div class="sc-wrap">
-<h2 class="sc-center">When It Does Not Know, <mark>It Does Not Guess</mark></h2>
-<p class="sc-sub">Anything outside what you have given it goes to a person, or becomes a message with the full transcript attached. You write the never-say rules during setup, and you approve everything before it goes live.</p>
-</div></section>
 
 <!-- RECORD -->
 <section class="sc-section"><div class="sc-wrap">
-<div class="sc-row sc-row--split" style="--align:center">
+<h2 class="sc-center sc-nowrapish">After Every Call: <mark>A Record You Can Search</mark></h2>
+<div class="sc-row sc-row--split" style="--align:start">
 <div>
-<h2>After Every Call: <mark>A Record You Can Search</mark></h2>
+
 <ul class="sc-medialist">
 <li><span class="sc-ic sc-ic--sm"><svg viewBox="0 0 24 24"><path d="M6 2h9l5 5v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1Z"/><path d="M14 2v6h6M9 13h7M9 17h5"/></svg></span>
 <div><b>Transcripts</b><p>Every call and voicemail becomes searchable text. Find the conversation instead of remembering it.</p></div></li>
@@ -131,7 +121,7 @@
 <div><b>Synced</b><p>All of it lands on the caller's record in your CRM. The history is there the next time they call.</p></div></li>
 </ul>
 </div>
-<div class="sc-mock"><div class="sc-mock__bar"><span><b>Call summary</b></span><span>sent 11:23 AM</span></div>
+<div><div class="sc-mock"><div class="sc-mock__bar"><span><b>Call summary</b></span><span>sent 11:23 AM</span></div>
 <div class="sc-mock__body">
 <div class="sc-mock__row"><span>Call</span><span>Answered Tuesday 11:20 AM, 2 min 40 sec</span></div>
 <div class="sc-mock__row"><span>Caller</span><span>New caller, left a name and number</span></div>
@@ -139,8 +129,29 @@
 <div class="sc-mock__row"><span>Outcome</span><span>Put through to a person, someone was free</span></div>
 <div class="sc-mock__row"><span>Tone</span><span><span class="sc-tag">Positive, ready to move</span></span></div>
 </div></div>
-</div>
 <div class="note"><b>About recording and transcription.</b> Recording laws vary by state, and some require every party on a call to be notified before it is recorded. Your AI Receptionist can announce recording at the start of every conversation, and we configure that with you during setup. You control what is recorded and how long transcripts are kept.</div>
+</div>
+</div>
+</div></section>
+
+<!-- FEATURES -->
+<section class="sc-section sc-tint"><div class="sc-wrap">
+<h2 class="sc-center">How Your AI Receptionist <mark>Drives Results</mark></h2>
+<p class="sc-sub">Everything below is included. Hover any one of them for the detail.</p>
+<div class="sc-feats" style="--cols:4">
+<div class="sc-feat" tabindex="0"><img src="icons/24-7-call-handling.svg" alt="" aria-hidden="true"><h3>24/7 call handling</h3><p>Nights, weekends and holidays. Every call gets answered, not recorded.</p></div>
+<div class="sc-feat" tabindex="0"><img src="icons/spam-screening-blocking.svg" alt="" aria-hidden="true"><h3>Spam screening</h3><p>Robocalls and solicitors screened out, so your team only sees real callers.</p></div>
+<div class="sc-feat" tabindex="0"><img src="icons/call-recording-transcription.svg" alt="" aria-hidden="true"><h3>Recording &amp; transcription</h3><p>A full, searchable record of every call it handles.</p></div>
+<div class="sc-feat" tabindex="0"><img src="icons/instant-call-summary-routing.svg" alt="" aria-hidden="true"><h3>Instant call summaries</h3><p>A written summary sent to whoever needs it, right after the call ends.</p></div>
+<div class="sc-feat" tabindex="0"><img src="icons/lead-qualification.svg" alt="" aria-hidden="true"><h3>Lead qualification</h3><p>Callers screened against the questions you define, before anyone picks up.</p></div>
+<div class="sc-feat" tabindex="0"><img src="icons/warm-transfers.svg" alt="" aria-hidden="true"><h3>Warm transfers</h3><p>Callers routed to the right person with the whole conversation attached.</p></div>
+<div class="sc-feat" tabindex="0"><img src="icons/voice-customization.svg" alt="" aria-hidden="true"><h3>Voice customization</h3><p>Choose a natural voice that sounds like your business, not a machine.</p></div>
+<div class="sc-feat" tabindex="0"><img src="icons/bilingual-call-handling.svg" alt="" aria-hidden="true"><h3>Bilingual handling</h3><p>It detects the caller's language and holds the conversation in it.</p></div>
+<div class="sc-feat" tabindex="0"><img src="icons/custom-call-playbooks.svg" alt="" aria-hidden="true"><h3>Custom call playbooks</h3><p>Your scripts, your call flows, your routing rules, for every scenario you see.</p></div>
+<div class="sc-feat" tabindex="0"><img src="icons/service-aware-intake.svg" alt="" aria-hidden="true"><h3>Service-aware intake</h3><p>Different details captured for each service you offer, so nothing is missed.</p></div>
+<div class="sc-feat" tabindex="0"><img src="icons/native-integrations.svg" alt="" aria-hidden="true"><h3>Native integrations</h3><p>Straight into your CRM, calendar and the tools you already run.</p></div>
+<div class="sc-feat" tabindex="0"><img src="icons/dashboard-analytics.svg" alt="" aria-hidden="true"><h3>Dashboard &amp; analytics</h3><p>Call volume, bookings and outcomes, tracked over time.</p></div>
+</div>
 </div></section>
 
 <!-- INDUSTRY -->

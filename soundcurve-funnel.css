@@ -154,7 +154,10 @@ mark{
    a dark fringe behind the light strip. The player carries its own colour. */
 .sc-media{ border-radius:var(--sc-r-card); overflow:hidden;
            background:var(--sc-grey); position:relative }
-.sc-media video,.sc-media img{ display:block; width:100%; border-radius:0;
+/* Declared square, so the box is reserved before metadata loads and the poster,
+   the video and the end card occupy identical pixels at any width. */
+.sc-media video,.sc-media img{ display:block; width:100%; aspect-ratio:1/1;
+                               object-fit:cover; border-radius:0;
                                border:0; background:var(--sc-deep) }
 .sc-media__cap{ background:var(--sc-grey); padding:var(--sc-3) var(--sc-4);
                 margin:0; text-align:center;

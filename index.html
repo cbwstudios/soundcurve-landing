@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>AI Receptionist</title>
 <link rel="stylesheet" href="https://use.typekit.net/sao6jba.css">
-<link rel="stylesheet" href="soundcurve-funnel.css?v=7">
+<link rel="stylesheet" href="soundcurve-funnel.css?v=8">
 <style>
 /* Page-specific only. Everything else comes from soundcurve-funnel.css.
    Target: keep this block under 20 rules. If something here is reusable,
@@ -9,10 +9,14 @@
 .hd .sc-wrap{ display:flex; justify-content:space-between; align-items:center }
 .hd img{ height:34px; display:block }
 .hd span{ font-size:15px; color:rgba(255,255,255,.94) }
-.hero{ --cols:2; --gap:52px; --align:stretch; grid-template-columns:1.05fr .95fr }
-.hero>div:first-child{ display:flex; flex-direction:column }
-.hero .sc-card{ display:flex; flex-direction:column }
-.hero textarea{ flex:1 1 auto; min-height:78px }
+/* Column ratio only above the breakpoint, or it beats the system's collapse
+   to one column (same specificity, but page CSS loads after the system file). */
+@media (min-width:901px){
+  .hero{ --cols:2; --gap:52px; --align:stretch; grid-template-columns:1.05fr .95fr }
+  .hero>div:first-child{ display:flex; flex-direction:column }
+  .hero .sc-card{ display:flex; flex-direction:column }
+  .hero textarea{ flex:1 1 auto; min-height:78px }
+}
 /* check list rule sits the same distance below the last item as between items */
 .offer{ margin:0 0 var(--sc-3); padding-bottom:0; border-bottom:var(--sc-rule) }
 .never{ text-align:center; font-size:22px; margin:var(--sc-6) 0 0 }

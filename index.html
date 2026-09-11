@@ -10,8 +10,6 @@
 .hd img{ height:34px; display:block }
 .hd span{ font-size:15px; color:rgba(255,255,255,.94) }
 .hero{ --cols:2; --gap:52px; grid-template-columns:1.05fr .95fr }
-video{ width:100%; display:block; border-radius:var(--sc-r-card);
-       border:var(--sc-border); background:var(--sc-deep) }
 .offer{ margin:0 0 var(--sc-4); padding-bottom:var(--sc-4); border-bottom:var(--sc-rule) }
 .never{ text-align:center; font-size:22px; margin:var(--sc-6) 0 0 }
 .note{ max-width:860px; margin:var(--sc-7) auto 0; border:var(--sc-rule);
@@ -32,8 +30,10 @@ video{ width:100%; display:block; border-radius:var(--sc-r-card);
 <div>
 <h1>Your phone system can now <mark>answer the calls you miss</mark></h1>
 <p class="sc-lead" style="margin:var(--sc-4) 0 var(--sc-5)">Add an AI receptionist to the SoundCurve system you already run. It answers when your team cannot, sends callers to the right person, and writes up what happened.</p>
+<div class="sc-media">
 <video controls playsinline preload="metadata" src="AIReceptionist_web.mp4" poster="AIReceptionist_poster.jpg"></video>
-<p class="sc-small sc-center" style="margin-top:var(--sc-3)">Want to hear it first? Talk to the AI at <a href="tel:4242919568">(424) 291-9568</a></p>
+<p class="sc-media__cap">Want to hear it first? Talk to the AI at <a href="tel:4242919568">(424) 291-9568</a></p>
+</div>
 </div>
 
 <div class="sc-card">
@@ -59,7 +59,7 @@ video{ width:100%; display:block; border-radius:var(--sc-r-card);
 </label>
 
 <a class="sc-btn sc-btn--primary sc-btn--full" href="#">Start my free month</a>
-<p class="sc-small" style="margin:var(--sc-3) 0 0">We text you to confirm, then call to set it up. Your free month starts the day it goes live.</p>
+<p class="sc-small" style="margin:var(--sc-3) 0 0">Support will reach out to help you get started.</p>
 </div>
 </div></div></section>
 

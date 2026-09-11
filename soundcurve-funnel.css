@@ -105,10 +105,21 @@ mark{
   font-size:18px; font-weight:var(--sc-weight-bold); line-height:1.2;
   text-decoration:none; text-align:center; cursor:pointer;
 }
-.sc-btn--primary{ background:var(--sc-lime); border-color:var(--sc-lime); color:var(--sc-lime-ink) }
+.sc-btn--primary{ background:var(--sc-deep); border-color:var(--sc-deep); color:#fff }
+.sc-btn--lime{ background:var(--sc-lime); border-color:var(--sc-lime); color:var(--sc-lime-ink) }
 .sc-btn--ghost{ background:#fff; border-color:var(--sc-edge); color:var(--sc-ink) }
 .sc-btn--full{ display:block; width:100%; font-size:var(--sc-size-lead);
                padding:var(--sc-4) var(--sc-5) }
+
+/* ---- media block: player and its caption read as one object ----------- */
+.sc-media{ border:var(--sc-border); border-radius:var(--sc-r-card);
+           overflow:hidden; background:var(--sc-deep) }
+.sc-media video,.sc-media img{ display:block; width:100%; border-radius:0; border:0 }
+.sc-media__cap{ background:var(--sc-pale); border-top:var(--sc-rule);
+                padding:var(--sc-3) var(--sc-4); margin:0; text-align:center;
+                font-size:var(--sc-size-small); color:var(--sc-soft) }
+.sc-media__cap a{ font-weight:var(--sc-weight-bold); color:var(--sc-ink);
+                  text-decoration:none }
 
 /* ---- form ------------------------------------------------------------- */
 .sc-field{ display:block; font-size:14px; font-weight:var(--sc-weight-bold);

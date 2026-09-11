@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>AI Receptionist</title>
 <link rel="stylesheet" href="https://use.typekit.net/sao6jba.css">
-<link rel="stylesheet" href="soundcurve-funnel.css?v=18">
+<link rel="stylesheet" href="soundcurve-funnel.css?v=19">
 <style>
 /* Page-specific only. Everything else comes from soundcurve-funnel.css.
    Target: keep this block under 20 rules. If something here is reusable,
@@ -15,14 +15,11 @@
 /* Column ratio only above the breakpoint, or it beats the system's collapse
    to one column (same specificity, but page CSS loads after the system file). */
 @media (min-width:901px){
-  .hero{ --cols:2; --gap:48px; --align:stretch; grid-template-columns:1.15fr .85fr }
+  .hero{ --cols:2; --gap:48px; --align:start; grid-template-columns:1.15fr .85fr }
   /* the h1 lives in a column, not the full page width, so it is sized for that
      column: two lines, with the marked phrase whole on the second. */
   .hero h1{ font-size:56px }
   .sc-lb{ display:inline }
-  .hero>div:first-child{ display:flex; flex-direction:column }
-  .hero .sc-card{ display:flex; flex-direction:column }
-  .hero textarea{ flex:1 1 auto; min-height:78px }
 }
 /* check list rule sits the same distance below the last item as between items */
 .offer{ margin:0 0 var(--sc-3); padding-bottom:0; border-bottom:var(--sc-rule) }
@@ -45,6 +42,13 @@
 <div>
 <h1>Your AI Receptionist<br class="sc-lb"> <mark>Books While You Work</mark></h1>
 <p class="sc-lead">It runs on the SoundCurve phone system you already have. It answers, screens the caller, and either books the appointment or sends them to the right person. Either way, the call is written up in your CRM before anyone picks up the phone again.</p>
+<ul class="sc-checks offer">
+<li><b>First month free</b>, then $99.99 a month</li>
+<li><b>250 minutes</b> included every month</li>
+<li><b>We set it up</b>, at no charge</li>
+<li><b>Nothing goes live</b> until you approve it</li>
+</ul>
+
 <div class="sc-media" id="player">
 <video playsinline preload="metadata" src="AIReceptionist_web.mp4" poster="AIReceptionist_poster.jpg"></video>
 <button class="sc-media__hit" type="button" aria-label="Play video"><i></i></button>
@@ -53,13 +57,6 @@
 </div>
 
 <div class="sc-card">
-<ul class="sc-checks offer">
-<li><b>First month free</b>, then $99.99 a month</li>
-<li><b>250 minutes</b> included every month</li>
-<li><b>We set it up</b>, at no charge</li>
-<li><b>Nothing goes live</b> until you approve it</li>
-</ul>
-
 <p class="sc-note">Prefilled from your account. Change anything that is out of date.</p>
 <div class="sc-row" style="--cols:2;--gap:12px">
 <div><label class="sc-field">First name *</label><input type="text" value="Jane"></div>

@@ -163,9 +163,10 @@ mark{
            background:var(--sc-player); position:relative }
 /* Declared square, so the box is reserved before metadata loads and the poster,
    the video and the end card occupy identical pixels at any width. */
-.sc-media video,.sc-media img{ display:block; width:100%; aspect-ratio:1/1;
-                               object-fit:cover; border-radius:0;
-                               border:0; background:var(--sc-player) }
+.sc-media video,.sc-media img{ display:block; width:100%;
+                               aspect-ratio:var(--sc-media-ratio,16/9); border-radius:0;
+                               border:0; background:var(--sc-player);
+                               object-fit:contain }
 /* Caption sits in the player's own blue so the block reads as one object,
    rather than a grey tray under a blue video. */
 .sc-media__cap{ background:var(--sc-player); padding:var(--sc-3) var(--sc-4);

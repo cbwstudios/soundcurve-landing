@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>AI Receptionist</title>
 <link rel="stylesheet" href="https://use.typekit.net/sao6jba.css">
-<link rel="stylesheet" href="soundcurve-funnel.css?v=4">
+<link rel="stylesheet" href="soundcurve-funnel.css?v=5">
 <style>
 /* Page-specific only. Everything else comes from soundcurve-funnel.css.
    Target: keep this block under 20 rules. If something here is reusable,
@@ -9,8 +9,12 @@
 .hd .sc-wrap{ display:flex; justify-content:space-between; align-items:center }
 .hd img{ height:34px; display:block }
 .hd span{ font-size:15px; color:rgba(255,255,255,.94) }
-.hero{ --cols:2; --gap:52px; grid-template-columns:1.05fr .95fr }
-.offer{ margin:0 0 var(--sc-4); padding-bottom:var(--sc-4); border-bottom:var(--sc-rule) }
+.hero{ --cols:2; --gap:52px; --align:stretch; grid-template-columns:1.05fr .95fr }
+.hero>div:first-child{ display:flex; flex-direction:column }
+.hero .sc-card{ display:flex; flex-direction:column }
+.hero textarea{ flex:1 1 auto; min-height:78px }
+/* check list rule sits the same distance below the last item as between items */
+.offer{ margin:0 0 var(--sc-3); padding-bottom:0; border-bottom:var(--sc-rule) }
 .never{ text-align:center; font-size:22px; margin:var(--sc-6) 0 0 }
 .note{ max-width:860px; margin:var(--sc-7) auto 0; border:var(--sc-rule);
        border-radius:14px; padding:var(--sc-5); background:var(--sc-pale);
@@ -30,8 +34,9 @@
 <div>
 <h1>Your phone system can now <mark>answer the calls you miss</mark></h1>
 <p class="sc-lead">Add an AI receptionist to the SoundCurve system you already run. It answers when your team cannot, sends callers to the right person, and writes up what happened.</p>
-<div class="sc-media">
-<video controls playsinline preload="metadata" src="AIReceptionist_web.mp4" poster="AIReceptionist_poster.jpg"></video>
+<div class="sc-media" id="player">
+<video playsinline preload="metadata" src="AIReceptionist_web.mp4" poster="AIReceptionist_poster.jpg"></video>
+<button class="sc-media__hit" type="button" aria-label="Play video"><i></i></button>
 <p class="sc-media__cap">Want to hear it first? Talk to the AI at <a href="tel:4242919568">(424) 291-9568</a></p>
 </div>
 </div>
@@ -202,4 +207,18 @@
 <p class="sc-after">SoundCurve &middot; [postal address required for CAN-SPAM] &middot; &copy; 2026</p>
 </div></footer>
 
+<script>
+(function(){
+  var box=document.getElementById('player'); if(!box) return;
+  var v=box.querySelector('video'), hit=box.querySelector('.sc-media__hit'),
+      cap=box.querySelector('.sc-media__cap');
+  function fitHit(){ box.style.setProperty('--cap-h', cap.offsetHeight+'px'); }
+  function toggle(){ v.paused ? v.play() : v.pause(); }
+  hit.addEventListener('click', toggle);
+  v.addEventListener('play', function(){ box.classList.add('is-playing') });
+  v.addEventListener('pause', function(){ box.classList.remove('is-playing') });
+  v.addEventListener('ended', function(){ box.classList.remove('is-playing'); v.load() });
+  window.addEventListener('resize', fitHit); fitHit();
+})();
+</script>
 </body></html>

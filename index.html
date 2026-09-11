@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>AI Receptionist</title>
 <link rel="stylesheet" href="https://use.typekit.net/sao6jba.css">
-<link rel="stylesheet" href="soundcurve-funnel.css?v=16">
+<link rel="stylesheet" href="soundcurve-funnel.css?v=17">
 <style>
 /* Page-specific only. Everything else comes from soundcurve-funnel.css.
    Target: keep this block under 20 rules. If something here is reusable,
@@ -24,8 +24,8 @@
 /* check list rule sits the same distance below the last item as between items */
 .offer{ margin:0 0 var(--sc-3); padding-bottom:0; border-bottom:var(--sc-rule) }
 .never{ text-align:center; font-size:22px; margin:var(--sc-6) 0 0 }
-.note{ margin:var(--sc-3) 0 0; border:var(--sc-rule);
-       border-radius:14px; padding:var(--sc-5); background:var(--sc-pale);
+.note{ margin:var(--sc-3) 0 0; border:var(--sc-border);
+       border-radius:var(--sc-r-card); padding:var(--sc-5); background:var(--sc-pale);
        font-size:var(--sc-size-meta); color:var(--sc-soft) }
 .note b{ color:var(--sc-ink) }
 .ft{ border-top:var(--sc-rule); padding-block:var(--sc-5); text-align:center }
@@ -78,8 +78,8 @@
 
 <!-- OUTCOMES -->
 <section class="sc-section sc-tint"><div class="sc-wrap">
-<h2 class="sc-center">Every Call Ends <mark>One of Four Ways</mark></h2>
-<p class="sc-sub">You decide which, during setup. None of them is voicemail.</p>
+<h2 class="sc-center">Every Call Ends in <mark>One of Four Ways</mark></h2>
+<p class="sc-sub">You decide which during setup. None of them is voicemail.</p>
 <div class="sc-row" style="--cols:4;--gap:var(--sc-4)">
 <div class="sc-card sc-center"><div class="sc-ic sc-ic--center"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="3"/><path d="M8 2v4M16 2v4M3 10h18M9 15l2 2 4-4"/></svg></div>
 <h3>Booked</h3><p class="sc-small">It checks your calendar's real availability and puts the appointment in it.</p></div>
@@ -102,7 +102,7 @@
 <div class="sc-stack__row"><span class="sc-stack__ic"><svg viewBox="0 0 24 24"><path d="M12 3v7M12 10 7 15M12 10l5 5"/><circle cx="12" cy="3" r="1.6"/><circle cx="7" cy="17" r="2.4"/><circle cx="17" cy="17" r="2.4"/></svg></span><div><h3>Your routing stays</h3><p>It uses the auto attendant and ring groups you already have rather than replacing them.</p></div></div>
 <div class="sc-stack__row"><span class="sc-stack__ic"><svg viewBox="0 0 24 24"><path d="M12 3a4 4 0 0 1 4 4v1a4 4 0 0 1-8 0V7a4 4 0 0 1 4-4Z"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg></span><div><h3>Your team learns nothing</h3><p>Calls arrive the way they do now. The only difference is a summary attached to them.</p></div></div>
 <div class="sc-stack__row"><span class="sc-stack__ic"><svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="3"/><path d="M9 6h6M9 10h6M9 14h4"/></svg></span><div><h3>One agent, every phone</h3><p>It covers the whole system, whether that is four phones or forty.</p></div></div>
-<div class="sc-stack__row"><span class="sc-stack__ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg></span><div><h3>You approve before it answers</h3><p>We build it around how your calls actually work, then you listen to it and sign it off.</p></div></div>
+<div class="sc-stack__row"><span class="sc-stack__ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg></span><div><h3>You approve before it answers</h3><p>We build it around how your calls actually work, then you listen to it and approve it.</p></div></div>
 <div class="sc-stack__row"><span class="sc-stack__ic"><svg viewBox="0 0 24 24"><path d="M18.4 5.6a9 9 0 1 1-12.8 0"/><path d="M12 2v9"/></svg></span><div><h3>Off is one message away</h3><p>Tell us and we switch it off. Your phone system carries on exactly as it does today.</p></div></div>
 </div>
 </div></section>
@@ -143,9 +143,9 @@
 <h2 class="sc-center">How Your AI Receptionist <mark>Drives Results</mark></h2>
 <p class="sc-sub">Everything below is included. Hover any one of them for the detail.</p>
 <div class="sc-feats" style="--cols:4">
-<div class="sc-feat" tabindex="0"><img src="icons/24-7-call-handling.svg" alt="" aria-hidden="true"><h3>24/7 call handling</h3><p>Nights, weekends and holidays. Every call gets answered, not recorded.</p></div>
+<div class="sc-feat" tabindex="0"><img src="icons/24-7-call-handling.svg" alt="" aria-hidden="true"><h3>24/7 call handling</h3><p>Nights, weekends and holidays. Every call gets answered, not sent to voicemail.</p></div>
 <div class="sc-feat" tabindex="0"><img src="icons/spam-screening-blocking.svg" alt="" aria-hidden="true"><h3>Spam screening</h3><p>Robocalls and solicitors screened out, so your team only sees real callers.</p></div>
-<div class="sc-feat" tabindex="0"><img src="icons/call-recording-transcription.svg" alt="" aria-hidden="true"><h3>Recording &amp; transcription</h3><p>A full, searchable record of every call it handles.</p></div>
+<div class="sc-feat" tabindex="0"><img src="icons/call-recording-transcription.svg" alt="" aria-hidden="true"><h3>Recording and transcription</h3><p>A full, searchable record of every call it handles.</p></div>
 <div class="sc-feat" tabindex="0"><img src="icons/instant-call-summary-routing.svg" alt="" aria-hidden="true"><h3>Instant call summaries</h3><p>A written summary sent to whoever needs it, right after the call ends.</p></div>
 <div class="sc-feat" tabindex="0"><img src="icons/lead-qualification.svg" alt="" aria-hidden="true"><h3>Lead qualification</h3><p>Callers screened against the questions you define, before anyone picks up.</p></div>
 <div class="sc-feat" tabindex="0"><img src="icons/warm-transfers.svg" alt="" aria-hidden="true"><h3>Warm transfers</h3><p>Callers routed to the right person with the whole conversation attached.</p></div>
@@ -154,7 +154,7 @@
 <div class="sc-feat" tabindex="0"><img src="icons/custom-call-playbooks.svg" alt="" aria-hidden="true"><h3>Custom call playbooks</h3><p>Your scripts, your call flows, your routing rules, for every scenario you see.</p></div>
 <div class="sc-feat" tabindex="0"><img src="icons/service-aware-intake.svg" alt="" aria-hidden="true"><h3>Service-aware intake</h3><p>Different details captured for each service you offer, so nothing is missed.</p></div>
 <div class="sc-feat" tabindex="0"><img src="icons/native-integrations.svg" alt="" aria-hidden="true"><h3>Native integrations</h3><p>Straight into your CRM, calendar and the tools you already run.</p></div>
-<div class="sc-feat" tabindex="0"><img src="icons/dashboard-analytics.svg" alt="" aria-hidden="true"><h3>Dashboard &amp; analytics</h3><p>Call volume, bookings and outcomes, tracked over time.</p></div>
+<div class="sc-feat" tabindex="0"><img src="icons/dashboard-analytics.svg" alt="" aria-hidden="true"><h3>Dashboard and analytics</h3><p>Call volume, bookings and outcomes, tracked over time.</p></div>
 </div>
 </div></section>
 
@@ -176,7 +176,7 @@
 <div class="sc-card"><div class="sc-ic"><svg viewBox="0 0 24 24"><path d="M3 13l2-6a2 2 0 0 1 2-1.4h10A2 2 0 0 1 19 7l2 6v6h-3v-2H6v2H3Z"/><path d="M6.5 16h1M16.5 16h1"/></svg></div>
 <h3>Automotive and service shops</h3><p class="sc-small">Books service appointments, answers status questions on work in progress, and takes details when every bay is full.</p></div>
 </div>
-<p class="sc-sub sc-sub--after">Something else? It learns any business that answers a phone. Tell us how your calls work and we configure it around your day.</p>
+<p class="sc-sub sc-sub--after">Something else? It learns any business that answers a phone. Call 888-408-7102 and tell us how your calls work.</p>
 </div></section>
 
 <!-- INTEGRATIONS -->
@@ -184,12 +184,12 @@
 <h2 class="sc-center">Pipe New Calls Directly Into <mark>Your Existing Business Tools</mark></h2>
 <p class="sc-sub">Pipe new calls directly into your existing workflow with real-time syncing across all your favorite business tools. Qualified callers automatically trigger custom outcomes that immediately impact your business operations and drive results.</p>
 <div class="sc-logos" style="--cols:7">
-<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/openai-logo.svg" alt="Openai"></div>
+<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/openai-logo.svg" alt="OpenAI"></div>
 <div><img src="https://soundcurve.com/wp-content/uploads/2025/08/anthropic-logo.svg" alt="Anthropic"></div>
-<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/eleven-labs-logo.svg" alt="Elevenlabs"></div>
+<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/eleven-labs-logo.svg" alt="ElevenLabs"></div>
 <div><img src="https://soundcurve.com/wp-content/uploads/2025/08/cartesia-logo.svg" alt="Cartesia"></div>
-<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/assembly-ai-logo.svg" alt="Assemblyai"></div>
-<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/playht-logo.svg" alt="Playht"></div>
+<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/assembly-ai-logo.svg" alt="AssemblyAI"></div>
+<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/playht-logo.svg" alt="PlayHT"></div>
 <div><img src="https://soundcurve.com/wp-content/uploads/2025/08/azure-logo.svg" alt="Azure"></div>
 <div><img src="https://soundcurve.com/wp-content/uploads/2025/08/google-gemini-logo.svg" alt="Google Gemini"></div>
 <div><img src="https://soundcurve.com/wp-content/uploads/2025/08/groq-logo.svg" alt="Groq"></div>
@@ -197,16 +197,16 @@
 <div><img src="https://soundcurve.com/wp-content/uploads/2025/08/gladia-logo.svg" alt="Gladia"></div>
 <div><img src="https://soundcurve.com/wp-content/uploads/2025/08/langfuse-logo.svg" alt="Langfuse"></div>
 <div><img src="https://soundcurve.com/wp-content/uploads/2025/08/twilio-logo.svg" alt="Twilio"></div>
-<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/aws-s3-logo.svg" alt="Aws S3"></div>
+<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/aws-s3-logo.svg" alt="AWS S3"></div>
 <div><img src="https://soundcurve.com/wp-content/uploads/2025/08/google-cloud-logo.svg" alt="Google Cloud"></div>
 <div><img src="https://soundcurve.com/wp-content/uploads/2025/08/google-calendar-logo.svg" alt="Google Calendar"></div>
 <div><img src="https://soundcurve.com/wp-content/uploads/2025/08/zendesk-logo.svg" alt="Zendesk"></div>
 <div><img src="https://soundcurve.com/wp-content/uploads/2025/08/notion-logo.svg" alt="Notion"></div>
 <div><img src="https://soundcurve.com/wp-content/uploads/2025/08/zapier-logo.svg" alt="Zapier"></div>
-<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/apollo-io-logo.svg" alt="Apollo.Io"></div>
+<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/apollo-io-logo.svg" alt="Apollo.io"></div>
 <div><img src="https://soundcurve.com/wp-content/uploads/2025/08/google-sheets-logo.svg" alt="Google Sheets"></div>
 <div><img src="https://soundcurve.com/wp-content/uploads/2025/08/salesforce-logo.svg" alt="Salesforce"></div>
-<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/hubspot-logo.svg" alt="Hubspot"></div>
+<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/hubspot-logo.svg" alt="HubSpot"></div>
 <div><img src="https://soundcurve.com/wp-content/uploads/2025/08/five9-logo.svg" alt="Five9"></div>
 <div><img src="https://soundcurve.com/wp-content/uploads/2025/08/genesys-logo.svg" alt="Genesys"></div>
 <div><img src="https://soundcurve.com/wp-content/uploads/2025/08/avaya-logo.svg" alt="Avaya"></div>
@@ -223,7 +223,7 @@
 <div class="sc-price__top">
 <span class="sc-pill">FIRST MONTH FREE</span>
 <div class="sc-price__amt">$99.99 <span>/month</span></div>
-<p class="sc-small sc-after">after your first month, added to your existing SoundCurve bill</p>
+<p class="sc-small sc-after">After your first month, added to your existing SoundCurve bill.</p>
 </div>
 <div class="sc-price__body"><ul class="sc-checks">
 <li>250 minutes included every month</li>

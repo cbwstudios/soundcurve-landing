@@ -48,7 +48,7 @@
   --sc-lime:#d6df23;  --sc-lime-ink:#243b0c;  --sc-mark:#eaef91;
   --sc-ink:#222222;   --sc-soft:#6f7a80;
   --sc-edge:#b0cde0;  --sc-line:#e6ecf0;
-  --sc-pale:#f7fafb;  --sc-disc:#f1f1f1;  --sc-grey:#f1f1f1;
+  --sc-pale:#f1f6f9;  --sc-disc:#f1f1f1;  --sc-grey:#f1f1f1;
   /* Sampled from the encoded poster, not chosen. The brand blue is #1e5d86;
      after H.264 and JPEG it renders as #226085. The player chrome has to match
      the frame it touches, so it uses this rather than the brand token. */
@@ -175,8 +175,6 @@ mark{
                   text-decoration:none }
 .sc-media__cap a:hover{ text-decoration:underline }
 /* single play affordance, no native chrome */
-.sc-media__play{ position:absolute; inset:0 0 auto; height:0; padding-bottom:0;
-                 border:0; background:transparent; cursor:pointer; z-index:2 }
 .sc-media__hit{ position:absolute; left:0; right:0; top:0; bottom:var(--cap-h,0px);
                 display:flex; align-items:center; justify-content:center;
                 border:0; background:transparent; cursor:pointer; z-index:2;
@@ -252,7 +250,7 @@ input[type=text],input[type=tel],input[type=email],textarea,select{
 .sc-stack__row h3{ color:#fff; margin-bottom:var(--sc-1) }
 .sc-stack__row p{ margin:0; color:#fff; font-size:var(--sc-size-meta) }
 .sc-stack__ic{ flex:0 0 96px; width:96px; border-radius:0;
-               background:rgba(255,255,255,.09);
+               background:rgba(255,255,255,.15);
                display:flex; align-items:center; justify-content:center }
 .sc-stack__ic svg{ width:34px; height:34px; stroke:#fff; stroke-width:1.7;
                    fill:none; stroke-linecap:round; stroke-linejoin:round }
@@ -266,8 +264,8 @@ input[type=text],input[type=tel],input[type=email],textarea,select{
                font-size:16.5px; border-bottom:var(--sc-rule) }
 .sc-checks li:last-child{ border-bottom:0 }
 .sc-checks li::before{
-  content:""; position:absolute; left:2px; top:17px; width:12px; height:6px;
-  border-left:2.5px solid var(--sc-lime); border-bottom:2.5px solid var(--sc-lime);
+  content:""; position:absolute; left:2px; top:.9em; width:12px; height:6px;
+  border-left:2.5px solid var(--sc-deep); border-bottom:2.5px solid var(--sc-deep);
   transform:rotate(-45deg);
 }
 .sc-medialist{ list-style:none; margin:0; padding:0 }
@@ -280,7 +278,7 @@ input[type=text],input[type=tel],input[type=email],textarea,select{
 /* ---- logo wall -------------------------------------------------------- */
 .sc-logos{ display:grid; grid-template-columns:repeat(var(--cols,5),1fr);
            gap:var(--sc-3); max-width:880px; margin-inline:auto }
-.sc-logos div{ border:var(--sc-border); border-radius:16px; height:92px;
+.sc-logos div{ border:var(--sc-border); border-radius:var(--sc-r-card); height:92px;
                display:flex; align-items:center; justify-content:center;
                padding:var(--sc-4); background:#fff }
 .sc-logos img{ max-width:100%; max-height:38px; width:auto }
@@ -296,7 +294,7 @@ input[type=text],input[type=tel],input[type=email],textarea,select{
 /* ---- transcript mock -------------------------------------------------- */
 .sc-mock{ background:#fff; border:var(--sc-border);
           border-radius:var(--sc-r-card); overflow:hidden }
-.sc-mock__bar{ background:var(--sc-pale); border-bottom:var(--sc-rule);
+.sc-mock__bar{ background:#e8eff5; border-bottom:var(--sc-rule);
                padding:var(--sc-3) var(--sc-4); font-size:14px;
                color:var(--sc-soft); display:flex; justify-content:space-between }
 .sc-mock__bar b{ color:var(--sc-ink) }

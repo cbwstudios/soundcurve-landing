@@ -357,6 +357,15 @@ input[type=text],input[type=tel],input[type=email],textarea,select{
 .sc-mock__row:last-child{ border-bottom:0 }
 .sc-mock__row span:first-child{ color:var(--sc-soft); min-width:78px; flex-shrink:0 }
 
+/* Tag cloud. LABELS, not buttons: no border, no hover, no pointer, because they
+   do not go anywhere. Pale ground so they read as a set rather than as controls.
+   Use for an illustrative list, never an exhaustive one. */
+.sc-tags{ list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap;
+          gap:var(--sc-2); justify-content:center }
+.sc-tags li{ background:#fff; border:var(--sc-rule); border-radius:var(--sc-r-pill);
+             padding:var(--sc-2) var(--sc-4); font-size:var(--sc-size-meta);
+             color:var(--sc-ink) }
+
 /* ---- price ------------------------------------------------------------ */
 .sc-price{ max-width:620px; margin-inline:auto; border:var(--sc-border);
            border-radius:var(--sc-r-card); overflow:hidden; background:#fff }

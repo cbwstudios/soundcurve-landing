@@ -16,10 +16,15 @@
 
   /* ---- type ----------------------------------------------------------- */
   --sc-font: "calibri", Carlito, Candara, "Segoe UI", Arial, sans-serif;
-  --sc-size-body: 17.69px;
-  --sc-size-lead: 20px;
-  --sc-size-small: 13.5px;
+  --sc-size-body: 17.69px;     /* measured: live site body is 17.6726px */
+  --sc-size-lead: 20px;        /* measured: live site lead is 20.8363px */
+  /* The live site runs a TWO size system for prose: 17.67 and 16. There is no
+     13.5px tier and no lighter text colour anywhere on it. Secondary copy is the
+     same #222222 at the smaller size. Verified on /ai-receptionist/ 09-14:
+     21 elements at #222222/16px, 14 at #222222/17.67px, zero grey. */
+  --sc-size-small: 16px;
   --sc-size-meta: 16px;
+  --sc-size-fine: 13.5px;      /* true fine print only: consent, captions */
   --sc-size-h3: 20px;
   --sc-size-h2: 50px;
   --sc-size-h1: 62px;
@@ -46,7 +51,10 @@
   /* ---- colour --------------------------------------------------------- */
   --sc-deep:#1e5d86;  --sc-mid:#2778ae;
   --sc-lime:#d6df23;  --sc-lime-ink:#243b0c;  --sc-mark:#eaef91;
-  --sc-ink:#222222;   --sc-soft:#6f7a80;
+  --sc-ink:#222222;
+  /* Was #6f7a80. That grey was ours, not the brand's: the live site has no
+     lighter body colour at all. Secondary text differs by SIZE, never colour. */
+  --sc-soft:#222222;
   --sc-edge:#b0cde0;  --sc-line:#e6ecf0;
   --sc-pale:#f1f6f9;  --sc-disc:#f1f1f1;  --sc-grey:#f1f1f1;
   /* Sampled from the encoded poster, not chosen. The brand blue is #1e5d86;
@@ -182,7 +190,7 @@ mark{
    rather than a grey tray under a blue video. */
 .sc-media__cap{ background:var(--sc-player); padding:var(--sc-3) var(--sc-4);
                 margin:0; text-align:center;
-                font-size:var(--sc-size-small); color:rgba(255,255,255,.82) }
+                font-size:var(--sc-size-fine); color:rgba(255,255,255,.82) }
 .sc-media__cap a{ font-weight:var(--sc-weight-bold); color:var(--sc-lime);
                   text-decoration:none }
 .sc-media__cap a:hover{ text-decoration:underline }
@@ -218,7 +226,7 @@ input[type=text],input[type=tel],input[type=email],textarea,select{
 }
 .sc-consent{ display:flex; gap:10px; align-items:flex-start; margin:var(--sc-4) 0 }
 .sc-consent input{ margin:2px 0 0; flex:0 0 17px; width:17px; height:17px }
-.sc-consent span{ flex:1 1 auto; font-size:var(--sc-size-small);
+.sc-consent span{ flex:1 1 auto; font-size:var(--sc-size-fine);
                   color:var(--sc-soft); line-height:var(--sc-lh-body) }
 .sc-consent a{ white-space:nowrap }
 

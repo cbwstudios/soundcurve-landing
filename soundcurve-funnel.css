@@ -362,11 +362,14 @@ input[type=text],input[type=tel],input[type=email],textarea,select{
    Use for an illustrative list, never an exhaustive one. */
 .sc-tags{ list-style:none; margin:var(--sc-4) 0 0; padding:0; display:flex;
           flex-wrap:wrap; gap:var(--sc-2); justify-content:center }
-/* No border. White fill on the pale ground is enough separation, and a border
-   plus a fill is the grammar of a control, which these are not. */
-.sc-tags li{ background:#fff; border-radius:var(--sc-r-pill);
+/* Hollow, so the section's own ground shows through and the set recedes behind the
+   cards above it. Deep blue rather than mid: #2778ae measures 4.40 on this ground
+   and fails AA, #4a8cb8 is 3.36. Deep blue is 6.51 and still reads softer than
+   black, because a hue reads quieter than a neutral at the same contrast. */
+.sc-tags li{ background:transparent; border:1px solid var(--sc-edge);
+             border-radius:var(--sc-r-pill);
              padding:var(--sc-2) var(--sc-4); font-size:var(--sc-size-meta);
-             color:var(--sc-ink) }
+             color:var(--sc-deep) }
 
 /* ---- price ------------------------------------------------------------ */
 .sc-price{ max-width:620px; margin-inline:auto; border:var(--sc-border);

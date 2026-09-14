@@ -175,7 +175,8 @@ mark{
                   text-decoration:none }
 .sc-media__cap a:hover{ text-decoration:underline }
 /* single play affordance, no native chrome */
-.sc-media__hit{ position:absolute; left:0; right:0; top:0; bottom:var(--cap-h,0px);
+/* caption leads the block, so the play target starts beneath it */
+.sc-media__hit{ position:absolute; left:0; right:0; top:var(--cap-h,0px); bottom:0;
                 display:flex; align-items:center; justify-content:center;
                 border:0; background:transparent; cursor:pointer; z-index:2;
                 padding:0 }

@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>AI Receptionist</title>
 <link rel="stylesheet" href="https://use.typekit.net/sao6jba.css">
-<link rel="stylesheet" href="soundcurve-funnel.css?v=61">
+<link rel="stylesheet" href="soundcurve-funnel.css?v=62">
 <style>
 /* Page-specific only. Everything else comes from soundcurve-funnel.css.
    Target: keep this block under 20 rules. If something here is reusable,
@@ -58,14 +58,11 @@
 <p class="sc-kicker">The caller gets a conversation. You get the details.</p>
 <div class="sc-media" id="player">
 <p class="sc-media__cap">Want to hear it first? Talk to the AI at <a href="tel:4242919568">(424) 291-9568</a></p>
-<!-- No `default` on the track, deliberately. The captions stay off for everyone
-     except a viewer whose device asks for them: iOS Settings > Accessibility >
-     Subtitles & Captioning > Closed Captions + SDH turns them on by itself when a
-     track exists, and a page cannot override that setting either way. So this is
-     invisible to most viewers and automatic for the people who need it. -->
-<video playsinline preload="metadata" src="AIReceptionist_web.mp4" poster="AIReceptionist_poster.jpg">
-<track kind="captions" src="AIReceptionist_captions.vtt" srclang="en" label="English">
-</video>
+<!-- No caption track. Christian's call 09-14: the audience is business owners and
+     executives on modern phones, the video only plays on a tap, and a tap-started
+     play carries sound at device volume. Revisit if this page is ever used for a
+     colder or broader audience. -->
+<video playsinline preload="metadata" src="AIReceptionist_web.mp4" poster="AIReceptionist_poster.jpg"></video>
 <button class="sc-media__hit" type="button" aria-label="Play video"><i></i></button>
 </div>
 </div>

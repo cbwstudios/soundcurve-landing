@@ -232,10 +232,6 @@ button.sc-btn{ font-family:inherit }
                          border-top:15px solid transparent;
                          border-bottom:15px solid transparent }
 .sc-media.is-playing .sc-media__hit i{ opacity:0 }
-/* Caption cues. Only ever seen by a viewer whose device asked for captions, so the
-   job is legibility over the frame, not decoration. Deliberately plain. */
-.sc-media video::cue{ background:rgba(0,0,0,.72); color:#fff;
-                      font-family:var(--sc-font); font-size:.85em; line-height:1.4 }
 
 /* ---- form ------------------------------------------------------------- */
 .sc-field{ display:block; font-size:14px; font-weight:var(--sc-weight-bold);

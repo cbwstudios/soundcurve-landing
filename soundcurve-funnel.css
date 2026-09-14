@@ -310,12 +310,20 @@ input[type=text],input[type=tel],input[type=email],textarea,select{
 
 /* ---- transcript mock -------------------------------------------------- */
 .sc-mock{ background:#fff; border:var(--sc-border);
-          border-radius:var(--sc-r-card); overflow:hidden }
+          border-radius:var(--sc-r-card); overflow:hidden;
+          display:flex; flex-direction:column; height:100% }
 .sc-mock__bar{ background:#e8eff5; border-bottom:var(--sc-rule);
                padding:var(--sc-3) var(--sc-4); font-size:14px;
                color:var(--sc-soft); display:flex; justify-content:space-between }
 .sc-mock__bar b{ color:var(--sc-ink) }
 .sc-mock__body{ padding:var(--sc-3) var(--sc-4) }
+/* A closing note inside the mock, below the rows it belongs to. flex:1 makes it
+   absorb the slack so the card matches the height of whatever sits beside it. */
+.sc-mock__note{ flex:1 1 auto; border-top:var(--sc-rule);
+                margin:var(--sc-2) var(--sc-4) 0; padding:var(--sc-4) 0 var(--sc-5);
+                font-size:var(--sc-size-small); color:var(--sc-soft);
+                line-height:1.55 }
+.sc-mock__note b{ color:var(--sc-ink); display:block; margin-bottom:var(--sc-1) }
 .sc-mock__row{ display:flex; gap:12px; font-size:var(--sc-size-meta);
                padding:var(--sc-2) 0; line-height:1.45; border-bottom:var(--sc-rule) }
 .sc-mock__row:last-child{ border-bottom:0 }

@@ -423,15 +423,22 @@ input[type=text],input[type=tel],input[type=email],textarea,select{
 @media (max-width:1024px) and (min-width:901px){
   .sc-row{ --gap:var(--sc-5) }
   .sc-row[style*="--cols:4"]{ grid-template-columns:repeat(2,1fr) }
+  .sc-feats{ grid-template-columns:repeat(3,1fr) }
   .sc-logos{ --cols:5 }
 }
 @media (max-width:900px){
   :root{ --sc-size-h1:36px; --sc-size-h2:30px; --sc-size-display:46px; --sc-8:48px }
   .sc-row{ grid-template-columns:repeat(2,1fr); gap:var(--sc-5) }
+  /* .sc-feats is its OWN grid, not a .sc-row, so it needs collapsing separately.
+     Without these it stayed four across at every width: 70px tiles on a phone. */
+  .sc-feats{ grid-template-columns:repeat(2,1fr) }
   .sc-logos{ --cols:3 }
   .sc-sub{ text-align:left }
 }
 @media (max-width:640px){
   .sc-row{ grid-template-columns:1fr; gap:var(--sc-6) }
+  /* Two across, not one. Twelve tiles in a single column is an endless scroll,
+     and with the hover text hidden on touch each tile is only an icon and a title. */
+  .sc-feats{ grid-template-columns:repeat(2,1fr) }
   .sc-logos{ --cols:2 }
 }

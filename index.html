@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>AI Receptionist</title>
 <link rel="stylesheet" href="https://use.typekit.net/sao6jba.css">
-<link rel="stylesheet" href="soundcurve-funnel.css?v=60">
+<link rel="stylesheet" href="soundcurve-funnel.css?v=61">
 <style>
 /* Page-specific only. Everything else comes from soundcurve-funnel.css.
    Target: keep this block under 20 rules. If something here is reusable,
@@ -58,12 +58,19 @@
 <p class="sc-kicker">The caller gets a conversation. You get the details.</p>
 <div class="sc-media" id="player">
 <p class="sc-media__cap">Want to hear it first? Talk to the AI at <a href="tel:4242919568">(424) 291-9568</a></p>
-<video playsinline preload="metadata" src="AIReceptionist_web.mp4" poster="AIReceptionist_poster.jpg"></video>
+<!-- No `default` on the track, deliberately. The captions stay off for everyone
+     except a viewer whose device asks for them: iOS Settings > Accessibility >
+     Subtitles & Captioning > Closed Captions + SDH turns them on by itself when a
+     track exists, and a page cannot override that setting either way. So this is
+     invisible to most viewers and automatic for the people who need it. -->
+<video playsinline preload="metadata" src="AIReceptionist_web.mp4" poster="AIReceptionist_poster.jpg">
+<track kind="captions" src="AIReceptionist_captions.vtt" srclang="en" label="English">
+</video>
 <button class="sc-media__hit" type="button" aria-label="Play video"><i></i></button>
 </div>
 </div>
 
-<div class="sc-card">
+<div class="sc-card" id="start">
 <ul class="sc-checks offer">
 <li><b>First month free</b>, then $99.99 a month</li>
 <li><b>250 minutes</b> included every month</li>
@@ -73,22 +80,27 @@
 <li><b>Nothing goes live</b> until you approve it</li>
 </ul>
 
-<p class="sc-note">Pulled from your account. Change anything that's changed.</p>
+<p class="sc-note" id="prefill-note">Pulled from your account. Change anything that's changed.</p>
+<!-- At build time GoHighLevel's own form element replaces everything inside this
+     <form>. It is written correctly here so the GHL form can be matched to it
+     field for field, and so this comp is usable on its own if it ever has to be. -->
+<form action="#" method="post" aria-describedby="prefill-note">
 <div class="sc-row" style="--cols:2;--gap:12px">
-<div><label class="sc-field">First name *</label><input type="text" value="Jane"></div>
-<div><label class="sc-field">Last name</label><input type="text" value="Tester"></div>
+<div><label class="sc-field" for="f-first">First name *</label><input id="f-first" name="first_name" type="text" autocomplete="given-name" required value="Jane"></div>
+<div><label class="sc-field" for="f-last">Last name</label><input id="f-last" name="last_name" type="text" autocomplete="family-name" value="Tester"></div>
 </div>
-<label class="sc-field">Email *</label><input type="email" value="jane@acmeplumbing.com">
-<label class="sc-field">Best number to reach you *</label><input type="tel" value="(555) 012-4478">
-<label class="sc-field">Anything you want us to cover on the call?</label>
-<textarea rows="2" placeholder="Optional. For example: after-hours only, never quote prices."></textarea>
+<label class="sc-field" for="f-email">Email *</label><input id="f-email" name="email" type="email" autocomplete="email" required value="jane@acmeplumbing.com">
+<label class="sc-field" for="f-phone">Best number to reach you *</label><input id="f-phone" name="phone" type="tel" autocomplete="tel" required value="(555) 012-4478">
+<label class="sc-field" for="f-notes">Anything you want us to cover on the call?</label>
+<textarea id="f-notes" name="notes" rows="2" placeholder="Optional. For example: after-hours only, never quote prices."></textarea>
 
-<label class="sc-consent"><input type="checkbox" required>
+<label class="sc-consent" for="f-consent"><input id="f-consent" name="consent" type="checkbox" required>
 <span>SoundCurve may text and call me about the AI Receptionist. Automated technology may be used. Not a condition of purchase, and you can opt out any time. <a href="https://soundcurve.com/privacy-policy/">Privacy</a> &middot; <a href="https://soundcurve.com/terms-of-service/">Terms</a></span>
 </label>
 
-<a class="sc-btn sc-btn--primary sc-btn--full" href="#">Start my free month</a>
+<button class="sc-btn sc-btn--primary sc-btn--full" type="submit">Start my free month</button>
 <p class="sc-small sc-after">Support will reach out to help you get started.</p>
+</form>
 </div>
 </div></div></section>
 
@@ -154,20 +166,20 @@
 <!-- FEATURES -->
 <section class="sc-section"><div class="sc-wrap">
 <h2 class="sc-center">How the AI Receptionist <mark>Drives Results</mark></h2>
-<p class="sc-sub">Everything below is included. Hover any one of them for the detail.</p>
+<p class="sc-sub">Everything below is included. No tiers, no add-ons, nothing held back for a bigger plan.</p>
 <div class="sc-feats" style="--cols:4">
-<div class="sc-feat" tabindex="0"><img src="icons/24-7-call-handling.svg" alt="" aria-hidden="true"><h3>24/7 call handling</h3><p>Nights, weekends and holidays. Set it to cover the hours you choose, and none of those calls go to voicemail.</p></div>
-<div class="sc-feat" tabindex="0"><img src="icons/spam-screening-blocking.svg" alt="" aria-hidden="true"><h3>Spam screening</h3><p>Robocalls and solicitors screened out, so your team only sees real callers.</p></div>
-<div class="sc-feat" tabindex="0"><img src="icons/call-recording-transcription.svg" alt="" aria-hidden="true"><h3>Recording and transcription</h3><p>A full, searchable record of every call it handles.</p></div>
-<div class="sc-feat" tabindex="0"><img src="icons/instant-call-summary-routing.svg" alt="" aria-hidden="true"><h3>Instant call summaries</h3><p>A written summary sent to whoever needs it, right after the call ends.</p></div>
-<div class="sc-feat" tabindex="0"><img src="icons/lead-qualification.svg" alt="" aria-hidden="true"><h3>Lead qualification</h3><p>Callers screened against the questions you define, before anyone picks up.</p></div>
-<div class="sc-feat" tabindex="0"><img src="icons/warm-transfers.svg" alt="" aria-hidden="true"><h3>Warm transfers</h3><p>Callers routed to the right person with the whole conversation attached.</p></div>
-<div class="sc-feat" tabindex="0"><img src="icons/voice-customization.svg" alt="" aria-hidden="true"><h3>Voice customization</h3><p>Choose a natural voice that suits your business and the people who call it.</p></div>
-<div class="sc-feat" tabindex="0"><img src="icons/bilingual-call-handling.svg" alt="" aria-hidden="true"><h3>Bilingual handling</h3><p>It detects the caller's language and holds the conversation in it.</p></div>
-<div class="sc-feat" tabindex="0"><img src="icons/custom-call-playbooks.svg" alt="" aria-hidden="true"><h3>Custom call playbooks</h3><p>Your scripts, your call flows, your routing rules, for every scenario you see.</p></div>
-<div class="sc-feat" tabindex="0"><img src="icons/service-aware-intake.svg" alt="" aria-hidden="true"><h3>Service-aware intake</h3><p>Different details captured for each service you offer, so nothing is missed.</p></div>
-<div class="sc-feat" tabindex="0"><img src="icons/native-integrations.svg" alt="" aria-hidden="true"><h3>Native integrations</h3><p>Straight into your CRM, calendar and the tools you already run.</p></div>
-<div class="sc-feat" tabindex="0"><img src="icons/dashboard-analytics.svg" alt="" aria-hidden="true"><h3>Dashboard and analytics</h3><p>Call volume, bookings and outcomes, tracked over time.</p></div>
+<div class="sc-feat" tabindex="0"><img loading="lazy" decoding="async" src="icons/24-7-call-handling.svg" alt="" aria-hidden="true"><h3>24/7 call handling</h3><p>Nights, weekends and holidays. Set it to cover the hours you choose, and none of those calls go to voicemail.</p></div>
+<div class="sc-feat" tabindex="0"><img loading="lazy" decoding="async" src="icons/spam-screening-blocking.svg" alt="" aria-hidden="true"><h3>Spam screening</h3><p>Robocalls and solicitors screened out, so your team only sees real callers.</p></div>
+<div class="sc-feat" tabindex="0"><img loading="lazy" decoding="async" src="icons/call-recording-transcription.svg" alt="" aria-hidden="true"><h3>Recording and transcription</h3><p>A full, searchable record of every call it handles.</p></div>
+<div class="sc-feat" tabindex="0"><img loading="lazy" decoding="async" src="icons/instant-call-summary-routing.svg" alt="" aria-hidden="true"><h3>Instant call summaries</h3><p>A written summary sent to whoever needs it, right after the call ends.</p></div>
+<div class="sc-feat" tabindex="0"><img loading="lazy" decoding="async" src="icons/lead-qualification.svg" alt="" aria-hidden="true"><h3>Lead qualification</h3><p>Callers screened against the questions you define, before anyone picks up.</p></div>
+<div class="sc-feat" tabindex="0"><img loading="lazy" decoding="async" src="icons/warm-transfers.svg" alt="" aria-hidden="true"><h3>Warm transfers</h3><p>Callers routed to the right person with the whole conversation attached.</p></div>
+<div class="sc-feat" tabindex="0"><img loading="lazy" decoding="async" src="icons/voice-customization.svg" alt="" aria-hidden="true"><h3>Voice customization</h3><p>Choose a natural voice that suits your business and the people who call it.</p></div>
+<div class="sc-feat" tabindex="0"><img loading="lazy" decoding="async" src="icons/bilingual-call-handling.svg" alt="" aria-hidden="true"><h3>Bilingual handling</h3><p>It detects the caller's language and holds the conversation in it.</p></div>
+<div class="sc-feat" tabindex="0"><img loading="lazy" decoding="async" src="icons/custom-call-playbooks.svg" alt="" aria-hidden="true"><h3>Custom call playbooks</h3><p>Your scripts, your call flows, your routing rules, for every scenario you see.</p></div>
+<div class="sc-feat" tabindex="0"><img loading="lazy" decoding="async" src="icons/service-aware-intake.svg" alt="" aria-hidden="true"><h3>Service-aware intake</h3><p>Different details captured for each service you offer, so nothing is missed.</p></div>
+<div class="sc-feat" tabindex="0"><img loading="lazy" decoding="async" src="icons/native-integrations.svg" alt="" aria-hidden="true"><h3>Native integrations</h3><p>Straight into your CRM, calendar and the tools you already run.</p></div>
+<div class="sc-feat" tabindex="0"><img loading="lazy" decoding="async" src="icons/dashboard-analytics.svg" alt="" aria-hidden="true"><h3>Dashboard and analytics</h3><p>Call volume, bookings and outcomes, tracked over time.</p></div>
 </div>
 </div></section>
 
@@ -198,34 +210,34 @@
 <h2 class="sc-center">It Works With <mark>What You Already Use</mark></h2>
 <p class="sc-sub">The call ends and the work is already done. Bookings land in your calendar, caller details land in your CRM, and the summary goes to whoever needs it. Nobody retypes anything.</p>
 <div class="sc-logos" style="--cols:7">
-<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/openai-logo.svg" alt="OpenAI"></div>
-<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/anthropic-logo.svg" alt="Anthropic"></div>
-<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/eleven-labs-logo.svg" alt="ElevenLabs"></div>
-<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/cartesia-logo.svg" alt="Cartesia"></div>
-<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/assembly-ai-logo.svg" alt="AssemblyAI"></div>
-<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/playht-logo.svg" alt="PlayHT"></div>
-<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/azure-logo.svg" alt="Azure"></div>
-<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/google-gemini-logo.svg" alt="Google Gemini"></div>
-<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/groq-logo.svg" alt="Groq"></div>
-<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/perplexity-ai-logo.svg" alt="Perplexity"></div>
-<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/gladia-logo.svg" alt="Gladia"></div>
-<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/langfuse-logo.svg" alt="Langfuse"></div>
-<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/twilio-logo.svg" alt="Twilio"></div>
-<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/aws-s3-logo.svg" alt="AWS S3"></div>
-<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/google-cloud-logo.svg" alt="Google Cloud"></div>
-<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/google-calendar-logo.svg" alt="Google Calendar"></div>
-<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/zendesk-logo.svg" alt="Zendesk"></div>
-<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/notion-logo.svg" alt="Notion"></div>
-<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/zapier-logo.svg" alt="Zapier"></div>
-<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/apollo-io-logo.svg" alt="Apollo.io"></div>
-<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/google-sheets-logo.svg" alt="Google Sheets"></div>
-<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/salesforce-logo.svg" alt="Salesforce"></div>
-<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/hubspot-logo.svg" alt="HubSpot"></div>
-<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/five9-logo.svg" alt="Five9"></div>
-<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/genesys-logo.svg" alt="Genesys"></div>
-<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/avaya-logo.svg" alt="Avaya"></div>
-<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/make-logo.svg" alt="Make"></div>
-<div><img src="https://soundcurve.com/wp-content/uploads/2025/08/slack-logo.svg" alt="Slack"></div>
+<div><img loading="lazy" decoding="async" src="https://soundcurve.com/wp-content/uploads/2025/08/openai-logo.svg" alt="OpenAI"></div>
+<div><img loading="lazy" decoding="async" src="https://soundcurve.com/wp-content/uploads/2025/08/anthropic-logo.svg" alt="Anthropic"></div>
+<div><img loading="lazy" decoding="async" src="https://soundcurve.com/wp-content/uploads/2025/08/eleven-labs-logo.svg" alt="ElevenLabs"></div>
+<div><img loading="lazy" decoding="async" src="https://soundcurve.com/wp-content/uploads/2025/08/cartesia-logo.svg" alt="Cartesia"></div>
+<div><img loading="lazy" decoding="async" src="https://soundcurve.com/wp-content/uploads/2025/08/assembly-ai-logo.svg" alt="AssemblyAI"></div>
+<div><img loading="lazy" decoding="async" src="https://soundcurve.com/wp-content/uploads/2025/08/playht-logo.svg" alt="PlayHT"></div>
+<div><img loading="lazy" decoding="async" src="https://soundcurve.com/wp-content/uploads/2025/08/azure-logo.svg" alt="Azure"></div>
+<div><img loading="lazy" decoding="async" src="https://soundcurve.com/wp-content/uploads/2025/08/google-gemini-logo.svg" alt="Google Gemini"></div>
+<div><img loading="lazy" decoding="async" src="https://soundcurve.com/wp-content/uploads/2025/08/groq-logo.svg" alt="Groq"></div>
+<div><img loading="lazy" decoding="async" src="https://soundcurve.com/wp-content/uploads/2025/08/perplexity-ai-logo.svg" alt="Perplexity"></div>
+<div><img loading="lazy" decoding="async" src="https://soundcurve.com/wp-content/uploads/2025/08/gladia-logo.svg" alt="Gladia"></div>
+<div><img loading="lazy" decoding="async" src="https://soundcurve.com/wp-content/uploads/2025/08/langfuse-logo.svg" alt="Langfuse"></div>
+<div><img loading="lazy" decoding="async" src="https://soundcurve.com/wp-content/uploads/2025/08/twilio-logo.svg" alt="Twilio"></div>
+<div><img loading="lazy" decoding="async" src="https://soundcurve.com/wp-content/uploads/2025/08/aws-s3-logo.svg" alt="AWS S3"></div>
+<div><img loading="lazy" decoding="async" src="https://soundcurve.com/wp-content/uploads/2025/08/google-cloud-logo.svg" alt="Google Cloud"></div>
+<div><img loading="lazy" decoding="async" src="https://soundcurve.com/wp-content/uploads/2025/08/google-calendar-logo.svg" alt="Google Calendar"></div>
+<div><img loading="lazy" decoding="async" src="https://soundcurve.com/wp-content/uploads/2025/08/zendesk-logo.svg" alt="Zendesk"></div>
+<div><img loading="lazy" decoding="async" src="https://soundcurve.com/wp-content/uploads/2025/08/notion-logo.svg" alt="Notion"></div>
+<div><img loading="lazy" decoding="async" src="https://soundcurve.com/wp-content/uploads/2025/08/zapier-logo.svg" alt="Zapier"></div>
+<div><img loading="lazy" decoding="async" src="https://soundcurve.com/wp-content/uploads/2025/08/apollo-io-logo.svg" alt="Apollo.io"></div>
+<div><img loading="lazy" decoding="async" src="https://soundcurve.com/wp-content/uploads/2025/08/google-sheets-logo.svg" alt="Google Sheets"></div>
+<div><img loading="lazy" decoding="async" src="https://soundcurve.com/wp-content/uploads/2025/08/salesforce-logo.svg" alt="Salesforce"></div>
+<div><img loading="lazy" decoding="async" src="https://soundcurve.com/wp-content/uploads/2025/08/hubspot-logo.svg" alt="HubSpot"></div>
+<div><img loading="lazy" decoding="async" src="https://soundcurve.com/wp-content/uploads/2025/08/five9-logo.svg" alt="Five9"></div>
+<div><img loading="lazy" decoding="async" src="https://soundcurve.com/wp-content/uploads/2025/08/genesys-logo.svg" alt="Genesys"></div>
+<div><img loading="lazy" decoding="async" src="https://soundcurve.com/wp-content/uploads/2025/08/avaya-logo.svg" alt="Avaya"></div>
+<div><img loading="lazy" decoding="async" src="https://soundcurve.com/wp-content/uploads/2025/08/make-logo.svg" alt="Make"></div>
+<div><img loading="lazy" decoding="async" src="https://soundcurve.com/wp-content/uploads/2025/08/slack-logo.svg" alt="Slack"></div>
 </div>
 </div></section>
 
@@ -247,7 +259,7 @@
 <li>No commitments</li>
 </ul></div>
 <div class="sc-price__ask">What is one new customer worth to you?</div>
-<div class="sc-price__cta"><a class="sc-btn sc-btn--primary sc-btn--full" href="#">Start my free month</a>
+<div class="sc-price__cta"><a class="sc-btn sc-btn--primary sc-btn--full" href="#start">Start my free month</a>
 <p class="sc-small sc-center sc-after">Healthcare, legal or finance? Talk to us about your<br>compliance requirements first, before you switch call recording on.</p></div>
 </div>
 </div></section>
@@ -266,6 +278,10 @@
       cap=box.querySelector('.sc-media__cap');
   var userStarted=false;
   function fitHit(){ box.style.setProperty('--cap-h', cap.offsetHeight+'px'); }
+  /* The caption is one line of Typekit calibri. Measured before the kit lands it is
+     one line of the fallback, a different height, and the play button sits off
+     centre until something else forces a reflow. */
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(fitHit);
   /* The video must never start on its own. If anything plays it before the
      viewer asks, stop it and go back to the poster. */
   v.addEventListener('playing', function(){
@@ -273,9 +289,12 @@
   });
   function toggle(){ userStarted=true; v.paused ? v.play() : v.pause(); }
   hit.addEventListener('click', toggle);
-  v.addEventListener('play', function(){ box.classList.add('is-playing') });
-  v.addEventListener('pause', function(){ box.classList.remove('is-playing') });
-  v.addEventListener('ended', function(){ box.classList.remove('is-playing'); v.load() });
+  /* The hit area IS the control, so its label has to say what the next click does.
+     Left on "Play video" it tells a screen reader the wrong thing for 34 seconds. */
+  function label(playing){ hit.setAttribute('aria-label', playing ? 'Pause video' : 'Play video'); }
+  v.addEventListener('play', function(){ box.classList.add('is-playing'); label(true) });
+  v.addEventListener('pause', function(){ box.classList.remove('is-playing'); label(false) });
+  v.addEventListener('ended', function(){ box.classList.remove('is-playing'); label(false); v.load() });
   window.addEventListener('resize', fitHit); fitHit();
 })();
 </script>

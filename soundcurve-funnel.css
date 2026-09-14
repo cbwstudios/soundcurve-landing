@@ -106,9 +106,6 @@ p{ margin:0 0 var(--sc-gap-para) }
 /* Last child never pushes space against its container's padding. */
 h1:last-child,h2:last-child,h3:last-child,p:last-child,ul:last-child{ margin-bottom:0 }
 
-/* Intro copy that sits under a section heading opens the block that follows. */
-.sc-sub{ margin-bottom:var(--sc-gap-block) }
-.sc-sub:last-child{ margin-bottom:0 }
 a{ color:var(--sc-mid) }
 
 /* The marker highlight. A stroke across the bottom of the line, not a block. */
@@ -126,13 +123,15 @@ mark{
    shorten the line rather than letting it become a second paragraph. */
 .sc-kicker{ font-size:22px; margin:0 0 var(--sc-5); text-wrap:balance;
             color:var(--sc-deep); font-style:italic }
-/* Centred intro copy. text-wrap:balance for the same reason h1 and h2 use it:
-   without it a two line sub strands a stub on line two (measured 614/185 and
-   630/167 before this), and a centred stub under a heading reads as a mistake.
+/* Intro copy under a section heading: it opens the block that follows, so it owns
+   the space down to it. Centred, and text-wrap:balance for the same reason h1 and
+   h2 use it: without it a two line sub strands a stub on line two (measured 614/185
+   and 630/167 before this), and a centred stub under a heading reads as a mistake.
    Balance also means the copy can change without re-tuning the wording. */
 .sc-sub{ font-size:var(--sc-size-body); color:var(--sc-soft);
          max-width:72ch; margin-inline:auto; text-align:center;
-         text-wrap:balance }
+         text-wrap:balance; margin-bottom:var(--sc-gap-block) }
+.sc-sub:last-child{ margin-bottom:0 }
 .sc-small{ font-size:var(--sc-size-small); color:var(--sc-soft) }
 /* Centred text balances its lines. A centred paragraph that ends on a stub reads
    as a mistake in a way left-aligned text does not, because both edges are ragged.
@@ -194,6 +193,10 @@ mark{
                                         .sc-btn:hover{ transform:none } }
 .sc-btn--full{ display:block; width:100%; font-size:var(--sc-size-lead);
                padding:var(--sc-4) var(--sc-5) }
+/* The primary CTA is a <button> inside a real form, not a link. A button does not
+   inherit the page font, so without this the one element we most want on-brand is
+   the only one rendering in the UA default. */
+button.sc-btn{ font-family:inherit }
 
 /* ---- media block: player and its caption read as one object ----------- */
 /* Container background matches the caption, so the clipped corner never shows
@@ -229,6 +232,10 @@ mark{
                          border-top:15px solid transparent;
                          border-bottom:15px solid transparent }
 .sc-media.is-playing .sc-media__hit i{ opacity:0 }
+/* Caption cues. Only ever seen by a viewer whose device asked for captions, so the
+   job is legibility over the frame, not decoration. Deliberately plain. */
+.sc-media video::cue{ background:rgba(0,0,0,.72); color:#fff;
+                      font-family:var(--sc-font); font-size:.85em; line-height:1.4 }
 
 /* ---- form ------------------------------------------------------------- */
 .sc-field{ display:block; font-size:14px; font-weight:var(--sc-weight-bold);

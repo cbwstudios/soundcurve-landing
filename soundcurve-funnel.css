@@ -355,6 +355,12 @@ input[type=text],input[type=tel],input[type=email],textarea,select{
                 line-height:1; margin-top:var(--sc-4) }
 .sc-price__amt span{ font-size:21px; color:var(--sc-soft) }
 .sc-price__body{ padding:var(--sc-5) var(--sc-6) }
+/* A question sitting between the list and the button, at the moment the reader is
+   deciding. It makes no claim, so it cannot be wrong for any industry, and it asks
+   the reader to do the arithmetic the price should be compared against. */
+.sc-price__ask{ border-top:var(--sc-rule); margin:0 var(--sc-6);
+                padding:var(--sc-5) 0 var(--sc-4); text-align:center;
+                font-size:var(--sc-size-lead); text-wrap:balance }
 .sc-price__cta{ padding:0 var(--sc-6) var(--sc-6) }
 
 /* ==========================================================================

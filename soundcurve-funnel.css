@@ -119,7 +119,8 @@ mark{
 /* A single line that closes the lead, sized between the lead and an h3. It sits
    directly above whatever proves the point, so it stays ONE line: if it wraps,
    shorten the line rather than letting it become a second paragraph. */
-.sc-kicker{ font-size:22px; margin:0 0 var(--sc-5); text-wrap:balance }
+.sc-kicker{ font-size:22px; margin:0 0 var(--sc-5); text-wrap:balance;
+            color:var(--sc-deep); font-style:italic }
 /* Centred intro copy. text-wrap:balance for the same reason h1 and h2 use it:
    without it a two line sub strands a stub on line two (measured 614/185 and
    630/167 before this), and a centred stub under a heading reads as a mistake.

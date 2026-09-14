@@ -360,9 +360,11 @@ input[type=text],input[type=tel],input[type=email],textarea,select{
 /* Tag cloud. LABELS, not buttons: no border, no hover, no pointer, because they
    do not go anywhere. Pale ground so they read as a set rather than as controls.
    Use for an illustrative list, never an exhaustive one. */
-.sc-tags{ list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap;
-          gap:var(--sc-2); justify-content:center }
-.sc-tags li{ background:#fff; border:var(--sc-rule); border-radius:var(--sc-r-pill);
+.sc-tags{ list-style:none; margin:var(--sc-4) 0 0; padding:0; display:flex;
+          flex-wrap:wrap; gap:var(--sc-2); justify-content:center }
+/* No border. White fill on the pale ground is enough separation, and a border
+   plus a fill is the grammar of a control, which these are not. */
+.sc-tags li{ background:#fff; border-radius:var(--sc-r-pill);
              padding:var(--sc-2) var(--sc-4); font-size:var(--sc-size-meta);
              color:var(--sc-ink) }
 

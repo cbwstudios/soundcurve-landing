@@ -194,7 +194,11 @@ mark{
 /* ---- form ------------------------------------------------------------- */
 .sc-field{ display:block; font-size:14px; font-weight:var(--sc-weight-bold);
            margin:var(--sc-3) 0 var(--sc-1) }
-.sc-field:first-of-type{ margin-top:0 }
+/* Only the card's own first child sits flush against its padding.
+   :first-of-type was wrong: the name labels are nested one level down, so the
+   first .sc-field that is a DIRECT child of the card (Email) matched it and
+   lost its 14px, sitting flush under the name row. */
+.sc-card > .sc-field:first-child{ margin-top:0 }
 input[type=text],input[type=tel],input[type=email],textarea,select{
   width:100%; padding:var(--sc-3); border:1px solid #cfd8de;
   border-radius:var(--sc-r-ctl); font-family:inherit; font-size:var(--sc-size-meta);

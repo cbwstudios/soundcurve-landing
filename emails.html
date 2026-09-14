@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Receptionist Upsell: Email Previews</title>
+<style>
+  :root{
+    --deep:#1e5d86; --mid:#2778ae; --light:#4a8cb8; --pale:#f1f6f9;
+    --lime:#d6df23; --ink:#4c4b49; --line:#dde5ea;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;padding:32px 16px 64px;background:var(--pale);
+       font-family:Calibri,Carlito,Candara,Segoe UI,Arial,sans-serif;color:var(--ink)}
+  .wrap{max-width:720px;margin:0 auto}
+  h1{font-size:26px;color:var(--deep);margin:0 0 4px}
+  .sub{font-size:15px;color:#7a8288;margin:0 0 8px}
+  .rule{height:3px;background:linear-gradient(90deg,var(--light),var(--deep));border-radius:2px;margin:14px 0 30px}
+  .note{background:#fff;border-left:3px solid var(--lime);padding:12px 16px;font-size:14px;
+        line-height:1.5;margin:0 0 30px;border-radius:0 4px 4px 0}
+  .card{background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden;
+        margin:0 0 34px;box-shadow:0 1px 3px rgba(30,93,134,.07)}
+  .tag{background:var(--deep);color:#fff;font-size:12px;font-weight:bold;letter-spacing:.06em;
+       text-transform:uppercase;padding:7px 16px}
+  .tag span{color:var(--lime);font-weight:normal;text-transform:none;letter-spacing:0}
+  .meta{padding:14px 20px;border-bottom:1px solid var(--line);background:#fbfdfe}
+  .row{display:flex;gap:10px;font-size:14px;line-height:1.5;padding:2px 0}
+  .row .k{color:#8a9298;min-width:64px;flex-shrink:0}
+  .row .v{color:var(--ink)}
+  .row .v.subject{font-weight:bold;color:var(--deep);font-size:15px}
+  .row .v.preview{color:#7a8288}
+  .chars{color:#a8b0b6;font-size:12px;margin-left:4px}
+  .body{padding:24px 20px 26px;font-size:16px;line-height:1.55}
+  .body p{margin:0 0 14px}
+  .btn{background:var(--mid);color:#fff;padding:14px 26px;border-radius:5px;text-decoration:none;
+       font-weight:bold;display:inline-block;font-size:16px}
+  .btnwrap{margin:24px 0}
+  .small{font-size:14px;color:#7a8288}
+  .sig{margin:0}
+  .foot{border-top:1px solid var(--line);margin-top:26px;padding-top:12px;
+        font-size:12px;color:#8a9298;line-height:1.5}
+  .slot{background:#fff8d6;border:1px dashed #c9b458;color:#6b5d1f;
+        padding:2px 6px;border-radius:3px;font-size:12px;font-weight:bold}
+  .count{font-size:12px;color:#a8b0b6;padding:0 20px 16px}
+  @media(max-width:520px){.row{flex-direction:column;gap:0}.row .k{min-width:0;font-size:12px}}
+</style>
+</head>
+<body><style>
+.pv-nav{position:sticky;top:0;z-index:9999;display:flex;gap:2px;
+  background:#11364e;padding:0 8px;font:600 13px/1 system-ui,sans-serif}
+.pv-nav a{display:block;padding:11px 16px;color:rgba(255,255,255,.62);
+  text-decoration:none;border-bottom:3px solid transparent}
+.pv-nav a:hover{color:#fff}
+.pv-nav a[aria-current]{color:#fff;border-bottom-color:#d6df23}
+.pv-nav span{margin-left:auto;align-self:center;
+  color:rgba(255,255,255,.38);font-weight:400;font-size:11px}
+</style>
+<nav class="pv-nav">
+<a href="index.html">Landing page</a>
+<a href="emails.html" aria-current="page">Emails 1-4</a>
+<span>preview only &middot; not part of the build</span>
+</nav>
+
+<div class="wrap">
+
+  <h1>AI Receptionist Upsell</h1>
+  <p class="sub">Four emails to existing SoundCurve customers. Days 0, 5, 10 and 16. Drafts for review.</p>
+  <div class="rule"></div>
+
+  <p class="note">
+    <strong>Changed in this pass:</strong> the deadline is gone. No countdown, no end date,
+    nothing to enforce. The offer is a standing perk for existing customers. The opening line
+    no longer names trades, so food service and legal see themselves in it. The California
+    disclosure claim is now stated as policy. Sender is now plain <strong>SoundCurve</strong>, not SoundCurve Sales: this list filters on sender, and “Sales” gets deleted before the subject is read. Subject lines are deliberately plain rather than clever, because brand recognition already earns the open and a teaser reads as marketing filler on top of it. None of them can now be mistaken for an outage or a cancellation notice, which two of the old ones were. <strong>New email 3</strong> sells what comes back after the call: the write-up, and the read on how the caller sounded. It pays off email 1’s premise, since email 1 says you missed the call because you were busy and this says here is what you missed and whether it mattered. Email 1 now sells the intent routing: it is the menu that understands what the caller wants and sends them to the right person. Email 2 now carries the customisation proof and sets expectations honestly: the demo runs on a sample business, so the reader is told to judge the conversation rather than the answers. Emails 2 and 3 reference what came before them.
+    All four buttons go to the same customer-only landing page.
+  </p>
+
+  <!-- EMAIL 1 -->
+  <div class="card">
+    <div class="tag">Email 1 <span>· day 0 · the offer</span></div>
+    <div class="meta">
+      <div class="row"><span class="k">From</span><span class="v">SoundCurve</span></div>
+      <div class="row"><span class="k">Subject</span><span class="v subject">Your phones can take the call now<span class="chars">33 chars</span></span></div>
+      <div class="row"><span class="k">Preview</span><span class="v preview">Built around your business. First month on us.<span class="chars">45 chars</span></span></div>
+    </div>
+    <div class="body">
+      <p>Hi Sarah,</p>
+      <p>Nobody misses calls because they don’t care. They miss them because they’re with a customer, on the other line, or in the middle of the job the next caller wants to book.</p>
+      <p>Your phones can answer those calls now. It’s an AI receptionist built around your business, not a phone menu that makes people guess. It works out what the caller needs, and depending on how you set it up it can put them through to the right person, book the appointment, or take the details into your CRM.</p>
+      <p><strong>The first month is on us.</strong> After that it’s $99.99 a month and includes 250 minutes. Same phones, same number, and we set it up around how you want calls handled.</p>
+      <div class="btnwrap"><a class="btn" href="#">See the offer</a></div>
+      <p class="small" style="margin-top:-10px">The page has our number if you’d rather just call.</p>
+      <p class="sig">SoundCurve<br>888-408-7102</p>
+      <div class="foot">
+        You are receiving this because you are a SoundCurve customer.<br>
+        <span class="slot">UNSUBSCRIBE: native GHL element, supplies the business address</span>
+      </div>
+    </div>
+    <div class="count">149 words · 0 em dashes · single CTA</div>
+  </div>
+
+  <!-- EMAIL 2 -->
+  <div class="card">
+    <div class="tag">Email 2 <span>· day 5 · the demo</span></div>
+    <div class="meta">
+      <div class="row"><span class="k">From</span><span class="v">SoundCurve</span></div>
+      <div class="row"><span class="k">Subject</span><span class="v subject">Judge the conversation, not the answers<span class="chars">39 chars</span></span></div>
+      <div class="row"><span class="k">Preview</span><span class="v preview">It’s running on a sample business, not yours.<span class="chars">44 chars</span></span></div>
+    </div>
+    <div class="body">
+      <p>Hi Sarah,</p>
+      <p>We wrote last week about the AI receptionist that answers your phone when you can’t.</p>
+      <p>Easiest way to judge it is to call our demo line and ask it the kinds of things your customers ask you. Hours, pricing, whether you handle a particular job, how soon someone can come out.</p>
+      <p>It runs on a sample business rather than yours, so listen to how it handles the conversation. Yours would know your services, your hours, and who handles what.</p>
+      <p>It says it’s an assistant at the start of every call, and it puts the caller through to a person when someone is there.</p>
+      <div class="btnwrap"><a class="btn" href="#">Call the demo line</a></div>
+      <p class="small">Or dial it directly: (424) 291-9568</p>
+      <p class="sig">SoundCurve<br>888-408-7102</p>
+      <div class="foot">
+        You are receiving this because you are a SoundCurve customer.<br>
+        <span class="slot">UNSUBSCRIBE: native GHL element, supplies the business address</span>
+      </div>
+    </div>
+    <div class="count">128 words · 0 em dashes · single CTA · <strong>two claims to configure on the demo agent</strong></div>
+  </div>
+
+  <!-- EMAIL 3 -->
+  <div class="card">
+    <div class="tag">Email 3 <span>· day 10 · what you get back</span></div>
+    <div class="meta">
+      <div class="row"><span class="k">From</span><span class="v">SoundCurve</span></div>
+      <div class="row"><span class="k">Subject</span><span class="v subject">Who called, what they wanted, how they sounded<span class="chars">45 chars</span></span></div>
+      <div class="row"><span class="k">Preview</span><span class="v preview">A written summary of every call you didn’t take.<span class="chars">47 chars</span></span></div>
+    </div>
+    <div class="body">
+      <p>Hi Sarah,</p>
+      <p>Missing the call is one thing. Not knowing what it was about until tomorrow is another.</p>
+      <p>Every call it answers comes back to you written up: who called, what they wanted, and how they sounded. If someone was angry, you know before they leave a review. If someone was ready to buy, you know before they call whoever else they were going to call.</p>
+      <p>You get that whether you were on a job, with a client, or asleep.</p>
+      <div class="btnwrap"><a class="btn" href="#">See what you’d get back</a></div>
+      <p class="sig">SoundCurve<br>888-408-7102</p>
+      <div class="foot">
+        You are receiving this because you are a SoundCurve customer.<br>
+        <span class="slot">UNSUBSCRIBE: native GHL element, supplies the business address</span>
+      </div>
+    </div>
+    <div class="count">96 words · 0 em dashes · single CTA · <strong>confirm sentiment and summaries are included at $99.99</strong></div>
+  </div>
+
+  <!-- EMAIL 4 -->
+  <div class="card">
+    <div class="tag">Email 4 <span>· day 16 · the close</span></div>
+    <div class="meta">
+      <div class="row"><span class="k">From</span><span class="v">SoundCurve</span></div>
+      <div class="row"><span class="k">Subject</span><span class="v subject">$99.99, cancel whenever<span class="chars">23 chars</span></span></div>
+      <div class="row"><span class="k">Preview</span><span class="v preview">No contract change, and setup is on us.<span class="chars">38 chars</span></span></div>
+    </div>
+    <div class="body">
+      <p>Hi Sarah,</p>
+      <p>Last note on this one. If you called the demo line, you’ve already heard what it does.</p>
+      <p>It’s $99.99 a month added to your current bill, with 250 minutes included. Cancel anytime. It’s an add-on, not a change to your contract. The first month is still on us, and so is the setup.</p>
+      <p>If now isn’t the time, no hard feelings.</p>
+      <div class="btnwrap"><a class="btn" href="#">Set it up on my phones</a></div>
+      <p class="sig">SoundCurve<br>888-408-7102</p>
+      <div class="foot">
+        You are receiving this because you are a SoundCurve customer.<br>
+        <span class="slot">UNSUBSCRIBE: native GHL element, supplies the business address</span>
+      </div>
+    </div>
+    <div class="count">83 words · 0 em dashes · single CTA · no deadline, nothing to enforce</div>
+  </div>
+
+</div>
+</body>
+</html>

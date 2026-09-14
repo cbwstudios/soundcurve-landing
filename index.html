@@ -36,7 +36,22 @@
 .note b{ color:var(--sc-ink) }
 .ft{ border-top:var(--sc-rule); padding-block:var(--sc-5); text-align:center }
 .ft a{ margin-inline:9px }
-</style></head><body>
+</style></head><body><style>
+.pv-nav{position:sticky;top:0;z-index:9999;display:flex;gap:2px;
+  background:#11364e;padding:0 8px;font:600 13px/1 system-ui,sans-serif}
+.pv-nav a{display:block;padding:11px 16px;color:rgba(255,255,255,.62);
+  text-decoration:none;border-bottom:3px solid transparent}
+.pv-nav a:hover{color:#fff}
+.pv-nav a[aria-current]{color:#fff;border-bottom-color:#d6df23}
+.pv-nav span{margin-left:auto;align-self:center;
+  color:rgba(255,255,255,.38);font-weight:400;font-size:11px}
+</style>
+<nav class="pv-nav">
+<a href="index.html" aria-current="page">Landing page</a>
+<a href="emails.html">Emails 1-4</a>
+<span>preview only &middot; not part of the build</span>
+</nav>
+
 
 <header class="hd"><div class="sc-wrap">
 <img src="https://soundcurve.com/wp-content/uploads/2024/04/Soundcurve.svg" alt="SoundCurve">

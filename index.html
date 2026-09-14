@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>AI Receptionist</title>
 <link rel="stylesheet" href="https://use.typekit.net/sao6jba.css">
-<link rel="stylesheet" href="soundcurve-funnel.css?v=62">
+<link rel="stylesheet" href="soundcurve-funnel.css?v=63">
 <style>
 /* Page-specific only. Everything else comes from soundcurve-funnel.css.
    Target: keep this block under 20 rules. If something here is reusable,
@@ -91,9 +91,22 @@
 <label class="sc-field" for="f-notes">Anything you want us to cover on the call?</label>
 <textarea id="f-notes" name="notes" rows="2" placeholder="Optional. For example: after-hours only, never quote prices."></textarea>
 
-<label class="sc-consent" for="f-consent"><input id="f-consent" name="consent" type="checkbox" required>
-<span>SoundCurve may text and call me about the AI Receptionist. Automated technology may be used. Not a condition of purchase, and you can opt out any time. <a href="https://soundcurve.com/privacy-policy/">Privacy</a> &middot; <a href="https://soundcurve.com/terms-of-service/">Terms</a></span>
+<!-- TWO boxes, both unchecked, both OPTIONAL. Not a style choice:
+     · one combined box is Twilio rejection 30913 (marketing and informational
+       consent must be separate)
+     · a required consent box is 30923/30931 (consent cannot be a condition of use)
+     Wording is word for word what is already live on stage's three forms, because
+     the checkbox has to mirror the registered campaign description. Do not reword
+     either box without changing the A2P submission to match. -->
+<label class="sc-consent" for="f-consent-mkt"><input id="f-consent-mkt" name="sms_marketing_consent" type="checkbox">
+<span>I consent to receive marketing text messages, about special offers, discounts, and service updates, from SoundCurve at the phone number provided. Message frequency may vary. Message &amp; data rates may apply. Text HELP for assistance, reply STOP to opt out.</span>
 </label>
+
+<label class="sc-consent" for="f-consent-txn"><input id="f-consent-txn" name="sms_transactional_consent" type="checkbox">
+<span>I consent to receive non-marketing text messages from SoundCurve about sales follow-up on my inquiry, quote and demo scheduling, appointment and installation reminders, and account or service notifications. Message frequency may vary, message &amp; data rates may apply. Text HELP for assistance, reply STOP to opt out.</span>
+</label>
+
+<p class="sc-consent__policy">By submitting, you agree to our <a href="https://soundcurve.com/privacy-policy/">Privacy Policy</a> and <a href="https://soundcurve.com/terms-of-service/#sms">Terms of Service</a>.</p>
 
 <button class="sc-btn sc-btn--primary sc-btn--full" type="submit">Start my free month</button>
 <p class="sc-small sc-after">Support will reach out to help you get started.</p>

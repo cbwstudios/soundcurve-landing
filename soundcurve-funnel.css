@@ -435,7 +435,9 @@ input[type=text],input[type=tel],input[type=email],textarea,select{
   /* .sc-feats is its OWN grid, not a .sc-row, so it needs collapsing separately.
      Without these it stayed four across at every width: 70px tiles on a phone. */
   .sc-feats{ grid-template-columns:repeat(2,1fr) }
-  .sc-logos{ grid-template-columns:repeat(3,1fr) }
+  /* 28 logos: at 3 across this was 10 rows of near-empty 224px cells. */
+  .sc-logos{ grid-template-columns:repeat(5,1fr) }
+  .sc-logos div{ height:80px; padding:var(--sc-3) }
   .sc-sub{ text-align:left }
 }
 @media (max-width:640px){
@@ -443,5 +445,7 @@ input[type=text],input[type=tel],input[type=email],textarea,select{
   /* Two across, not one. Twelve tiles in a single column is an endless scroll,
      and with the hover text hidden on touch each tile is only an icon and a title. */
   .sc-feats{ grid-template-columns:repeat(2,1fr) }
-  .sc-logos{ grid-template-columns:repeat(3,1fr) }
+  .sc-logos{ grid-template-columns:repeat(4,1fr); gap:var(--sc-2) }
+  .sc-logos div{ height:64px; padding:10px }
+  .sc-logos img{ max-height:28px }
 }

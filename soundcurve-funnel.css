@@ -323,6 +323,9 @@ input[type=text],input[type=tel],input[type=email],textarea,select{
 .sc-medialist p{ margin:0; font-size:var(--sc-size-meta); color:var(--sc-soft) }
 
 /* ---- logo wall -------------------------------------------------------- */
+/* NOTE: the element carries an inline --cols, and an inline custom property beats
+   a media query that sets --cols on this class. Breakpoints below therefore set
+   grid-template-columns DIRECTLY. Setting --cols in a breakpoint does nothing. */
 .sc-logos{ display:grid; grid-template-columns:repeat(var(--cols,5),1fr);
            gap:var(--sc-3); max-width:880px; margin-inline:auto }
 .sc-logos div{ border:var(--sc-border); border-radius:var(--sc-r-card); height:92px;
@@ -424,7 +427,7 @@ input[type=text],input[type=tel],input[type=email],textarea,select{
   .sc-row{ --gap:var(--sc-5) }
   .sc-row[style*="--cols:4"]{ grid-template-columns:repeat(2,1fr) }
   .sc-feats{ grid-template-columns:repeat(3,1fr) }
-  .sc-logos{ --cols:5 }
+  .sc-logos{ grid-template-columns:repeat(5,1fr) }
 }
 @media (max-width:900px){
   :root{ --sc-size-h1:36px; --sc-size-h2:30px; --sc-size-display:46px; --sc-8:48px }
@@ -432,7 +435,7 @@ input[type=text],input[type=tel],input[type=email],textarea,select{
   /* .sc-feats is its OWN grid, not a .sc-row, so it needs collapsing separately.
      Without these it stayed four across at every width: 70px tiles on a phone. */
   .sc-feats{ grid-template-columns:repeat(2,1fr) }
-  .sc-logos{ --cols:3 }
+  .sc-logos{ grid-template-columns:repeat(3,1fr) }
   .sc-sub{ text-align:left }
 }
 @media (max-width:640px){
@@ -440,5 +443,5 @@ input[type=text],input[type=tel],input[type=email],textarea,select{
   /* Two across, not one. Twelve tiles in a single column is an endless scroll,
      and with the hover text hidden on touch each tile is only an icon and a title. */
   .sc-feats{ grid-template-columns:repeat(2,1fr) }
-  .sc-logos{ --cols:2 }
+  .sc-logos{ grid-template-columns:repeat(3,1fr) }
 }

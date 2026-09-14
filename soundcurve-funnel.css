@@ -120,6 +120,14 @@ mark{
 /* ---- surfaces --------------------------------------------------------- */
 .sc-card{ background:#fff; border:var(--sc-border);
           border-radius:var(--sc-r-card); padding:var(--sc-6) }
+/* Inverted card, for the one item in a row that is NOT a peer of the others:
+   it carries the thing that is always true rather than one of the options.
+   Lime on the icon because lime punctuates, it never fills. */
+.sc-card--dark{ background:var(--sc-deep); border-color:var(--sc-deep); color:#fff }
+.sc-card--dark h3{ color:#fff }
+.sc-card--dark .sc-small{ color:rgba(255,255,255,.82) }
+.sc-card--dark .sc-ic{ background:rgba(255,255,255,.15) }
+.sc-card--dark .sc-ic svg{ stroke:var(--sc-lime) }
 .sc-tint{ background:var(--sc-pale) }
 
 /* icon disc, sized by token so every icon on the site matches */
@@ -131,6 +139,10 @@ mark{
 }
 .sc-ic--sm{ --sc-disc-size:var(--sc-disc-size-sm); margin-bottom:0 }
 .sc-ic--center{ margin-inline:auto }
+/* A numeral in the icon disc, so an enumerated step and an illustrated one are
+   interchangeable in the same slot without a second set of box rules. */
+.sc-ic--num{ background:var(--sc-deep); color:#fff; font-size:26px;
+             font-weight:var(--sc-weight-bold); line-height:1 }
 .sc-ic svg{ width:46%; height:46%; stroke:var(--sc-deep); stroke-width:1.8;
             fill:none; stroke-linecap:round; stroke-linejoin:round }
 

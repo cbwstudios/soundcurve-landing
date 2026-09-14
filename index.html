@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>AI Receptionist</title>
 <link rel="stylesheet" href="https://use.typekit.net/sao6jba.css">
-<link rel="stylesheet" href="soundcurve-funnel.css?v=28">
+<link rel="stylesheet" href="soundcurve-funnel.css?v=29">
 <style>
 /* Page-specific only. Everything else comes from soundcurve-funnel.css.
    Target: keep this block under 20 rules. If something here is reusable,
@@ -15,17 +15,20 @@
 /* Column ratio only above the breakpoint, or it beats the system's collapse
    to one column (same specificity, but page CSS loads after the system file). */
 @media (min-width:901px){
-  /* Left column is held just above the headline's longest line (504px at 56px),
-     so it cannot wrap to three. The video is square, so a narrower left column
-     is also a shorter one, which lifts the button. */
-  .hero{ --cols:2; --gap:48px; --align:stretch; grid-template-columns:0.92fr 1fr }
+  /* The video is square, so the left column's height is set by its width. This
+     ratio makes the video tall enough to reach the bottom of the form card on its
+     own, which is what keeps the gap under the paragraph at its natural 26px
+     instead of ballooning into slack. Narrower than this and the gap opens up. */
+  .hero{ --cols:2; --gap:48px; --align:stretch; grid-template-columns:1.15fr 1fr }
   /* the h1 lives in a column, not the full page width, so it is sized for that
      column: two lines, with the marked phrase whole on the second. */
   .hero h1{ font-size:56px }
   .sc-lb{ display:inline }
   .hero>div:first-child{ display:flex; flex-direction:column }
   .hero .sc-card{ display:flex; flex-direction:column }
-  .hero textarea{ flex:0 1 auto; min-height:46px; max-height:112px }
+  /* rows="2" sets the intrinsic height, so a min-height below that does nothing.
+     Left as max-height only, which is the constraint that actually binds. */
+  .hero textarea{ flex:0 1 auto; max-height:112px }
   /* The video is square, so its height is fixed by the column width and the left
      column can never stretch to meet the card. Pushing it down with auto margin
      pins its bottom edge to the row's bottom, so the two columns stay level no

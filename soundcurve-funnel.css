@@ -51,7 +51,7 @@
   /* ---- colour --------------------------------------------------------- */
   --sc-deep:#1e5d86;  --sc-mid:#2778ae;
   --sc-lime:#d6df23;  --sc-lime-ink:#243b0c;  --sc-mark:#eaef91;
-  --sc-ink:#222222;
+  --sc-ink:#222222;   --sc-charcoal:#4c4b49;   /* brand neutral, style guide */
   /* Was #6f7a80. That grey was ours, not the brand's: the live site has no
      lighter body colour at all. Secondary text differs by SIZE, never colour. */
   --sc-soft:#222222;
@@ -135,7 +135,7 @@ mark{
 .sc-center{ text-align:center }
 .sc-center p, p.sc-center{ text-wrap:balance }
 .sc-after{ margin-top:var(--sc-3) }          /* fine print following a control */
-.sc-note{ font-size:var(--sc-size-small); color:var(--sc-mid);
+.sc-note{ font-size:var(--sc-size-small); color:var(--sc-charcoal);
           margin-bottom:var(--sc-3) }
 .sc-sub--after{ margin-top:var(--sc-6); margin-bottom:0 }
 
@@ -228,11 +228,12 @@ mark{
 /* ---- form ------------------------------------------------------------- */
 .sc-field{ display:block; font-size:14px; font-weight:var(--sc-weight-bold);
            margin:var(--sc-3) 0 var(--sc-1) }
-/* Only the card's own first child sits flush against its padding.
-   :first-of-type was wrong: the name labels are nested one level down, so the
-   first .sc-field that is a DIRECT child of the card (Email) matched it and
-   lost its 14px, sitting flush under the name row. */
-.sc-card > .sc-field:first-child{ margin-top:0 }
+/* A label at the top of ANY container adds no top margin of its own, so it never
+   stacks on the margin of whatever sits above that container. Scoped to the card
+   this was still wrong: the name labels are nested inside a row, kept their 14px,
+   and stacked it on the note's 14px, putting the fields 28px below a note that
+   sat 14px below the rule. Equal boxes, visibly unequal text. */
+.sc-field:first-child{ margin-top:0 }
 input[type=text],input[type=tel],input[type=email],textarea,select{
   width:100%; padding:var(--sc-3); border:1px solid #cfd8de;
   border-radius:var(--sc-r-ctl); font-family:inherit; font-size:var(--sc-size-meta);

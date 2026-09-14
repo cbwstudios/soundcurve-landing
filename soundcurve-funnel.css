@@ -116,8 +116,13 @@ mark{
 
 /* ---- text roles ------------------------------------------------------- */
 .sc-lead{ font-size:var(--sc-size-lead); margin-bottom:var(--sc-5) }
+/* Centred intro copy. text-wrap:balance for the same reason h1 and h2 use it:
+   without it a two line sub strands a stub on line two (measured 614/185 and
+   630/167 before this), and a centred stub under a heading reads as a mistake.
+   Balance also means the copy can change without re-tuning the wording. */
 .sc-sub{ font-size:var(--sc-size-body); color:var(--sc-soft);
-         max-width:72ch; margin-inline:auto; text-align:center }
+         max-width:72ch; margin-inline:auto; text-align:center;
+         text-wrap:balance }
 .sc-small{ font-size:var(--sc-size-small); color:var(--sc-soft) }
 .sc-center{ text-align:center }
 .sc-after{ margin-top:var(--sc-3) }          /* fine print following a control */

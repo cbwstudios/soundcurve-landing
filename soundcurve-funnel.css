@@ -124,7 +124,11 @@ mark{
          max-width:72ch; margin-inline:auto; text-align:center;
          text-wrap:balance }
 .sc-small{ font-size:var(--sc-size-small); color:var(--sc-soft) }
+/* Centred text balances its lines. A centred paragraph that ends on a stub reads
+   as a mistake in a way left-aligned text does not, because both edges are ragged.
+   Measured on the compliance line: 526/230 before, 402/355 after. */
 .sc-center{ text-align:center }
+.sc-center p, p.sc-center{ text-wrap:balance }
 .sc-after{ margin-top:var(--sc-3) }          /* fine print following a control */
 .sc-note{ font-size:var(--sc-size-small); color:var(--sc-mid);
           margin-bottom:var(--sc-3) }

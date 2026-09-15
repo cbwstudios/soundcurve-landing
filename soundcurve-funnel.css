@@ -544,7 +544,11 @@ input[type=text],input[type=tel],input[type=email],textarea,select{
    margin, so the rhythm rendered at 28. The wrapper is the row-level carrier,
    so it keeps the margin and the item loses it. */
 .sc-heroR .form-field-wrapper{ margin:0 0 var(--sc-3) !important }
-.sc-heroR .field-container,.sc-heroR .form-builder--item{ margin:0 !important }
+/* Scoped through .form-field-wrapper, which exists only on the funnel. The
+   comp's own form has no wrapper, so it keeps the 14px on the item itself and
+   does not lose its field rhythm. */
+.sc-heroR .field-container,
+.sc-heroR .form-field-wrapper .form-builder--item{ margin:0 !important }
 
 /* The builder emits an empty <!----> placeholder field at the top of the form.
    The wrapper has to go too, or its own margin survives the hidden item. */

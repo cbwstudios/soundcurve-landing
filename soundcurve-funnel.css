@@ -258,8 +258,11 @@ input[type=text],input[type=tel],input[type=email],textarea,select{
 /* Two consent boxes sit as a pair, so they need less air between them than a
    standalone one does, and the policy line closes the group. */
 .sc-consent + .sc-consent{ margin-top:calc(var(--sc-4) * -1 + var(--sc-3)) }
+/* Owns its own top gap rather than borrowing .sc-after. Both are single-class
+   selectors, and this rule sits later in the file, so a bare `margin:0` here silently
+   cancelled .sc-after's margin-top and welded the line to the button. */
 .sc-consent__policy{ font-size:var(--sc-size-fine); color:var(--sc-soft);
-                     margin:0; line-height:var(--sc-lh-body) }
+                     margin:var(--sc-3) 0 0; line-height:var(--sc-lh-body) }
 
 /* ---- feature tiles: icon + title, description on hover ----------------
    Desktop reveals the description on hover or keyboard focus. Touch devices

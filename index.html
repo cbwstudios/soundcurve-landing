@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>AI Receptionist</title>
 <link rel="stylesheet" href="https://use.typekit.net/sao6jba.css">
-<link rel="stylesheet" href="soundcurve-funnel.css?v=67">
+<link rel="stylesheet" href="soundcurve-funnel.css?v=68">
 <style>
 /* Page-specific only. Everything else comes from soundcurve-funnel.css.
    Target: keep this block under 20 rules. If something here is reusable,
@@ -26,9 +26,15 @@
   .sc-lb{ display:inline }
   .hero>div:first-child{ display:flex; flex-direction:column }
   .hero .sc-card{ display:flex; flex-direction:column }
-  /* rows="2" sets the intrinsic height, so a min-height below that does nothing.
-     Left as max-height only, which is the constraint that actually binds. */
-  .hero textarea{ flex:0 1 auto; max-height:112px }
+  /* The card stretches to the row's height, so whenever the video column is taller
+     than the card's own content the difference used to pile up as dead space under
+     the last element: 68px of white below the policy line against a 0px gap above it.
+     Making the form fill the card and letting the notes field take up the slack puts
+     that space somewhere useful instead of pooling it at the bottom.
+     rows="2" sets the textarea's intrinsic height, so min-height below that does
+     nothing — flex-grow is what actually moves it. */
+  .hero form{ flex:1 1 auto; display:flex; flex-direction:column }
+  .hero textarea{ flex:1 1 auto; max-height:140px }
   /* The video sits at its natural distance below the kicker. It used to carry
      margin-top:auto to pin its bottom to the row's bottom, which worked while the
      card and the video were close in height. The consent copy made the card much
@@ -119,7 +125,7 @@
      being submitted. Deliberately NOT folded into the consent checkbox label: the
      policy agreement binds everyone who submits, the SMS consent binds only those who
      tick the box. One element each keeps the consent record unambiguous. -->
-<p class="sc-consent__policy sc-after">By submitting, you agree to our <a href="https://soundcurve.com/privacy-policy/">Privacy Policy</a> and <a href="https://soundcurve.com/terms-of-service/#sms">Terms of Service</a>.</p>
+<p class="sc-consent__policy">By submitting, you agree to our <a href="https://soundcurve.com/privacy-policy/">Privacy Policy</a> and <a href="https://soundcurve.com/terms-of-service/#sms">Terms of Service</a>.</p>
 </form>
 </div>
 </div></div></section>

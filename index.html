@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>AI Receptionist</title>
 <link rel="stylesheet" href="https://use.typekit.net/sao6jba.css">
-<link rel="stylesheet" href="soundcurve-funnel.css?v=64">
+<link rel="stylesheet" href="soundcurve-funnel.css?v=65">
 <style>
 /* Page-specific only. Everything else comes from soundcurve-funnel.css.
    Target: keep this block under 20 rules. If something here is reusable,
@@ -29,11 +29,13 @@
   /* rows="2" sets the intrinsic height, so a min-height below that does nothing.
      Left as max-height only, which is the constraint that actually binds. */
   .hero textarea{ flex:0 1 auto; max-height:112px }
-  /* The video is square, so its height is fixed by the column width and the left
-     column can never stretch to meet the card. Pushing it down with auto margin
-     pins its bottom edge to the row's bottom, so the two columns stay level no
-     matter how the headline or paragraph above it changes length. */
-  .hero .sc-media{ margin-top:auto }
+  /* The video sits at its natural distance below the kicker. It used to carry
+     margin-top:auto to pin its bottom to the row's bottom, which worked while the
+     card and the video were close in height. The consent copy made the card much
+     taller, and auto margin then spent the whole difference as empty space above
+     the video: a 92px hole where 26px was designed. Bottom alignment is not worth
+     that, so the columns are allowed to end at different heights. */
+  .hero .sc-media{ margin-top:0 }
 }
 /* check list rule sits the same distance below the last item as between items */
 .offer{ margin:0 0 var(--sc-3); padding-bottom:0; border-bottom:var(--sc-rule) }

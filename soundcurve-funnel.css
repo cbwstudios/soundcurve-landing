@@ -591,6 +591,15 @@ input[type=text],input[type=tel],input[type=email],textarea,select{
 
 @media (max-width:900px){
   .sc-row--std.c-row > .inner,.sc-row--std{ flex-direction:column }
+  /* GHL zeroes side padding below 767 with !important on
+     .c-column, .c-row > .inner, .c-section and their inners. Specificity cannot
+     beat !important, only match it, so the gutter is restored the same way.
+     Without this the copy runs to within 10px of the screen edge on a phone. */
+  .sc-row--std.c-row,.sc-row--std.c-row > .inner{
+    padding-left:var(--sc-gutter) !important;
+    padding-right:var(--sc-gutter) !important }
+  .sc-row--std.c-row > .inner > .c-column{
+    padding-left:0 !important; padding-right:0 !important }
   .sc-col.c-column,.sc-col{ flex:1 1 auto !important; padding-inline:0 }
   .sc-col.c-column + .sc-col,.sc-col + .sc-col{ margin-top:var(--sc-6) }
 }

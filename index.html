@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>AI Receptionist</title>
 <link rel="stylesheet" href="https://use.typekit.net/sao6jba.css">
-<link rel="stylesheet" href="soundcurve-funnel.css?v=65">
+<link rel="stylesheet" href="soundcurve-funnel.css?v=66">
 <style>
 /* Page-specific only. Everything else comes from soundcurve-funnel.css.
    Target: keep this block under 20 rules. If something here is reusable,
@@ -102,12 +102,16 @@
      which is not what goes to this list.
      UNCHECKED and OPTIONAL, never required — a required consent box is Twilio
      rejection 30923/30931, consent cannot be a condition of service.
-     Wording is word for word field 31 on the three stage forms, because the checkbox
-     has to mirror the registered campaign description. Do not reword it without
-     changing the A2P submission to match.
+     DELIBERATELY SHORTER than field 31 on the three soundcurve.com forms. Those
+     enumerate all four message types because those forms serve quotes, demos,
+     installs and account matters. This form does one thing, so it names only what
+     this form actually triggers: follow-up on the request and setup scheduling.
+     Narrower than the registered campaign is safe; wider never is.
+     Every mandated element is still here: who is sending, what they send, frequency,
+     rates, HELP and STOP. Do not drop any of those to shorten it further.
      Writes to contact.consent_sms_nonmarketing in AIO. -->
 <label class="sc-consent" for="f-consent"><input id="f-consent" name="consent_sms_nonmarketing" type="checkbox">
-<span>I consent to receive non-marketing text messages from SoundCurve about sales follow-up on my inquiry, quote and demo scheduling, appointment and installation reminders, and account or service notifications. Message frequency may vary, message &amp; data rates may apply. Text HELP for assistance, reply STOP to opt out.</span>
+<span>I agree to receive non-marketing texts from SoundCurve about this request and scheduling my setup. Frequency varies, message and data rates may apply. Reply HELP for help, STOP to opt out.</span>
 </label>
 
 <p class="sc-consent__policy">By submitting, you agree to our <a href="https://soundcurve.com/privacy-policy/">Privacy Policy</a> and <a href="https://soundcurve.com/terms-of-service/#sms">Terms of Service</a>.</p>

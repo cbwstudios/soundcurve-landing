@@ -249,12 +249,11 @@ input[type=text],input[type=tel],input[type=email],textarea,select{
 }
 .sc-consent{ display:flex; gap:10px; align-items:flex-start; margin:var(--sc-4) 0 }
 .sc-consent input{ margin:2px 0 0; flex:0 0 17px; width:17px; height:17px }
-/* Carrier-mandated consent copy is long and unavoidable: the wording has to mirror
-   the registered campaign, so it cannot be trimmed. Set it a step below the fine-print
-   tier and tighten the leading, which buys back height without making it illegible.
-   Do not go below 12px — the disclosure has to stay readable to pass review. */
-.sc-consent span{ flex:1 1 auto; font-size:12.5px;
-                  color:var(--sc-soft); line-height:1.45 }
+/* Stays on the fine-print tier. The consent block was shortened by cutting words,
+   not by shrinking type — a disclosure has to stay readable to pass carrier review,
+   so length is the lever, never size. */
+.sc-consent span{ flex:1 1 auto; font-size:var(--sc-size-fine);
+                  color:var(--sc-soft); line-height:var(--sc-lh-body) }
 .sc-consent a{ white-space:nowrap }
 /* Two consent boxes sit as a pair, so they need less air between them than a
    standalone one does, and the policy line closes the group. */

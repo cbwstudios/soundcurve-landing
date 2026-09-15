@@ -597,6 +597,12 @@ input[type=text],input[type=tel],input[type=email],textarea,select{
 .sc-col--46.c-column,.sc-col--46{ flex:0 0 calc(46% - var(--sc-gap) / 2) }
 .sc-col--40.c-column,.sc-col--40{ flex:0 0 calc(40% - var(--sc-gap) / 2) }
 .sc-col--mid.c-column,.sc-col--mid{ align-self:center }
+
+/* The hero card IS a column, so the column vocabulary above zeroes its
+   padding-inline and the card keeps only its top and bottom padding. Restating
+   it here, after that rule and one class more specific, is what keeps the card
+   symmetrical. This is the same collision that produced 34px/0/34px/24px. */
+.sc-col.sc-heroR.c-column,.sc-col.sc-heroR{ padding:var(--sc-6) }
 /* GHL wraps every column's contents in .vertical.inner. The comp carries it too
    so the box count matches; it is a pass-through and must stay one. */
 .c-column > .inner.vertical,.sc-col > .inner.vertical{ width:100%; padding:0 }

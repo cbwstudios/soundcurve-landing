@@ -612,6 +612,12 @@ input[type=text],input[type=tel],input[type=email],textarea,select{
   align-items:flex-start !important; align-self:flex-start !important;
   height:auto !important }
 
+/* The box sits in a .standard-checkbox-container that is a flex box with
+   align-items:center, so it centred itself against the full height of three
+   lines of fine print and landed level with the second line. The comp has it
+   level with the first, 2px down. */
+.sc-heroR .c-form .standard-checkbox-container{ align-items:flex-start !important }
+
 /* The consent wrapper's own 14px sits on top of the button's 26px in a flex
    container, where margins do not collapse, so the gap came out at 40 against
    the comp's 26. */

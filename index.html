@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="noindex,nofollow" name="robots"/><title>AI Receptionist</title>
 <link href="https://use.typekit.net/sao6jba.css" rel="stylesheet"/>
-<link href="soundcurve-funnel.css?v=103" rel="stylesheet"/>
+<link href="soundcurve-funnel.css?v=105" rel="stylesheet"/>
 <style>
 /* Page-specific only. Everything else comes from soundcurve-funnel.css.
    Target: keep this block under 20 rules. If something here is reusable,
@@ -295,8 +295,21 @@
      so the reserved 36px cannot be reached from there. The form is rendered by
      Vue after load, so this watches for it rather than running once.
      No effect on the comp, which has no .email-input. */
-  function unpad(){
+  function relabel(){
+    /* The form has no Submit element of its own, so GHL renders a fallback
+       labelled "Submit". The comp says "Start my free month". Set as text rather
+       than faked with CSS content, so the accessible name matches what is on
+       screen instead of a screen reader still announcing "Submit". */
     var changed=false;
+    document.querySelectorAll('.sc-heroR .c-form button[type="submit"]').forEach(function(b){
+      if(b.textContent.trim()!=='Start my free month'){
+        b.textContent='Start my free month'; changed=true;
+      }
+    });
+    return changed;
+  }
+  function unpad(){
+    var changed=relabel();
     /* The 36px comes from two places at once: an inline
        style="padding-left:36px !important" on the input, and a vendor rule in a
        cross-origin sheet keyed on .email-input. Neither can be beaten from our

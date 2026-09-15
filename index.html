@@ -1,15 +1,16 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>AI Receptionist</title>
 <link rel="stylesheet" href="https://use.typekit.net/sao6jba.css">
-<link rel="stylesheet" href="soundcurve-funnel.css?v=77">
+<link rel="stylesheet" href="soundcurve-funnel.css?v=78">
 <style>
 /* Page-specific only. Everything else comes from soundcurve-funnel.css.
    Target: keep this block under 20 rules. If something here is reusable,
    it belongs in the system file instead. */
 .sc-hd{ padding-block:var(--sc-3) }
-.sc-hd__inner{ display:flex; justify-content:space-between; align-items:center; width:100% }
+.sc-hd__inner{ display:flex; justify-content:space-between; align-items:center;
+               width:100%; gap:var(--sc-3); flex-wrap:wrap }
 /* the logo is an inlined <svg> now, not an <img> */
 .sc-hd img,.sc-hd .sc-hdr__logo{ height:34px; width:auto; display:block; flex:0 0 auto }
-.sc-hd span{ font-size:15px; color:rgba(255,255,255,.94) }
+.sc-hd span{ font-size:15px; color:rgba(255,255,255,.94); white-space:nowrap }
 /* line break that only exists above the breakpoint, so the marked phrase
    sits whole on line two instead of relying on auto-wrap */
 .sc-lb{ display:none }

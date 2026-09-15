@@ -598,6 +598,9 @@ input[type=text],input[type=tel],input[type=email],textarea,select{
   .sc-row--std.c-row{
     padding-left:var(--sc-gutter) !important;
     padding-right:var(--sc-gutter) !important }
+  /* the gutter belongs to the row ONLY — zero it everywhere inside, or the row
+     and .inner both apply it and the copy sits 52px in instead of 26 */
+  .sc-row--std.c-row > .inner,
   .sc-row--std.c-row > .inner > .c-column{
     padding-left:0 !important; padding-right:0 !important }
   .sc-col.c-column,.sc-col{ flex:1 1 auto !important; padding-inline:0 }

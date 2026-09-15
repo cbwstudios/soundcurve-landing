@@ -486,7 +486,8 @@ input[type=text],input[type=tel],input[type=email],textarea,select{
    keep in step. Nothing here lives in the form's own style settings, which are
    invisible to this file and cannot be edited without recreating the form.
    ========================================================================== */
-.sc-heroR.c-column,.sc-heroR{ background:#fff; border:var(--sc-border);
+.sc-heroR.c-column,.sc-heroR{ background:#fff;
+           border:var(--sc-border) !important;   /* beats GHL's .noBorder */
            border-radius:var(--sc-r-card); padding:var(--sc-6) }
 .sc-heroR .sc-checks{ margin:0 }
 
@@ -557,40 +558,63 @@ input[type=text],input[type=tel],input[type=email],textarea,select{
 .sc-sec--dark.c-section,.sc-sec--dark{ background:var(--sc-deep) }
 .sc-sec--flush.c-section,.sc-sec--flush{ padding-block:0 }
 
-/* ---- rows: the only thing that sets content width ---- */
-/* GHL nests .c-row > .inner > .c-column — .inner is the real layout container,
-   so the width and gutter have to land there or GHL's own 10px mobile padding
-   wins. The bare .sc-row--std selector is what the comp uses, where there is no
-   .inner; the > .inner selector is what the live page uses. */
-.sc-row--std.c-row > .inner,.sc-row--std{
+/* Header and footer set their own rhythm. These MUST come after the flush rule
+   and carry the same .c-section pairing. A bare .sc-hd is 0,1,0 and loses to
+   .sc-sec--flush.c-section at 0,2,0, which is exactly how both bars ended up
+   collapsed to the height of their own contents with no padding at all. */
+.sc-hd.c-section,.sc-hd{ padding-block:var(--sc-3) }
+.sc-ft.c-section,.sc-ft{ padding-block:var(--sc-5);
+                         border-top:var(--sc-rule); text-align:center }
+
+/* ---- rows: the only thing that sets content width ----
+   The comp now carries GHL's .inner wrappers too, so a single selector set
+   drives both pages. Previously the constraint lived on `> .inner`, which the
+   comp did not have, so every row in the comp rendered full bleed while the
+   live page rendered at 1172. Nothing matched, section for section. */
+.sc-sec.c-section > .inner,.sc-sec > .inner{
+  width:100%; max-width:calc(var(--sc-content) + var(--sc-gutter) * 2);
+  margin-inline:auto }
+.sc-row--std.c-row > .inner,.sc-row--std > .inner{
   width:100%; max-width:calc(var(--sc-content) + var(--sc-gutter) * 2);
   margin-inline:auto; padding-inline:var(--sc-gutter);
-  display:flex; align-items:stretch; gap:0 }
-.sc-row--std.c-row{ width:100%; max-width:none; padding-inline:0 }
-.sc-row--bleed.c-row,.sc-row--bleed{ max-width:none; padding-inline:0 }
+  display:flex; align-items:stretch; gap:var(--sc-gap) }
+.sc-row--std.c-row,.sc-row--std{ width:100%; max-width:none; padding-inline:0 }
+.sc-row--bleed.c-row > .inner,.sc-row--bleed > .inner{ max-width:none;
+                                                       padding-inline:0 }
 
-/* ---- columns: width plus half the gap on each inside edge ----
-   GHL has no gap control, so the gap is column padding. Half on each facing
-   edge means the visual gap is --sc-gap regardless of how many columns. */
-.sc-col.c-column,.sc-col{ flex:1 1 auto; min-width:0;
-                          padding-inline:calc(var(--sc-gap) / 2) }
-.sc-col.c-column:first-child,.sc-col:first-child{ padding-left:0 }
-.sc-col.c-column:last-child,.sc-col:last-child{ padding-right:0 }
-.sc-col--100.c-column,.sc-col--100{ flex:0 0 100%; padding-inline:0 }
-.sc-col--60.c-column,.sc-col--60{ flex:0 0 60% }
-.sc-col--54.c-column,.sc-col--54{ flex:0 0 54% }
-.sc-col--50.c-column,.sc-col--50{ flex:0 0 50% }
-.sc-col--46.c-column,.sc-col--46{ flex:0 0 46% }
-.sc-col--40.c-column,.sc-col--40{ flex:0 0 40% }
+/* ---- columns: width only. The row's flex gap does the spacing ----
+   The gutter used to be column padding. In the hero the column IS the card, so
+   the gutter and the card's inner padding fought over one box: the card got
+   24px on the left, 0 on the right and lost its own 34px entirely. Using the
+   flex container's gap leaves the column's padding free for whatever sits in
+   it. flex-basis subtracts each column's share of the gap so the percentages
+   still add to the row. */
+.sc-col.c-column,.sc-col{ flex:1 1 auto; min-width:0; padding-inline:0 }
+.sc-col--100.c-column,.sc-col--100{ flex:0 0 100% }
+.sc-col--60.c-column,.sc-col--60{ flex:0 0 calc(60% - var(--sc-gap) / 2) }
+.sc-col--54.c-column,.sc-col--54{ flex:0 0 calc(54% - var(--sc-gap) / 2) }
+.sc-col--50.c-column,.sc-col--50{ flex:0 0 calc(50% - var(--sc-gap) / 2) }
+.sc-col--46.c-column,.sc-col--46{ flex:0 0 calc(46% - var(--sc-gap) / 2) }
+.sc-col--40.c-column,.sc-col--40{ flex:0 0 calc(40% - var(--sc-gap) / 2) }
 .sc-col--mid.c-column,.sc-col--mid{ align-self:center }
+/* GHL wraps every column's contents in .vertical.inner. The comp carries it too
+   so the box count matches; it is a pass-through and must stay one. */
+.c-column > .inner.vertical,.sc-col > .inner.vertical{ width:100%; padding:0 }
 
 /* The hero h1 sits in a ~605px column, not the full 1120, so the page scale is
    too big for it. clamp() ties it to the column instead of hard-coding a second
    magic number that would need re-tuning every time the split changes. */
 .sc-heroL h1{ font-size:clamp(34px, 4.1vw, 56px) }
 
+/* Scroll target for the pricing CTA. GHL assigns its own ids to columns
+   (col-smOV4tIid8Y), so an id written on a column in the comp never survives
+   the build and href="#start" landed on nothing. This lives inside content we
+   author, so it exists identically on both pages. */
+.sc-anchor{ display:block; height:0; overflow:hidden }
+
 @media (max-width:900px){
-  .sc-row--std.c-row > .inner,.sc-row--std{ flex-direction:column }
+  .sc-row--std.c-row > .inner,.sc-row--std > .inner{ flex-direction:column;
+                                                     gap:var(--sc-6) }
   /* GHL zeroes side padding below 767 with !important on
      .c-column, .c-row > .inner, .c-section and their inners. Specificity cannot
      beat !important, only match it, so the gutter is restored the same way.
@@ -603,6 +627,6 @@ input[type=text],input[type=tel],input[type=email],textarea,select{
   .sc-row--std.c-row > .inner,
   .sc-row--std.c-row > .inner > .c-column{
     padding-left:0 !important; padding-right:0 !important }
-  .sc-col.c-column,.sc-col{ flex:1 1 auto !important; padding-inline:0 }
-  .sc-col.c-column + .sc-col,.sc-col + .sc-col{ margin-top:var(--sc-6) }
+  .sc-col.c-column,.sc-col{ flex:1 1 auto !important }
+}
 }

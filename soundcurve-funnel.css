@@ -510,8 +510,12 @@ input[type=text],input[type=tel],input[type=email],textarea,select{
 .sc-heroR input[type=checkbox]{ margin:2px 0 0; flex:0 0 17px;
                                 width:17px; height:17px }
 
-/* Submit inherits the primary button, including its depth treatment. */
+/* Submit inherits the primary button, including its depth treatment. The top
+   margin is its own: the consent checkbox is the last field, and 14px of field
+   rhythm is not enough separation between three lines of fine print and the
+   thing that submits the form. */
 .sc-heroR .btn,.sc-heroR .button-element{
+  margin-top:var(--sc-5);
   display:block; width:100%; border:2px solid var(--sc-deep);
   border-radius:var(--sc-r-ctl); background-color:var(--sc-deep); color:#fff;
   font-family:inherit; font-size:var(--sc-size-lead);

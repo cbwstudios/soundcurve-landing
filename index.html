@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>AI Receptionist</title>
 <link rel="stylesheet" href="https://use.typekit.net/sao6jba.css">
-<link rel="stylesheet" href="soundcurve-funnel.css?v=66">
+<link rel="stylesheet" href="soundcurve-funnel.css?v=67">
 <style>
 /* Page-specific only. Everything else comes from soundcurve-funnel.css.
    Target: keep this block under 20 rules. If something here is reusable,
@@ -114,10 +114,12 @@
 <span>I agree to receive non-marketing texts from SoundCurve about this request and scheduling my setup. Frequency varies, message and data rates may apply. Reply HELP for help, STOP to opt out.</span>
 </label>
 
-<p class="sc-consent__policy">By submitting, you agree to our <a href="https://soundcurve.com/privacy-policy/">Privacy Policy</a> and <a href="https://soundcurve.com/terms-of-service/#sms">Terms of Service</a>.</p>
-
 <button class="sc-btn sc-btn--primary sc-btn--full" type="submit">Start my free month</button>
-<p class="sc-small sc-after">Support will reach out to help you get started.</p>
+<!-- Policy links sit UNDER the button, where "by submitting" is adjacent to the thing
+     being submitted. Deliberately NOT folded into the consent checkbox label: the
+     policy agreement binds everyone who submits, the SMS consent binds only those who
+     tick the box. One element each keeps the consent record unambiguous. -->
+<p class="sc-consent__policy sc-after">By submitting, you agree to our <a href="https://soundcurve.com/privacy-policy/">Privacy Policy</a> and <a href="https://soundcurve.com/terms-of-service/#sms">Terms of Service</a>.</p>
 </form>
 </div>
 </div></div></section>

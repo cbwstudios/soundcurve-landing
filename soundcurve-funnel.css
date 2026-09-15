@@ -575,8 +575,14 @@ input[type=text],input[type=tel],input[type=email],textarea,select{
    drives both pages. Previously the constraint lived on `> .inner`, which the
    comp did not have, so every row in the comp rendered full bleed while the
    live page rendered at 1172. Nothing matched, section for section. */
+/* GHL's own row-width setting lands on this element and renders 2px under
+   whatever the builder is told, so a row asked for 1172 comes back 1170 and
+   every text column on the page is 2px narrower than the comp. The builder is
+   now told a width wide enough never to bind, and this is the only constraint
+   left standing on either page. */
 .sc-sec.c-section > .inner,.sc-sec > .inner{
-  width:100%; max-width:calc(var(--sc-content) + var(--sc-gutter) * 2);
+  width:100%;
+  max-width:calc(var(--sc-content) + var(--sc-gutter) * 2) !important;
   margin-inline:auto }
 .sc-row--std.c-row > .inner,.sc-row--std > .inner{
   width:100%; max-width:calc(var(--sc-content) + var(--sc-gutter) * 2);

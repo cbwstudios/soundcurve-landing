@@ -563,9 +563,19 @@ input[type=text],input[type=tel],input[type=email],textarea,select{
 /* The container is .flex-col.row, so its flex-direction is column and the
    half-width pair still stacked. It has to be a wrapping row for any of the
    widths below to mean anything. */
-.sc-heroR .c-form .fields-container{ flex-direction:row !important; flex-wrap:wrap;
-                             column-gap:var(--sc-3);
-                             padding:0 !important }   /* ships 30px top+bottom */
+/* The form component ships Roboto, so the same copy at the same size wrapped
+   to four lines on the funnel where the comp gets three. Everything inside the
+   form inherits the page face instead. */
+.sc-heroR .c-form,.sc-heroR .c-form *{ font-family:inherit !important }
+
+/* 30px top and bottom on the field list. The rule that sets it lives in
+   stcdn.leadconnectorhq.com/_preview/style.CaQn9HXa.css, which is cross-origin
+   and unreadable from the page, and it is anchored on #form-builder, so no
+   class selector can outrank it however long. Matching the ids is the only way
+   to win; two of them puts this at 2,2,0. */
+.sc-heroR #form-builder #_builder-form .fields-container{
+  flex-direction:row !important; flex-wrap:wrap;
+  column-gap:var(--sc-3); padding:0 !important }
 /* the last field's wrapper margin would otherwise hang off the end of the form */
 .sc-heroR .c-form .form-field-wrapper:last-of-type{ margin-bottom:0 !important }
 /* the note above the form has a 14px bottom margin in the comp, but on the
@@ -598,7 +608,35 @@ input[type=text],input[type=tel],input[type=email],textarea,select{
   width:17px !important; height:17px !important }
 
 /* GHL sizes the textarea at 108px against the comp's 80. */
-.sc-heroR .c-form textarea.form-control{ height:80px !important; min-height:80px !important }
+
+
+/* The builder styles some fields itself and leaves others alone: first name,
+   last name and email came back filled #f3f8fb with no border and a 4px
+   radius, while the phone and the textarea kept ours. Every control is stated
+   here so all five match the comp instead of three of them matching GHL.
+   .countryphone is the phone input, which does not carry .form-control. */
+.sc-heroR .c-form .form-control,
+.sc-heroR .c-form input.countryphone,
+.sc-heroR .c-form textarea{
+  background-color:#fff !important;
+  border:1px solid #cfd8de !important;
+  border-radius:var(--sc-r-ctl) !important;
+  color:var(--sc-ink) !important }
+.sc-heroR .c-form input.form-control,
+.sc-heroR .c-form input.countryphone{ height:54px !important }
+.sc-heroR .c-form textarea.form-control{ height:78px !important;
+                                         min-height:78px !important }
+
+/* The email field carries a decorative envelope icon the comp does not have,
+   and it pushes the placeholder 36px in where every other field starts at 14. */
+.sc-heroR .c-form .email-input > svg,
+.sc-heroR .c-form .email-input > i,
+.sc-heroR .c-form .email-input > span:not(.form-control){ display:none !important }
+/* The icon is hidden above, but the 36px it reserved is set by the same
+   id-anchored vendor sheet as the field padding, so this has to match on ids
+   too or the placeholder still starts 36px in while every other field is 14. */
+.sc-heroR #form-builder .email-input input.form-control{
+  padding-left:var(--sc-3) !important }
 
 /* Control and label metrics, to the comp's numbers: 51px control, 21px label. */
 .sc-heroR .form-control{ padding:var(--sc-3) !important;

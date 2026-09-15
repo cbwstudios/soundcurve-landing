@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="noindex,nofollow" name="robots"/><title>AI Receptionist</title>
 <link href="https://use.typekit.net/sao6jba.css" rel="stylesheet"/>
-<link href="soundcurve-funnel.css?v=95" rel="stylesheet"/>
+<link href="soundcurve-funnel.css?v=100" rel="stylesheet"/>
 <style>
 /* Page-specific only. Everything else comes from soundcurve-funnel.css.
    Target: keep this block under 20 rules. If something here is reusable,
@@ -288,6 +288,27 @@
 </div></div>
 </div></div>
 </div></div><script>
+(function(){
+  /* The builder's email field carries style="padding-left:36px !important" as an
+     INLINE style, to make room for an envelope icon the comp does not have. The
+     icon is hidden in CSS, but an inline !important sits above every stylesheet,
+     so the reserved 36px cannot be reached from there. The form is rendered by
+     Vue after load, so this watches for it rather than running once.
+     No effect on the comp, which has no .email-input. */
+  function unpad(){
+    var hit=false;
+    document.querySelectorAll('.sc-heroR .email-input input').forEach(function(el){
+      if(el.style.paddingLeft){ el.style.removeProperty('padding-left'); hit=true; }
+    });
+    return hit;
+  }
+  if(!unpad()){
+    var obs=new MutationObserver(function(){ if(unpad()) obs.disconnect(); });
+    obs.observe(document.body,{childList:true,subtree:true});
+    setTimeout(function(){ obs.disconnect(); }, 10000);
+  }
+})();
+
 (function(){
   var box=document.getElementById('player'); if(!box) return;
   var v=box.querySelector('video'), hit=box.querySelector('.sc-media__hit'),

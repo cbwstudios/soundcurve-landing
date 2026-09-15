@@ -634,5 +634,11 @@ input[type=text],input[type=tel],input[type=email],textarea,select{
   .sc-row--std.c-row > .inner > .c-column{
     padding-left:0 !important; padding-right:0 !important }
   .sc-col.c-column,.sc-col{ flex:1 1 auto !important }
+  /* The hero card's side padding is the card's own, not the gutter, so it has
+     to survive the reset above. That reset uses !important, and specificity
+     cannot beat !important, only match it. Without this the copy and the form
+     sit flat against the card's border on every phone. */
+  .sc-col.sc-heroR.c-column,.sc-col.sc-heroR{
+    padding-left:var(--sc-6) !important; padding-right:var(--sc-6) !important }
 }
 }

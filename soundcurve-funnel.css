@@ -276,7 +276,9 @@ input[type=text],input[type=tel],input[type=email],textarea,select{
           justify-content:center; gap:var(--sc-3) }
 /* 152px is the ceiling: the tile min-height is 250 and 153 pushes the tallest
    tile to 251. Raise min-height first if these ever need to be bigger. */
-.sc-feat img{ width:152px; height:152px; display:block;
+/* The icons are inlined <svg> now, not <img>. Both selectors are kept so the
+   rule survives whichever form the markup is in. */
+.sc-feat img,.sc-feat .sc-feat__ico{ width:152px; height:152px; display:block;
               transition:transform .22s ease }
 .sc-feat h3{ font-size:17px; margin:0; line-height:1.3 }
 /* chevron hints that there is more underneath */
@@ -292,7 +294,7 @@ input[type=text],input[type=tel],input[type=email],textarea,select{
             font-size:15.5px; line-height:1.5;
             transform:translateY(100%); transition:transform .28s ease }
 @media (hover:hover){
-  .sc-feat:hover img{ transform:scale(1.04) }
+  .sc-feat:hover img,.sc-feat:hover .sc-feat__ico{ transform:scale(1.04) }
   .sc-feat:hover p{ transform:translateY(0) }
   .sc-feat:hover::after{ opacity:0 }
 }
@@ -300,7 +302,7 @@ input[type=text],input[type=tel],input[type=email],textarea,select{
 .sc-feat:focus-within::after{ opacity:0 }
 /* no hover on touch: the chevron would promise something that never arrives */
 @media (hover:none){ .sc-feat::after{ display:none } .sc-feat p{ display:none } }
-@media (prefers-reduced-motion:reduce){ .sc-feat img,.sc-feat p{ transition:none } }
+@media (prefers-reduced-motion:reduce){ .sc-feat img,.sc-feat .sc-feat__ico,.sc-feat p{ transition:none } }
 
 /* ---- stacked rows: full-height colour cap on the left ----------------- */
 .sc-stack{ display:grid; gap:var(--sc-3) }
@@ -345,7 +347,8 @@ input[type=text],input[type=tel],input[type=email],textarea,select{
 .sc-logos div{ border:var(--sc-border); border-radius:var(--sc-r-card); height:92px;
                display:flex; align-items:center; justify-content:center;
                padding:var(--sc-4); background:#fff }
-.sc-logos img{ max-width:100%; max-height:38px; width:auto }
+.sc-logos img,.sc-logos .sc-logo__mark{ max-width:100%; max-height:38px;
+               width:auto; height:auto }
 
 /* ---- pill bar --------------------------------------------------------- */
 .sc-pill{ display:inline-block; background:var(--sc-lime); color:var(--sc-lime-ink);
@@ -461,5 +464,67 @@ input[type=text],input[type=tel],input[type=email],textarea,select{
   .sc-feats{ grid-template-columns:repeat(2,1fr) }
   .sc-logos{ grid-template-columns:repeat(4,1fr); gap:var(--sc-2) }
   .sc-logos div{ height:64px; padding:10px }
-  .sc-logos img{ max-height:28px }
+  .sc-logos img,.sc-logos .sc-logo__mark{ max-height:28px }
+}
+
+
+/* ==========================================================================
+   NATIVE GHL FORM
+   ==========================================================================
+   The form block renders as real HTML in the page, not an iframe, so these
+   selectors reach it. Two rules about what is safe to target:
+
+   SAFE   .form-builder--item / .field-label / .form-control / .btn
+          and input[name="..."], because we choose the field names.
+   UNSAFE .form-<elementId> and .cform-<elementId>. Those embed the builder
+          element id, which changes every time the page is rebuilt. Anything
+          anchored to them dies silently on the next deploy.
+
+   Scoping is through .sc-heroR, our own class on the GHL column, so we never
+   depend on the form element's identity. The mockup wears the same class names
+   as the live form, so one rule set styles both and there is no second list to
+   keep in step. Nothing here lives in the form's own style settings, which are
+   invisible to this file and cannot be edited without recreating the form.
+   ========================================================================== */
+.sc-heroR{ background:#fff; border:var(--sc-border);
+           border-radius:var(--sc-r-card); padding:var(--sc-6) }
+.sc-heroR .sc-checks{ margin:0 }
+
+.sc-heroR .form-builder--item{ margin:0 0 var(--sc-3) }
+.sc-heroR .field-label{ display:block; font-size:14px;
+                        font-weight:var(--sc-weight-bold);
+                        margin:0 0 var(--sc-1); color:var(--sc-ink) }
+.sc-heroR .form-control{ width:100%; padding:var(--sc-3);
+                         border:1px solid #cfd8de; border-radius:var(--sc-r-ctl);
+                         font-family:inherit; font-size:var(--sc-size-meta);
+                         background:#fff; color:var(--sc-ink) }
+.sc-heroR .form-control:focus{ outline:2px solid var(--sc-mid); outline-offset:1px }
+.sc-heroR textarea.form-control{ max-height:140px }
+
+/* Consent row: checkbox beside fine print, never a full-width control. */
+.sc-heroR .form-builder--item:has(input[type=checkbox]) label{
+  display:flex; gap:10px; align-items:flex-start;
+  font-size:var(--sc-size-fine); font-weight:var(--sc-weight-body);
+  color:var(--sc-soft); line-height:var(--sc-lh-body) }
+.sc-heroR input[type=checkbox]{ margin:2px 0 0; flex:0 0 17px;
+                                width:17px; height:17px }
+
+/* Submit inherits the primary button, including its depth treatment. */
+.sc-heroR .btn,.sc-heroR .button-element{
+  display:block; width:100%; border:2px solid var(--sc-deep);
+  border-radius:var(--sc-r-ctl); background-color:var(--sc-deep); color:#fff;
+  font-family:inherit; font-size:var(--sc-size-lead);
+  font-weight:var(--sc-weight-bold); line-height:1.2;
+  padding:var(--sc-4) var(--sc-5); cursor:pointer;
+  background-image:var(--sc-btn-sheen); box-shadow:var(--sc-btn-lift);
+  transition:box-shadow .15s ease, transform .15s ease }
+.sc-heroR .btn:hover{ box-shadow:var(--sc-btn-lift-hover); transform:translateY(-1px) }
+.sc-heroR .ghl-form-wrap,.sc-heroR .form-builder--wrap,.sc-heroR .hl-app{
+  background:transparent; padding:0; margin:0 }
+
+/* Hero left column, previously handled by .sc-row.hero */
+.sc-heroL{ padding:0 48px 0 0 }
+@media (max-width:900px){
+  .sc-heroL{ padding:0 0 24px }
+  .sc-heroR{ margin-bottom:0 }
 }

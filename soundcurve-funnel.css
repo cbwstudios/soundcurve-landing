@@ -486,7 +486,7 @@ input[type=text],input[type=tel],input[type=email],textarea,select{
    keep in step. Nothing here lives in the form's own style settings, which are
    invisible to this file and cannot be edited without recreating the form.
    ========================================================================== */
-.sc-heroR{ background:#fff; border:var(--sc-border);
+.sc-heroR.c-column,.sc-heroR{ background:#fff; border:var(--sc-border);
            border-radius:var(--sc-r-card); padding:var(--sc-6) }
 .sc-heroR .sc-checks{ margin:0 }
 
@@ -523,7 +523,7 @@ input[type=text],input[type=tel],input[type=email],textarea,select{
   background:transparent; padding:0; margin:0 }
 
 /* Hero left column, previously handled by .sc-row.hero */
-.sc-heroL{ padding:0 48px 0 0 }
+.sc-heroL.c-column,.sc-heroL{ padding-right:0 }
 @media (max-width:900px){
   .sc-heroL{ padding:0 0 24px }
   .sc-heroR{ margin-bottom:0 }

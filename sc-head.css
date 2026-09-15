@@ -410,19 +410,44 @@ input[type=text],input[type=tel],input[type=email],textarea,select{
                 font-size:var(--sc-size-lead); text-wrap:balance }
 .sc-price__cta{ padding:0 var(--sc-6) var(--sc-6) }
 
-/* ---- responsive: our own grids and type scale -------------------------
-   Everything GHL supplies natively (.sc-wrap / .sc-section / .sc-row and their
-   breakpoints) is deliberately absent — set those in the builder. What is here
-   is ours: the feature grid, the logo wall, and the heading scale.
-   NOTE: .sc-logos carries an inline --cols, and an inline custom property beats
-   a media query setting --cols on the class, so these set grid-template-columns
-   DIRECTLY. Setting --cols in a breakpoint does nothing. */
+/* ==========================================================================
+   ███  GHL OWNS THIS  ███   DELETE THIS ENTIRE BLOCK AT BUILD TIME.
+   ==========================================================================
+   Everything ABOVE this line is ours and goes into the funnel's
+   trackingCodeHead. Everything BELOW is a local stand-in for what the
+   GoHighLevel builder provides natively. At build time these map to:
+
+     .sc-wrap        -> the row's content width setting
+     .sc-section     -> section, with its top/bottom padding
+     .sc-row         -> row
+     --cols          -> the column split chosen in the builder
+     --gap           -> row gap setting
+     --align         -> column vertical alignment
+     the breakpoints -> GHL's own desktop / tablet / mobile controls
+
+   Rule for the build: if a style is here, do NOT recreate it in CSS. Set it
+   in the builder. If a style is above the line, do NOT set it in the builder.
+   Anything that has to exist in both places is a bug waiting to happen.
+   ========================================================================== */
+.sc-wrap{ max-width:calc(var(--sc-content) + (var(--sc-gutter) * 2));
+          margin-inline:auto; padding-inline:var(--sc-gutter) }
+.sc-section{ padding-block:var(--sc-8) }
+.sc-row{ display:grid; grid-template-columns:repeat(var(--cols,2),1fr);
+         gap:var(--gap,var(--sc-7)); align-items:var(--align,start) }
+.sc-row--split{ --cols:2; --gap:52px }
+
+/* tablet: halve wide card grids rather than dropping straight to one column */
 @media (max-width:1024px) and (min-width:901px){
+  .sc-row{ --gap:var(--sc-5) }
+  .sc-row[style*="--cols:4"]{ grid-template-columns:repeat(2,1fr) }
   .sc-feats{ grid-template-columns:repeat(3,1fr) }
   .sc-logos{ grid-template-columns:repeat(5,1fr) }
 }
 @media (max-width:900px){
   :root{ --sc-size-h1:36px; --sc-size-h2:30px; --sc-size-display:46px; --sc-8:48px }
+  .sc-row{ grid-template-columns:repeat(2,1fr); gap:var(--sc-5) }
+  /* .sc-feats is its OWN grid, not a .sc-row, so it needs collapsing separately.
+     Without these it stayed four across at every width: 70px tiles on a phone. */
   .sc-feats{ grid-template-columns:repeat(2,1fr) }
   /* 28 logos: at 3 across this was 10 rows of near-empty 224px cells. */
   .sc-logos{ grid-template-columns:repeat(5,1fr) }
@@ -430,6 +455,7 @@ input[type=text],input[type=tel],input[type=email],textarea,select{
   .sc-sub{ text-align:left }
 }
 @media (max-width:640px){
+  .sc-row{ grid-template-columns:1fr; gap:var(--sc-6) }
   /* Two across, not one. Twelve tiles in a single column is an endless scroll,
      and with the hover text hidden on touch each tile is only an icon and a title. */
   .sc-feats{ grid-template-columns:repeat(2,1fr) }
@@ -437,6 +463,21 @@ input[type=text],input[type=tel],input[type=email],textarea,select{
   .sc-logos div{ height:64px; padding:10px }
   .sc-logos img{ max-height:28px }
 }
+
+
+/* ---- hero built from GHL columns ----------------------------------------
+   The hero's two columns are native GHL columns so the native form block can
+   live inside the card. .sc-row.hero is no longer doing the split, so these
+   carry what it used to. */
+.sc-heroL{ padding:72px 48px 72px 0 }
+.sc-heroR{ align-self:center; background:#fff; border:var(--sc-border);
+           border-radius:var(--sc-r-card); padding:var(--sc-6); margin-block:72px }
+.sc-heroR .sc-checks{ margin:0 }
+@media (max-width:900px){
+  .sc-heroL{ padding:48px 0 24px }
+  .sc-heroR{ margin-block:0 48px }
+}
+
 
 /* Page-specific only. Everything else comes from soundcurve-funnel.css.
    Target: keep this block under 20 rules. If something here is reusable,
@@ -487,15 +528,3 @@ input[type=text],input[type=tel],input[type=email],textarea,select{
 .note b{ color:var(--sc-ink) }
 .ft{ border-top:var(--sc-rule); padding-block:var(--sc-5); text-align:center }
 .ft a{ margin-inline:9px }
-
-/* ---- hero built from GHL columns ----------------------------------------
-   The hero's two columns are native GHL columns so the form block can live in
-   the right one. That means .sc-row.hero is not doing the splitting any more,
-   and these two classes carry what it used to. */
-.sc-heroL{ padding:72px 48px 72px 0 }
-.sc-heroR{ align-self:center; background:#fff; border:var(--sc-border);
-           border-radius:var(--sc-r-card); padding:var(--sc-6); margin-block:72px }
-@media (max-width:900px){
-  .sc-heroL{ padding:48px 0 24px }
-  .sc-heroR{ margin-block:0 48px }
-}

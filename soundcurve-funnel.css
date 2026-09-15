@@ -595,7 +595,7 @@ input[type=text],input[type=tel],input[type=email],textarea,select{
      .c-column, .c-row > .inner, .c-section and their inners. Specificity cannot
      beat !important, only match it, so the gutter is restored the same way.
      Without this the copy runs to within 10px of the screen edge on a phone. */
-  .sc-row--std.c-row,.sc-row--std.c-row > .inner{
+  .sc-row--std.c-row{
     padding-left:var(--sc-gutter) !important;
     padding-right:var(--sc-gutter) !important }
   .sc-row--std.c-row > .inner > .c-column{

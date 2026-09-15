@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="noindex,nofollow" name="robots"/><title>AI Receptionist</title>
 <link href="https://use.typekit.net/sao6jba.css" rel="stylesheet"/>
-<link href="soundcurve-funnel.css?v=100" rel="stylesheet"/>
+<link href="soundcurve-funnel.css?v=101" rel="stylesheet"/>
 <style>
 /* Page-specific only. Everything else comes from soundcurve-funnel.css.
    Target: keep this block under 20 rules. If something here is reusable,
@@ -296,17 +296,26 @@
      Vue after load, so this watches for it rather than running once.
      No effect on the comp, which has no .email-input. */
   function unpad(){
-    var hit=false;
-    document.querySelectorAll('.sc-heroR .email-input input').forEach(function(el){
-      if(el.style.paddingLeft){ el.style.removeProperty('padding-left'); hit=true; }
+    var changed=false;
+    /* The 36px comes from two places at once: an inline
+       style="padding-left:36px !important" on the input, and a vendor rule in a
+       cross-origin sheet keyed on .email-input. Neither can be beaten from our
+       stylesheet, so the inline is stripped and the class the vendor rule keys
+       on is dropped. The icon itself is already hidden in CSS. */
+    document.querySelectorAll('.sc-heroR .email-input').forEach(function(box){
+      box.classList.remove('email-input'); changed=true;
     });
-    return hit;
+    document.querySelectorAll('.sc-heroR .c-form input[name="email"]').forEach(function(el){
+      if(el.style.paddingLeft){ el.style.removeProperty('padding-left'); changed=true; }
+    });
+    return changed;
   }
-  if(!unpad()){
-    var obs=new MutationObserver(function(){ if(unpad()) obs.disconnect(); });
-    obs.observe(document.body,{childList:true,subtree:true});
-    setTimeout(function(){ obs.disconnect(); }, 10000);
-  }
+  unpad();
+  /* The form is rendered by Vue after load and re-renders on validation, so this
+     keeps watching rather than running once. Capped so it cannot idle forever. */
+  var obs=new MutationObserver(unpad);
+  obs.observe(document.body,{childList:true,subtree:true});
+  setTimeout(function(){ obs.disconnect(); }, 15000);
 })();
 
 (function(){

@@ -489,7 +489,10 @@ input[type=text],input[type=tel],input[type=email],textarea,select{
 .sc-heroR.c-column,.sc-heroR{ background:#fff;
            border:var(--sc-border) !important;   /* beats GHL's .noBorder */
            border-radius:var(--sc-r-card); padding:var(--sc-6) }
+/* .offer carries the rule line and a 14px gap under it, but at 0,1,0 it lost to
+   this rule at 0,2,0, so the note sat flat against the border on both pages. */
 .sc-heroR .sc-checks{ margin:0 }
+.sc-heroR .sc-checks.offer{ margin:0 0 var(--sc-3) }
 
 .sc-heroR .form-builder--item{ margin:0 0 var(--sc-3) }
 .sc-heroR .field-label{ display:block; font-size:14px;
@@ -603,7 +606,22 @@ input[type=text],input[type=tel],input[type=email],textarea,select{
    gets 364px and wraps to four lines where the comp gets three. Shrink it to
    the box itself and the two paragraphs wrap identically. */
 .sc-heroR .c-form .form-builder--item:has(input[type=checkbox]) .flex-col{
-  flex:0 0 17px !important; width:17px !important; min-width:0 !important }
+  flex:0 0 17px !important; width:17px !important; min-width:0 !important;
+  /* the wrapper stretches to the full height of the copy and centres the box
+     inside itself, which dropped the checkbox to the second line */
+  align-items:flex-start !important; align-self:flex-start !important;
+  height:auto !important }
+
+/* The consent wrapper's own 14px sits on top of the button's 26px in a flex
+   container, where margins do not collapse, so the gap came out at 40 against
+   the comp's 26. */
+.sc-heroR .c-form .form-field-wrapper:has(input[type=checkbox]){
+  margin-bottom:0 !important }
+
+/* The submit is 111px wide on its own; the comp's runs the width of the card. */
+.sc-heroR .c-form button[type=submit],
+.sc-heroR .c-form .btn,.sc-heroR .c-form .button-element{
+  width:100% !important; max-width:none !important }
 .sc-heroR .c-form .form-builder--item input[type=checkbox]{
   width:17px !important; height:17px !important }
 
@@ -629,9 +647,14 @@ input[type=text],input[type=tel],input[type=email],textarea,select{
 
 /* The email field carries a decorative envelope icon the comp does not have,
    and it pushes the placeholder 36px in where every other field starts at 14. */
+/* Keyed on the field, not on .email-input: the page script has to strip that
+   class to defeat the vendor's padding rule, and hiding the icon through it
+   meant the envelope reappeared the moment the script did its job. The first
+   selector still covers the instant before the script runs, so there is no
+   flash of the icon on load. */
 .sc-heroR .c-form .email-input > svg,
-.sc-heroR .c-form .email-input > i,
-.sc-heroR .c-form .email-input > span:not(.form-control){ display:none !important }
+.sc-heroR .c-form .form-field-wrapper:has(input[name="email"]) svg{
+  display:none !important }
 /* The icon is hidden above, but the 36px it reserved is set by the same
    id-anchored vendor sheet as the field padding, so this has to match on ids
    too or the placeholder still starts 36px in while every other field is 14. */

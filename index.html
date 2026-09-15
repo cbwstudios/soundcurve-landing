@@ -1,13 +1,14 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>AI Receptionist</title>
 <link rel="stylesheet" href="https://use.typekit.net/sao6jba.css">
-<link rel="stylesheet" href="soundcurve-funnel.css?v=69">
+<link rel="stylesheet" href="soundcurve-funnel.css?v=70">
 <style>
 /* Page-specific only. Everything else comes from soundcurve-funnel.css.
    Target: keep this block under 20 rules. If something here is reusable,
    it belongs in the system file instead. */
 .hd{ background:var(--sc-deep); padding:var(--sc-3) 0 }
 .hd .sc-wrap{ display:flex; justify-content:space-between; align-items:center }
-.hd img{ height:34px; display:block }
+/* the logo is an inlined <svg> now, not an <img> */
+.hd img,.hd .sc-hdr__logo{ height:34px; width:auto; display:block; flex:0 0 auto }
 .hd span{ font-size:15px; color:rgba(255,255,255,.94) }
 /* line break that only exists above the breakpoint, so the marked phrase
    sits whole on line two instead of relying on auto-wrap */

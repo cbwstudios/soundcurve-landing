@@ -536,24 +536,24 @@ input[type=text],input[type=tel],input[type=email],textarea,select{
    by specificity alone. */
 
 /* 40px top and bottom, 20px each side, on the form's own section */
-.sc-heroR .hl_form-builder--main{ padding:0 !important }
+.sc-heroR .c-form .hl_form-builder--main{ padding:0 !important }
 
 /* Field rhythm. Every field is nested
    .form-field-wrapper > .form-field-container > div > .field-container >
    .form-builder--item, and the wrapper AND the item each carry a 14px bottom
    margin, so the rhythm rendered at 28. The wrapper is the row-level carrier,
    so it keeps the margin and the item loses it. */
-.sc-heroR .form-field-wrapper{ margin:0 0 var(--sc-3) !important }
+.sc-heroR .c-form .form-field-wrapper{ margin:0 0 var(--sc-3) !important }
 /* Scoped through .form-field-wrapper, which exists only on the funnel. The
    comp's own form has no wrapper, so it keeps the 14px on the item itself and
    does not lose its field rhythm. */
-.sc-heroR .field-container,
-.sc-heroR .form-field-wrapper .form-builder--item{ margin:0 !important }
+.sc-heroR .c-form .field-container,
+.sc-heroR .c-form .form-field-wrapper .form-builder--item{ margin:0 !important }
 
 /* The builder emits an empty <!----> placeholder field at the top of the form.
    The wrapper has to go too, or its own margin survives the hidden item. */
-.sc-heroR .form-field-wrapper:not(:has(input)):not(:has(textarea)):not(:has(select)):not(:has(button)),
-.sc-heroR .form-builder--item:not(:has(input)):not(:has(textarea)):not(:has(select)):not(:has(button)){
+.sc-heroR .c-form .form-field-wrapper:not(:has(input)):not(:has(textarea)):not(:has(select)):not(:has(button)),
+.sc-heroR .c-form .form-builder--item:not(:has(input)):not(:has(textarea)):not(:has(select)):not(:has(button)){
   display:none !important }
 
 /* First and last name share a row in the comp. The builder writes col-12 on
@@ -563,11 +563,11 @@ input[type=text],input[type=tel],input[type=email],textarea,select{
 /* The container is .flex-col.row, so its flex-direction is column and the
    half-width pair still stacked. It has to be a wrapping row for any of the
    widths below to mean anything. */
-.sc-heroR .fields-container{ flex-direction:row !important; flex-wrap:wrap;
+.sc-heroR .c-form .fields-container{ flex-direction:row !important; flex-wrap:wrap;
                              column-gap:var(--sc-3);
                              padding:0 !important }   /* ships 30px top+bottom */
 /* the last field's wrapper margin would otherwise hang off the end of the form */
-.sc-heroR .form-field-wrapper:last-of-type{ margin-bottom:0 !important }
+.sc-heroR .c-form .form-field-wrapper:last-of-type{ margin-bottom:0 !important }
 /* the note above the form has a 14px bottom margin in the comp, but on the
    funnel it sits inside a code block and collapses out at the block edge */
 .sc-heroR .c-form{ margin-top:var(--sc-3) }
@@ -575,30 +575,30 @@ input[type=text],input[type=tel],input[type=email],textarea,select{
    the half-width pair sized itself to its content instead of the row. The
    full-width default has to be !important for the same reason the rest of this
    block does: these are GHL's component styles. */
-.sc-heroR .form-field-wrapper{ flex:0 0 100% !important; max-width:100% !important }
-.sc-heroR .form-field-wrapper:nth-of-type(2),
-.sc-heroR .form-field-wrapper:nth-of-type(3){
+.sc-heroR .c-form .form-field-wrapper{ flex:0 0 100% !important; max-width:100% !important }
+.sc-heroR .c-form .form-field-wrapper:nth-of-type(2),
+.sc-heroR .c-form .form-field-wrapper:nth-of-type(3){
   flex:0 0 calc(50% - var(--sc-3) / 2) !important;
   max-width:calc(50% - var(--sc-3) / 2) !important }
 
 /* GHL renders the consent checkbox in a .flex-col BELOW its label, which adds
    27px and reads as two separate controls. The comp has the box beside the
    text. row-reverse puts the box back on the left without touching the DOM. */
-.sc-heroR .form-builder--item:has(input[type=checkbox]){
+.sc-heroR .c-form .form-builder--item:has(input[type=checkbox]){
   display:flex !important; flex-direction:row-reverse; justify-content:flex-end;
   align-items:flex-start; gap:10px }
-.sc-heroR .form-builder--item:has(input[type=checkbox]) .field-label{
+.sc-heroR .c-form .form-builder--item:has(input[type=checkbox]) .field-label{
   margin:0 !important; flex:1 1 auto }
 /* The .flex-col holding the checkbox is 49px wide, so the consent copy only
    gets 364px and wraps to four lines where the comp gets three. Shrink it to
    the box itself and the two paragraphs wrap identically. */
-.sc-heroR .form-builder--item:has(input[type=checkbox]) .flex-col{
+.sc-heroR .c-form .form-builder--item:has(input[type=checkbox]) .flex-col{
   flex:0 0 17px !important; width:17px !important; min-width:0 !important }
-.sc-heroR .form-builder--item input[type=checkbox]{
+.sc-heroR .c-form .form-builder--item input[type=checkbox]{
   width:17px !important; height:17px !important }
 
 /* GHL sizes the textarea at 108px against the comp's 80. */
-.sc-heroR textarea.form-control{ height:80px !important; min-height:80px !important }
+.sc-heroR .c-form textarea.form-control{ height:80px !important; min-height:80px !important }
 
 /* Control and label metrics, to the comp's numbers: 51px control, 21px label. */
 .sc-heroR .form-control{ padding:var(--sc-3) !important;

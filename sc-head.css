@@ -487,3 +487,15 @@ input[type=text],input[type=tel],input[type=email],textarea,select{
 .note b{ color:var(--sc-ink) }
 .ft{ border-top:var(--sc-rule); padding-block:var(--sc-5); text-align:center }
 .ft a{ margin-inline:9px }
+
+/* ---- hero built from GHL columns ----------------------------------------
+   The hero's two columns are native GHL columns so the form block can live in
+   the right one. That means .sc-row.hero is not doing the splitting any more,
+   and these two classes carry what it used to. */
+.sc-heroL{ padding:72px 48px 72px 0 }
+.sc-heroR{ align-self:center; background:#fff; border:var(--sc-border);
+           border-radius:var(--sc-r-card); padding:var(--sc-6); margin-block:72px }
+@media (max-width:900px){
+  .sc-heroL{ padding:48px 0 24px }
+  .sc-heroR{ margin-block:0 48px }
+}

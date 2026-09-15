@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>AI Receptionist</title>
 <link rel="stylesheet" href="https://use.typekit.net/sao6jba.css">
-<link rel="stylesheet" href="soundcurve-funnel.css?v=63">
+<link rel="stylesheet" href="soundcurve-funnel.css?v=64">
 <style>
 /* Page-specific only. Everything else comes from soundcurve-funnel.css.
    Target: keep this block under 20 rules. If something here is reusable,
@@ -91,18 +91,20 @@
 <label class="sc-field" for="f-notes">Anything you want us to cover on the call?</label>
 <textarea id="f-notes" name="notes" rows="2" placeholder="Optional. For example: after-hours only, never quote prices."></textarea>
 
-<!-- TWO boxes, both unchecked, both OPTIONAL. Not a style choice:
-     · one combined box is Twilio rejection 30913 (marketing and informational
-       consent must be separate)
-     · a required consent box is 30923/30931 (consent cannot be a condition of use)
-     Wording is word for word what is already live on stage's three forms, because
-     the checkbox has to mirror the registered campaign description. Do not reword
-     either box without changing the A2P submission to match. -->
-<label class="sc-consent" for="f-consent-mkt"><input id="f-consent-mkt" name="sms_marketing_consent" type="checkbox">
-<span>I consent to receive marketing text messages, about special offers, discounts, and service updates, from SoundCurve at the phone number provided. Message frequency may vary. Message &amp; data rates may apply. Text HELP for assistance, reply STOP to opt out.</span>
-</label>
-
-<label class="sc-consent" for="f-consent-txn"><input id="f-consent-txn" name="sms_transactional_consent" type="checkbox">
+<!-- ONE box, and it is the NON-MARKETING one. Christian's call 09-14: this is a
+     subdomain with a controlled traffic flow, not a general-purpose site form, so it
+     does not need the pair the three soundcurve.com forms carry. Non-marketing rather
+     than marketing because of what we would actually send someone who submits this:
+     sales follow-up on the request they just made, and scheduling for the setup call.
+     Both are enumerated in this box. Marketing consent covers offers and discounts,
+     which is not what goes to this list.
+     UNCHECKED and OPTIONAL, never required — a required consent box is Twilio
+     rejection 30923/30931, consent cannot be a condition of service.
+     Wording is word for word field 31 on the three stage forms, because the checkbox
+     has to mirror the registered campaign description. Do not reword it without
+     changing the A2P submission to match.
+     Writes to contact.consent_sms_nonmarketing in AIO. -->
+<label class="sc-consent" for="f-consent"><input id="f-consent" name="consent_sms_nonmarketing" type="checkbox">
 <span>I consent to receive non-marketing text messages from SoundCurve about sales follow-up on my inquiry, quote and demo scheduling, appointment and installation reminders, and account or service notifications. Message frequency may vary, message &amp; data rates may apply. Text HELP for assistance, reply STOP to opt out.</span>
 </label>
 

@@ -527,6 +527,81 @@ input[type=text],input[type=tel],input[type=email],textarea,select{
 .sc-heroR .ghl-form-wrap,.sc-heroR .form-builder--wrap,.sc-heroR .hl-app{
   background:transparent; padding:0; margin:0 }
 
+/* ---- GHL's native form chrome -------------------------------------------
+   The builder's form arrives with furniture the comp's form does not have.
+   Measured against the comp, it ran the hero form 490px taller: 80px of
+   section padding, 84px of doubled field margin, a 30px placeholder, and
+   looser control and label metrics. Every rule here needs !important; these
+   are GHL's own component styles, not page styles, and they are not reachable
+   by specificity alone. */
+
+/* 40px top and bottom, 20px each side, on the form's own section */
+.sc-heroR .hl_form-builder--main{ padding:0 !important }
+
+/* Field rhythm. Every field is nested
+   .form-field-wrapper > .form-field-container > div > .field-container >
+   .form-builder--item, and the wrapper AND the item each carry a 14px bottom
+   margin, so the rhythm rendered at 28. The wrapper is the row-level carrier,
+   so it keeps the margin and the item loses it. */
+.sc-heroR .form-field-wrapper{ margin:0 0 var(--sc-3) !important }
+.sc-heroR .field-container,.sc-heroR .form-builder--item{ margin:0 !important }
+
+/* The builder emits an empty <!----> placeholder field at the top of the form.
+   The wrapper has to go too, or its own margin survives the hidden item. */
+.sc-heroR .form-field-wrapper:not(:has(input)):not(:has(textarea)):not(:has(select)):not(:has(button)),
+.sc-heroR .form-builder--item:not(:has(input)):not(:has(textarea)):not(:has(select)):not(:has(button)){
+  display:none !important }
+
+/* First and last name share a row in the comp. The builder writes col-12 on
+   every field, and field width is a form property that cannot be reached from
+   the page, so the pair is set here by position. Wrapper 1 is the hidden
+   placeholder, which still counts for nth-of-type, so the names are 2 and 3. */
+/* The container is .flex-col.row, so its flex-direction is column and the
+   half-width pair still stacked. It has to be a wrapping row for any of the
+   widths below to mean anything. */
+.sc-heroR .fields-container{ flex-direction:row !important; flex-wrap:wrap;
+                             column-gap:var(--sc-3);
+                             padding:0 !important }   /* ships 30px top+bottom */
+/* the last field's wrapper margin would otherwise hang off the end of the form */
+.sc-heroR .form-field-wrapper:last-of-type{ margin-bottom:0 !important }
+/* the note above the form has a 14px bottom margin in the comp, but on the
+   funnel it sits inside a code block and collapses out at the block edge */
+.sc-heroR .c-form{ margin-top:var(--sc-3) }
+/* Once the container became a wrapping row, every field that is not part of
+   the half-width pair sized itself to its content instead of the row. The
+   full-width default has to be !important for the same reason the rest of this
+   block does: these are GHL's component styles. */
+.sc-heroR .form-field-wrapper{ flex:0 0 100% !important; max-width:100% !important }
+.sc-heroR .form-field-wrapper:nth-of-type(2),
+.sc-heroR .form-field-wrapper:nth-of-type(3){
+  flex:0 0 calc(50% - var(--sc-3) / 2) !important;
+  max-width:calc(50% - var(--sc-3) / 2) !important }
+
+/* GHL renders the consent checkbox in a .flex-col BELOW its label, which adds
+   27px and reads as two separate controls. The comp has the box beside the
+   text. row-reverse puts the box back on the left without touching the DOM. */
+.sc-heroR .form-builder--item:has(input[type=checkbox]){
+  display:flex !important; flex-direction:row-reverse; justify-content:flex-end;
+  align-items:flex-start; gap:10px }
+.sc-heroR .form-builder--item:has(input[type=checkbox]) .field-label{
+  margin:0 !important; flex:1 1 auto }
+/* The .flex-col holding the checkbox is 49px wide, so the consent copy only
+   gets 364px and wraps to four lines where the comp gets three. Shrink it to
+   the box itself and the two paragraphs wrap identically. */
+.sc-heroR .form-builder--item:has(input[type=checkbox]) .flex-col{
+  flex:0 0 17px !important; width:17px !important; min-width:0 !important }
+.sc-heroR .form-builder--item input[type=checkbox]{
+  width:17px !important; height:17px !important }
+
+/* GHL sizes the textarea at 108px against the comp's 80. */
+.sc-heroR textarea.form-control{ height:80px !important; min-height:80px !important }
+
+/* Control and label metrics, to the comp's numbers: 51px control, 21px label. */
+.sc-heroR .form-control{ padding:var(--sc-3) !important;
+                         line-height:var(--sc-lh-body) !important }
+.sc-heroR .field-label,.sc-heroR .label-alignment{
+  line-height:1.5 !important; margin:0 0 4px !important }
+
 /* Hero left column, previously handled by .sc-row.hero */
 .sc-heroL.c-column,.sc-heroL{ padding-right:0 }
 @media (max-width:900px){
@@ -558,6 +633,18 @@ input[type=text],input[type=tel],input[type=email],textarea,select{
 /* ---- sections: full bleed, they own vertical rhythm only ---- */
 .sc-sec.c-section,.sc-sec{ width:100%; padding-block:var(--sc-8);
                            padding-inline:0; background:var(--sc-white,#fff) }
+/* GHL wraps every code block in .c-custom-code > .custom-code-container >
+   <span>, and its own stylesheet puts line-height:normal on those. That breaks
+   inheritance from body, so every element relying on the inherited line-height
+   renders tighter on the funnel than in the comp: the hero lead came out 96
+   against 120, the kicker 27 against 33, the video caption 45 against 48.
+   Elements with an explicit line-height, like h1, were never affected, which is
+   why the difference looked random from section to section. */
+.sc-sec.c-section,.sc-sec{ line-height:var(--sc-lh-body) }
+.sc-sec .inner,.sc-sec .c-wrapper,.sc-sec .c-custom-code,
+.sc-sec .custom-code-container,.sc-sec .custom-code-container > span{
+  line-height:inherit }
+
 .sc-sec--tint.c-section,.sc-sec--tint{ background:var(--sc-pale) }
 .sc-sec--dark.c-section,.sc-sec--dark{ background:var(--sc-deep) }
 .sc-sec--flush.c-section,.sc-sec--flush{ padding-block:0 }
@@ -601,11 +688,11 @@ input[type=text],input[type=tel],input[type=email],textarea,select{
    still add to the row. */
 .sc-col.c-column,.sc-col{ flex:1 1 auto; min-width:0; padding-inline:0 }
 .sc-col--100.c-column,.sc-col--100{ flex:0 0 100% }
-.sc-col--60.c-column,.sc-col--60{ flex:0 0 calc(60% - var(--sc-gap) / 2) }
-.sc-col--54.c-column,.sc-col--54{ flex:0 0 calc(54% - var(--sc-gap) / 2) }
-.sc-col--50.c-column,.sc-col--50{ flex:0 0 calc(50% - var(--sc-gap) / 2) }
-.sc-col--46.c-column,.sc-col--46{ flex:0 0 calc(46% - var(--sc-gap) / 2) }
-.sc-col--40.c-column,.sc-col--40{ flex:0 0 calc(40% - var(--sc-gap) / 2) }
+.sc-col--60.c-column,.sc-col--60{ flex:0 0 calc(60% - var(--sc-gap) / 2) !important }
+.sc-col--54.c-column,.sc-col--54{ flex:0 0 calc(54% - var(--sc-gap) / 2) !important }
+.sc-col--50.c-column,.sc-col--50{ flex:0 0 calc(50% - var(--sc-gap) / 2) !important }
+.sc-col--46.c-column,.sc-col--46{ flex:0 0 calc(46% - var(--sc-gap) / 2) !important }
+.sc-col--40.c-column,.sc-col--40{ flex:0 0 calc(40% - var(--sc-gap) / 2) !important }
 .sc-col--mid.c-column,.sc-col--mid{ align-self:center }
 
 /* The hero card IS a column, so the column vocabulary above zeroes its

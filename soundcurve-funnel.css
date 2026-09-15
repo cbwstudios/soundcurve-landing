@@ -638,7 +638,12 @@ input[type=text],input[type=tel],input[type=email],textarea,select{
      to survive the reset above. That reset uses !important, and specificity
      cannot beat !important, only match it. Without this the copy and the form
      sit flat against the card's border on every phone. */
-  .sc-col.sc-heroR.c-column,.sc-col.sc-heroR{
+  /* Must out-specify the reset above, which is .sc-row--std.c-row > .inner >
+     .c-column = FOUR classes, 0,4,0. .inner counts. Matching !important is not
+     enough on its own; the selector has to win too, so this one walks the same
+     path and adds .sc-heroR for 0,5,0. */
+  .sc-row--std.c-row > .inner > .sc-heroR.c-column,
+  .sc-row--std > .inner > .sc-heroR.c-column{
     padding-left:var(--sc-6) !important; padding-right:var(--sc-6) !important }
 }
 }

@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>AI Receptionist</title>
 <link rel="stylesheet" href="https://use.typekit.net/sao6jba.css">
-<link rel="stylesheet" href="soundcurve-funnel.css?v=78">
+<link rel="stylesheet" href="soundcurve-funnel.css?v=79">
 <style>
 /* Page-specific only. Everything else comes from soundcurve-funnel.css.
    Target: keep this block under 20 rules. If something here is reusable,
@@ -50,7 +50,11 @@
      executives on modern phones, the video only plays on a tap, and a tap-started
      play carries sound at device volume. Revisit if this page is ever used for a
      colder or broader audience. -->
-<video playsinline preload="metadata" src="AIReceptionist_web.mp4" poster="AIReceptionist_poster.jpg"></video>
+<!-- Absolute URLs because relative paths 404 on the funnel domain. These should
+     move to GHL Media Storage; its upload endpoint rejects every documented
+     auth shape with ALT_ID_REQUIRED, and the public route answers "Error
+     calling IAM service" — the same wall as the funnel settings writes. -->
+<video playsinline preload="metadata" src="https://cbwstudios.github.io/soundcurve-landing/AIReceptionist_web.mp4" poster="https://cbwstudios.github.io/soundcurve-landing/AIReceptionist_poster.jpg"></video>
 <button class="sc-media__hit" type="button" aria-label="Play video"><i></i></button>
 </div>
 </div>
